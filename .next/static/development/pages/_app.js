@@ -27905,12 +27905,12 @@ var registrationRequest = function registrationRequest(data) {
   });
 };
 var wishesRequest = function wishesRequest(userId) {
-  return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get("http://localhost:3000/api/wishes?user=".concat(userId), {
+  return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get("https://wishlist-next.herokuapp.com/api/wishes?user=".concat(userId), {
     headers: headers
   });
 };
 var wishByIdRequest = function wishByIdRequest(id) {
-  return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get("http://localhost:3000/api/wishes/".concat(id), {
+  return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get("https://wishlist-next.herokuapp.com/api/wishes/".concat(id), {
     headers: headers
   });
 };

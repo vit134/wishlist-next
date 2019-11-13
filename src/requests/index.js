@@ -31,11 +31,11 @@ export const registrationRequest = (data) => {
 };
 
 export const wishesRequest = (userId) => {
-  return axios.get(`http://localhost:3000/api/wishes?user=${userId}`, { headers });
+  return axios.get(`https://wishlist-next.herokuapp.com/api/wishes?user=${userId}`, { headers });
 };
 
 export const wishByIdRequest = (id) => {
-  return axios.get(`http://localhost:3000/api/wishes/${id}`, { headers });
+  return axios.get(`https://wishlist-next.herokuapp.com/api/wishes/${id}`, { headers });
 };
 
 export const addWishRequest = (data) => {

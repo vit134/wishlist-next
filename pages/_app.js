@@ -7,7 +7,7 @@ import Layout from '../src/components/layout/layout';
 const protectedRoutes = [
   '/profile',
   '/profile/settings'
-]
+];
 
 export default class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {

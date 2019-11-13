@@ -1390,12 +1390,12 @@ const registrationRequest = data => {
   });
 };
 const wishesRequest = userId => {
-  return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(`http://localhost:3000/api/wishes?user=${userId}`, {
+  return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(`https://wishlist-next.herokuapp.com/api/wishes?user=${userId}`, {
     headers
   });
 };
 const wishByIdRequest = id => {
-  return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(`http://localhost:3000/api/wishes/${id}`, {
+  return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(`https://wishlist-next.herokuapp.com/api/wishes/${id}`, {
     headers
   });
 };
