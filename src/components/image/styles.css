@@ -1,0 +1,17 @@
+.image {
+  display: inline-block;
+}
+
+.wrapper {
+  display: flex;
+  position: relative;
+}
+
+.rounded {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+}

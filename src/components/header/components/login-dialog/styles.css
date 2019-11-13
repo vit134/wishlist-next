@@ -1,0 +1,13 @@
+.modal {
+  padding: 20px 0;
+}
+
+.tabs {
+  flex-direction: row !important;
+}
+
+.tabs a {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
