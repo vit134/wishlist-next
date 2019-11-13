@@ -5,8 +5,10 @@ const headers = {
   'Content-Type': 'application/json'
 };
 
-export const userInfoRequst = (req) => {
-  return axios.get('https://wishlist-next.herokuapp.com/api/login', {
+// http://localhost:3000
+
+export const userLoginInfoRequst = (req) => {
+  return axios.get('http://localhost:3000/api/login', {
     headers: {
       ...headers,
       cookie: req.headers.cookie
@@ -15,11 +17,15 @@ export const userInfoRequst = (req) => {
   });
 };
 
+export const userInfoRequst = username => {
+  return axios.get(`http://localhost:3000/api/user/${username}/info`, { headers });
+};
+
 export const loginRequest = (data) => {
   return axios.post('/api/login', data, { headers });
 };
 
-export const logoutRequest = (data) => {
+export const logoutRequest = () => {
   return axios.get('/api/logout', {
     headers,
     withCredentials: 'include'
@@ -31,11 +37,15 @@ export const registrationRequest = (data) => {
 };
 
 export const wishesRequest = (userId) => {
-  return axios.get(`https://wishlist-next.herokuapp.com/api/wishes?user=${userId}`, { headers });
+  return axios.get(`http://localhost:3000/api/wishes?user=${userId}`, { headers });
 };
 
 export const wishByIdRequest = (id) => {
-  return axios.get(`https://wishlist-next.herokuapp.com/api/wishes/${id}`, { headers });
+  return axios.get(`http://localhost:3000/api/wishes/${id}`, { headers });
+};
+
+export const wishByUserIdRequest = (userId) => {
+  return axios.get(`http://localhost:3000/api/wishes/by-user-id/${userId}`, { headers });
 };
 
 export const addWishRequest = (data) => {
@@ -43,4 +53,12 @@ export const addWishRequest = (data) => {
     Accept: 'multipart/form-data',
     'Content-Type': 'multipart/form-data'
   });
+};
+
+export const getAllUsers = () => {
+  return axios.get('http://localhost:3000/api/user/all', { headers });
+};
+
+export const getAllWishes = () => {
+  return axios.get('http://localhost:3000/api/wishes/all', { headers });
 };

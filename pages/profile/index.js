@@ -8,7 +8,6 @@ class ProfilePage extends React.Component {
   static async getInitialProps ({ req, res }) {
     let data = {};
 
-    // let props = await super.getInitialProps({ req });
     if (req.user && req.user._id) {
       try {
         const res = await wishesRequest(req.user._id);

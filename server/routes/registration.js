@@ -6,14 +6,12 @@ var router = express.Router();
 
 router.post('/', function (req, res, next) {
   var { username, password, email } = req.body;
-  const _id = mongoose.Types.ObjectId();
-  const isActivate = true;
+  const _id = new mongoose.Types.ObjectId();
 
   Account.register(new Account({
     _id,
     username,
-    email,
-    is_activate: isActivate
+    email
   }), password, (error, account) => {
     if (error) {
       console.log('error', error);

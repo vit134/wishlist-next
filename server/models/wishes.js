@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Wishes = new Schema({
-  userId: { type: Schema.Types.ObjectId, ref: 'Account', null: true },
+  userId: { type: Schema.Types.ObjectId, ref: 'Account' },
+  account: { type: Schema.Types.ObjectId, ref: 'Account' },
   name: String,
   link: String,
   image: String,
@@ -15,13 +16,5 @@ var Wishes = new Schema({
   price_currency: String,
   description: String
 });
-
-class WishesClass {
-  get all () {
-    return 'bla';
-  }
-}
-
-Wishes.loadClass(WishesClass);
 
 module.exports = mongoose.model('Wishes', Wishes);

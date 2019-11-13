@@ -19,6 +19,7 @@ const logotRoutes = require('./routes/logout');
 const registrationRoutes = require('./routes/registration');
 
 const wishesRoutes = require('./routes/wishes');
+const testRoutes = require('./routes/test');
 
 nextApp.prepare().then(() => {
   const app = express();
@@ -50,14 +51,6 @@ nextApp.prepare().then(() => {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  // app.get('/profile', (req, res, next) => {
-  //   if (!req.user) {
-  //     res.redirect('/');
-  //   }
-
-  //   next();
-  // });
-
   // passport config
   const Account = require('./models/account');
   passport.use(new LocalStrategy(Account.authenticate()));
@@ -70,6 +63,7 @@ nextApp.prepare().then(() => {
   app.use('/api/logout', logotRoutes);
   app.use('/api/registration', registrationRoutes);
   app.use('/api/wishes', wishesRoutes);
+  app.use('/api/test', testRoutes);
 
   // mongoose
   mongoose.connect(require('./config/db').url);

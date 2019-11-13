@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import {
   Navbar,
-  NavDropdown,
   Nav,
   Container
 } from 'react-bootstrap';
-import { LoginDialog } from './components/login-dialog';
+import { LoginDialog } from '../login-dialog';
 import { AddWishDialog } from '../add-wish-dialog';
-import { UserInfo } from './components/user-info';
+import { UserInfo } from '../user-info';
 
 const { Brand, Toggle, Collapse } = Navbar;
-const { Item, Divider } = NavDropdown;
-const { Link } = Nav;
 
 export const Header = ({
   isPopupOpen,
@@ -25,6 +22,8 @@ export const Header = ({
 }) => {
   const handleClose = () => togglePopup(false);
   const handleShow = () => togglePopup(true);
+  const addWishPopupClose = () => toggleAddWishPopup(false);
+  const addWishPopupShow = () => toggleAddWishPopup(true);
 
   const [isAddWishPopupOpen, toggleAddWishPopup] = useState(false);
 
@@ -36,19 +35,14 @@ export const Header = ({
         </a>
         <Toggle aria-controls="basic-navbar-nav" />
         <Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Link href="#home">Home</Link>
-            <Link href="#link">Link</Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <Item href="#action/3.1">Action</Item>
-              <Item href="#action/3.2">Another action</Item>
-              <Item href="#action/3.3">Something</Item>
-              <Divider />
-              <Item href="#action/3.4">Separated link</Item>
-            </NavDropdown>
-          </Nav>
+          <Nav className="mr-auto" />
           <Nav>
-            <UserInfo user={user} onOpen={handleShow} onAddWishPopupOpen={() => toggleAddWishPopup(true)} onLogout={onLogout} />
+            <UserInfo
+              user={user}
+              onOpen={handleShow}
+              onAddWishPopupOpen={addWishPopupShow}
+              onLogout={onLogout}
+            />
           </Nav>
         </Collapse>
       </Container>
@@ -57,10 +51,11 @@ export const Header = ({
         onLogin={onLogin}
         onRegistration={onRegistration}
         formErorrs={formErorrs}
-        onClose={handleClose}/>
+        onClose={handleClose}
+      />
       <AddWishDialog
         isOpen={isAddWishPopupOpen}
-        onClose={() => toggleAddWishPopup(false)}
+        onClose={addWishPopupClose}
         onSubmit={onAddWish}
       />
     </Navbar>

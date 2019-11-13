@@ -1,17 +1,17 @@
-._1cDHrCa-HAL561b9DtndFS {
+._3YKQJy1DkBkT6OC4mHpvA {
   padding: 15px 10px;
   border: 1px solid #dee2e6;
   border-top: none;
 }
-._3MPR4lBrr1RK--sJmL4wvY {
+._1LylbgM3FyTZNy4_PiEN_c {
   padding: 20px 0;
 }
 
-._2GBuoGCPBfE6qtMjM88TeP {
+._3ZZ2w81Qxvun3dDZ7AVK4C {
   flex-direction: row !important;
 }
 
-._2GBuoGCPBfE6qtMjM88TeP a {
+._3ZZ2w81Qxvun3dDZ7AVK4C a {
   padding-left: 10px !important;
   padding-right: 10px !important;
 }
@@ -21,22 +21,11 @@
 ._1SKzhY_wWe_BzvPehO_Rkx {
   padding: 20px 0;
 }
-.BQO4hnkPVbjCk_oAyPspC {
-  display: inline-block;
+section + section {
+  margin-top: 30px;
 }
-
-.ku8CbOhTjHsXQCL8vkHbH {
-  display: flex;
-  position: relative;
-}
-
-._3Bz7aLP5PKEgfk_xW-bPfg {
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-img {
-  max-width: 100%;
+section + section {
+  margin-top: 20px;
 }
 
 /*# sourceMappingURL=styles.chunk.css.map*/

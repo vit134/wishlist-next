@@ -1,7 +1,7 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
-import { userInfoRequst } from '../src/requests';
+import { userLoginInfoRequst } from '../src/requests';
 import Layout from '../src/components/layout/layout';
 
 const protectedRoutes = [
@@ -18,7 +18,7 @@ export default class MyApp extends App {
     }
 
     try {
-      const res = await userInfoRequst(ctx.req);
+      const res = await userLoginInfoRequst(ctx.req);
       pageProps.user = res.data;
     } catch (e) {
       pageProps.err = e;
