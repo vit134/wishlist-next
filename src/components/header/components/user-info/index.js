@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Button, NavDropdown } from 'react-bootstrap';
 import { getUserName } from '../../../../utils';
 
@@ -16,7 +17,11 @@ export const UserInfo = ({ user = {}, onOpen, onAddWishPopupOpen, onLogout }) =>
   return (
     <NavDropdown title={userName} id="user-nav">
       <NavDropdown.Item as='div'><a onClick={onAddWishPopupOpen}>Новое желание</a></NavDropdown.Item>
-      <NavDropdown.Item as='div'><a href="/profile">Мои желания</a></NavDropdown.Item>
+      <NavDropdown.Item as='div'>
+        <Link>
+          <a href="/profile">Мои желания</a>
+        </Link>
+      </NavDropdown.Item>
       <NavDropdown.Item as='div'><a href="/profile/settings">Настройки</a></NavDropdown.Item>
       <NavDropdown.Divider />
       <NavDropdown.Item onClick={onLogout}>Выйти</NavDropdown.Item>

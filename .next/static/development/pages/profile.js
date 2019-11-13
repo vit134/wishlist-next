@@ -29381,7 +29381,8 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var wishes = this.props.wishes;
-      var data = wishes.data;
+      var _wishes$data = wishes.data,
+          data = _wishes$data === void 0 ? [] : _wishes$data;
       return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["Table"], {
         striped: true,
         bordered: true,
@@ -29400,7 +29401,8 @@ function (_React$Component) {
           size: 50,
           crop: true
         })), __jsx(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
-          href: "/wish/".concat(el._id)
+          href: "/wish/".concat(el._id),
+          prefetch: true
         }, el.name)), __jsx("td", null, el.price), __jsx("td", null, el.assigned && el.assigned));
       })));
     }

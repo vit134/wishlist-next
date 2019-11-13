@@ -23,7 +23,7 @@ class ProfilePage extends React.Component {
 
   render () {
     const { wishes } = this.props;
-    const { data } = wishes;
+    const { data = [] } = wishes;
 
     return (
       <Table striped bordered hover>
@@ -47,7 +47,8 @@ class ProfilePage extends React.Component {
                         <Image src={el.image} size={50} crop/>
                       </span>
                     )}
-                    <Link href={`/wish/${el._id}`}>{ el.name }</Link></td>
+                    <Link href={`/wish/${el._id}`} prefetch>{ el.name }</Link>
+                  </td>
                   <td>{ el.price }</td>
                   <td>{ el.assigned && el.assigned }</td>
                 </tr>

@@ -1951,7 +1951,7 @@ class ProfilePage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component
       wishes
     } = this.props;
     const {
-      data
+      data = []
     } = wishes;
     return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
       striped: true,
@@ -1971,7 +1971,8 @@ class ProfilePage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component
         size: 50,
         crop: true
       })), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        href: `/wish/${el._id}`
+        href: `/wish/${el._id}`,
+        prefetch: true
       }, el.name)), __jsx("td", null, el.price), __jsx("td", null, el.assigned && el.assigned));
     })));
   }
