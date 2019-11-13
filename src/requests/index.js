@@ -6,7 +6,7 @@ const headers = {
 };
 
 export const userInfoRequst = (req) => {
-  return axios.get('http://localhost:3000/api/login', {
+  return axios.get('https://wishlist-next.herokuapp.com/api/login', {
     headers: {
       ...headers,
       cookie: req.headers.cookie

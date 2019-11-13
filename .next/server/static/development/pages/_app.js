@@ -1366,7 +1366,7 @@ const headers = {
   'Content-Type': 'application/json'
 };
 const userInfoRequst = req => {
-  return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get('http://localhost:3000/api/login', {
+  return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get('https://wishlist-next.herokuapp.com/api/login', {
     headers: _objectSpread({}, headers, {
       cookie: req.headers.cookie
     }),
