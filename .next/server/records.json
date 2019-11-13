@@ -32,20 +32,28 @@
       "static/Y-6Zw3Ti7P1SSLQGnP6XP/pages/index.js": 6,
       "static/Y-6Zw3Ti7P1SSLQGnP6XP/pages/profile.js": 7,
       "static/Y-6Zw3Ti7P1SSLQGnP6XP/pages/profile/settings.js": 8,
-      "static/Y-6Zw3Ti7P1SSLQGnP6XP/pages/wish/[id].js": 9
+      "static/Y-6Zw3Ti7P1SSLQGnP6XP/pages/wish/[id].js": 9,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/_app.js": 10,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/_document.js": 11,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/_error.js": 12,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/about.js": 13,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/index.js": 14,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/profile.js": 15,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/profile/settings.js": 16,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/wish/[id].js": 17
     },
     "bySource": {},
     "usedIds": [
       0,
       1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
     ]
   }
 }

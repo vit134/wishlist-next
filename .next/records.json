@@ -113,7 +113,14 @@
       "static/Y-6Zw3Ti7P1SSLQGnP6XP/pages/profile/settings.js": 8,
       "static/Y-6Zw3Ti7P1SSLQGnP6XP/pages/wish/[id].js": 9,
       "static/runtime/main.js": 10,
-      "static/runtime/polyfills.js": 11
+      "static/runtime/polyfills.js": 11,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/_app.js": 12,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/_error.js": 13,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/about.js": 14,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/index.js": 15,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/profile.js": 16,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/profile/settings.js": 17,
+      "static/nqlQDXm41uTLqsqGamZ_c/pages/wish/[id].js": 18
     },
     "bySource": {},
     "usedIds": [
@@ -121,14 +128,14 @@
       1,
       10,
       11,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      2
     ]
   }
 }
