@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const getUserName = user => {\n  const {\n    firstname,\n    lastname,\n    username\n  } = user;\n\n  if (firstname && lastname) {\n    return `${firstname} ${lastname}`;\n  }\n\n  return username;\n};","map":null,"metadata":{},"sourceType":"module"}

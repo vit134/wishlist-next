@@ -1,1 +1,0 @@
-{"code":"(window.webpackJsonp=window.webpackJsonp||[]).push([[8],{oLY8:function(n,t,e){\"use strict\";e.r(t);var i=e(\"q1tI\"),o=e.n(i).a.createElement;t.default=function(){return o(\"div\",null,\"profile settings page\")}},xvTU:function(n,t,e){(window.__NEXT_P=window.__NEXT_P||[]).push([\"/profile/settings\",function(){return e(\"oLY8\")}])}},[[\"xvTU\",0,1]]]);"}

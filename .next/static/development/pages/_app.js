@@ -27562,7 +27562,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 var UserInfo = function UserInfo(_ref) {
-  var user = _ref.user,
+  var _ref$user = _ref.user,
+      user = _ref$user === void 0 ? {} : _ref$user,
       onOpen = _ref.onOpen,
       onAddWishPopupOpen = _ref.onAddWishPopupOpen,
       onLogout = _ref.onLogout;

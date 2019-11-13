@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, NavDropdown } from 'react-bootstrap';
 import { getUserName } from '../../../../utils';
 
-export const UserInfo = ({ user, onOpen, onAddWishPopupOpen, onLogout }) => {
+export const UserInfo = ({ user = {}, onOpen, onAddWishPopupOpen, onLogout }) => {
   const { isLogin, data: userInfo } = user;
 
   if (!isLogin) {

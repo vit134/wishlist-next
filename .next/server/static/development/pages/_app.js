@@ -1033,7 +1033,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const UserInfo = ({
-  user,
+  user = {},
   onOpen,
   onAddWishPopupOpen,
   onLogout

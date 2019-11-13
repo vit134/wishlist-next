@@ -1,1 +1,0 @@
-{"ast":null,"code":"export var getUserName = function getUserName(user) {\n  var firstname = user.firstname,\n      lastname = user.lastname,\n      username = user.username;\n\n  if (firstname && lastname) {\n    return \"\".concat(firstname, \" \").concat(lastname);\n  }\n\n  return username;\n};","map":null,"metadata":{},"sourceType":"module"}
