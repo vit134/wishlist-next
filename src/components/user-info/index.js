@@ -16,9 +16,11 @@ export const UserInfo = ({ user = {}, onOpen, onAddWishPopupOpen, onLogout }) =>
 
   return (
     <NavDropdown title={userName} id="user-nav">
-      <NavDropdown.Item as='div'><a onClick={onAddWishPopupOpen}>Новое желание</a></NavDropdown.Item>
+      <NavDropdown.Item as='div' onClick={onAddWishPopupOpen}>Новое желание</NavDropdown.Item>
       <NavDropdown.Item as='div'>
-        <Link href="/profile">Мои желания</Link>
+        <Link href="/profile">
+          <a>Мои желания</a>
+        </Link>
       </NavDropdown.Item>
       <NavDropdown.Item as='div'><a href="/profile/settings">Настройки</a></NavDropdown.Item>
       <NavDropdown.Divider />

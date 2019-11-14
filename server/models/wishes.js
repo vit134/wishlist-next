@@ -5,6 +5,7 @@ var Wishes = new Schema({
   userId: { type: Schema.Types.ObjectId, ref: 'Account' },
   account: { type: Schema.Types.ObjectId, ref: 'Account' },
   name: String,
+  createdDate: { type: Date, default: Date.now },
   link: String,
   image: String,
   tags: [String],

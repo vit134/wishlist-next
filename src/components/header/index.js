@@ -12,20 +12,19 @@ const { Brand, Toggle, Collapse } = Navbar;
 
 export const Header = ({
   isPopupOpen,
+  isAddWishPopupOpen,
   togglePopup,
   user,
   onLogin,
   onRegistration,
+  onAddWishPopupClose,
+  onAddWishPopupOpen,
   onLogout,
   onAddWish,
   formErorrs
 }) => {
   const handleClose = () => togglePopup(false);
   const handleShow = () => togglePopup(true);
-  const addWishPopupClose = () => toggleAddWishPopup(false);
-  const addWishPopupShow = () => toggleAddWishPopup(true);
-
-  const [isAddWishPopupOpen, toggleAddWishPopup] = useState(false);
 
   return (
     <Navbar bg="dark" variant="dark" expand='sm'>
@@ -40,7 +39,7 @@ export const Header = ({
             <UserInfo
               user={user}
               onOpen={handleShow}
-              onAddWishPopupOpen={addWishPopupShow}
+              onAddWishPopupOpen={onAddWishPopupOpen}
               onLogout={onLogout}
             />
           </Nav>
@@ -55,7 +54,7 @@ export const Header = ({
       />
       <AddWishDialog
         isOpen={isAddWishPopupOpen}
-        onClose={addWishPopupClose}
+        onClose={onAddWishPopupClose}
         onSubmit={onAddWish}
       />
     </Navbar>

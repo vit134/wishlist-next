@@ -30,7 +30,6 @@ router.get('/all', (req, res) => {
       const sortedData = data.sort((a, b) => b.count - a.count);
 
       const ids = sortedData.map(el => el._id);
-      console.log(sortedData);
       return Account
         .find()
         .where('_id')

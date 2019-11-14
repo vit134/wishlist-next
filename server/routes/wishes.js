@@ -85,22 +85,24 @@ router.post('/', async function (req, res) {
 
   let fileUploadResult;
 
-  const { image } = req.files;
+  if (req.files) {
+    const { image } = req.files;
 
-  try {
-    fileUploadResult = await uploadFile(image);
-  } catch (e) {
-    fileUploadResult = e;
+    try {
+      fileUploadResult = await uploadFile(image);
+    } catch (e) {
+      fileUploadResult = e;
+    }
   }
 
-  if (fileUploadResult.success) {
+  if (fileUploadResult && fileUploadResult.success) {
     body.image = fileUploadResult.data.url;
   }
 
-  new Wishes(body)
-    .populate('userId')
-    .execPopulate()
-    .save()
+  const newWish = new Wishes(body);
+  newWish.populate('userId');
+
+  newWish.save()
     .then(data => res.send({ success: true, data }))
     .catch(err => res.send({ success: false, error: err }));
 });

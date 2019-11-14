@@ -20,6 +20,7 @@ const Layout = ({ user, children }) => {
   const [userInfo, setUser] = useState(user);
   const [isPopupOpen, togglePopup] = useState(false);
   const [formErorrs, setFormErrors] = useState({});
+  const [isAddWishPopupOpen, toggleAddWishPopup] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -71,19 +72,28 @@ const Layout = ({ user, children }) => {
     console.log(data);
 
     addWishRequest(data)
-      .then(response => console.log(response))
+      .then(() => {
+        toggleAddWishPopup(false);
+      })
+      .catch(err => console.log(err));
   };
+
+  const handleAddWishPopupOpen = () => toggleAddWishPopup(true);
+  const handleAddWishPopupClose = () => toggleAddWishPopup(false);
 
   return (
     <Fragment>
       <Header
         isPopupOpen={isPopupOpen}
+        isAddWishPopupOpen={isAddWishPopupOpen}
         togglePopup={togglePopup}
         user={userInfo}
         onLogin={handleLogin}
         onRegistration={handleRegistration}
         onLogout={handleLogout}
         onAddWish={handleAddWish}
+        onAddWishPopupClose={handleAddWishPopupClose}
+        onAddWishPopupOpen={handleAddWishPopupOpen}
         formErorrs={formErorrs}
       />
       <Container>
