@@ -595,39 +595,6 @@ function _defineProperty(obj, key, value) {
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _extends; });
-/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js");
-/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__);
-
-function _extends() {
-  _extends = _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default.a || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js ***!
@@ -30179,20 +30146,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
-/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/head */ "./node_modules/next/dist/next-server/lib/head.js");
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _src_requests__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../src/requests */ "./src/requests/index.js");
-/* harmony import */ var _src_components_layout_layout__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../src/components/layout/layout */ "./src/components/layout/layout.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
+/* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/head */ "./node_modules/next/dist/next-server/lib/head.js");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _src_requests__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../src/requests */ "./src/requests/index.js");
+/* harmony import */ var _src_components_layout_layout__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../src/components/layout/layout */ "./src/components/layout/layout.js");
 
 
 
@@ -30200,9 +30166,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var _jsxFileName = "/Users/viandryushkov/my/ssr-wishlist/pages/_app.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
 
 
 
@@ -30213,65 +30177,38 @@ var protectedRoutes = ['/profile', '/profile/settings'];
 var MyApp =
 /*#__PURE__*/
 function (_App) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(MyApp, _App);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(MyApp, _App);
 
   function MyApp() {
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_3__["default"])(this, MyApp);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, MyApp);
 
-    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(MyApp).apply(this, arguments));
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(MyApp).apply(this, arguments));
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__["default"])(MyApp, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(MyApp, [{
     key: "render",
     value: function render() {
+      console.log(this.props.pageProps);
       var _this$props = this.props,
           Component = _this$props.Component,
           pageProps = _this$props.pageProps,
           router = _this$props.router;
-      var user = pageProps.user;
+      var user = pageProps.user,
+          err = pageProps.err;
+
+      if (err) {
+        return __jsx(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null, __jsx("div", null, "\u043F\u0440\u043E\u0438\u0437\u043E\u0431\u0448\u043B\u0430 \u043E\u0448\u0438\u0431\u043A\u0430"), __jsx("div", null, err.toString()));
+      }
+
       var accessDenied = protectedRoutes.includes(router.route) && !user.isLogin;
-      return __jsx(next_app__WEBPACK_IMPORTED_MODULE_9__["Container"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 37
-        },
-        __self: this
-      }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_10___default.a, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 38
-        },
-        __self: this
-      }, __jsx("link", {
+      return __jsx(next_app__WEBPACK_IMPORTED_MODULE_8__["Container"], null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_9___default.a, null, __jsx("link", {
         rel: "stylesheet",
         href: "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
         integrity: "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T",
-        crossOrigin: "anonymous",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 39
-        },
-        __self: this
-      })), __jsx(_src_components_layout_layout__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        user: pageProps.user,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 46
-        },
-        __self: this
-      }, accessDenied ? __jsx("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 48
-        },
-        __self: this
-      }, "\u0414\u043E\u0441\u0442\u0443\u043F \u0437\u0430\u043F\u0440\u0435\u0449\u0435\u043D") : __jsx(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, pageProps, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 50
-        },
-        __self: this
-      }))));
+        crossOrigin: "anonymous"
+      })), __jsx(_src_components_layout_layout__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        user: pageProps.user
+      }, accessDenied ? __jsx("div", null, "\u0414\u043E\u0441\u0442\u0443\u043F \u0437\u0430\u043F\u0440\u0435\u0449\u0435\u043D") : __jsx(Component, pageProps)));
     }
   }], [{
     key: "getInitialProps",
@@ -30301,30 +30238,32 @@ function (_App) {
               case 6:
                 _context.prev = 6;
                 _context.next = 9;
-                return Object(_src_requests__WEBPACK_IMPORTED_MODULE_11__["userLoginInfoRequst"])(ctx.req);
+                return Object(_src_requests__WEBPACK_IMPORTED_MODULE_10__["userLoginInfoRequst"])(ctx.req);
 
               case 9:
                 res = _context.sent;
-                pageProps.user = res.data;
-                _context.next = 16;
+                console.log(res.data);
+                pageProps.user = res.data.data;
+                _context.next = 18;
                 break;
 
-              case 13:
-                _context.prev = 13;
+              case 14:
+                _context.prev = 14;
                 _context.t0 = _context["catch"](6);
+                console.log(_context.t0);
                 pageProps.err = _context.t0;
 
-              case 16:
+              case 18:
                 return _context.abrupt("return", {
                   pageProps: pageProps
                 });
 
-              case 17:
+              case 19:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[6, 13]]);
+        }, _callee, null, [[6, 14]]);
       }));
 
       function getInitialProps(_x) {
@@ -30336,7 +30275,7 @@ function (_App) {
   }]);
 
   return MyApp;
-}(next_app__WEBPACK_IMPORTED_MODULE_9___default.a);
+}(next_app__WEBPACK_IMPORTED_MODULE_8___default.a);
 
 
 
@@ -30357,7 +30296,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
 /* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles.css */ "./src/components/add-wish-dialog/styles.css");
 /* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_styles_css__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/viandryushkov/my/ssr-wishlist/src/components/add-wish-dialog/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -30374,128 +30312,38 @@ var AddWishDialog = function AddWishDialog(_ref) {
   return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
     show: true,
     onHide: onClose,
-    centered: true,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12
-    },
-    __self: this
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13
-    },
-    __self: this
-  }, __jsx("div", {
-    className: _styles_css__WEBPACK_IMPORTED_MODULE_2___default.a.modal,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14
-    },
-    __self: this
+    centered: true
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, __jsx("div", {
+    className: _styles_css__WEBPACK_IMPORTED_MODULE_2___default.a.modal
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-    onSubmit: onSubmit,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15
-    },
-    __self: this
+    onSubmit: onSubmit
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-    controlId: "name",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16
-    },
-    __self: this
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17
-    },
-    __self: this
-  }, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+    controlId: "name"
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     type: "text",
     name: "name",
-    placeholder: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18
-    },
-    __self: this
+    placeholder: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435"
   })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-    controlId: "link",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21
-    },
-    __self: this
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22
-    },
-    __self: this
-  }, "\u0421\u0441\u044B\u043B\u043A\u0430"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+    controlId: "link"
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u0421\u0441\u044B\u043B\u043A\u0430"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     type: "text",
     name: "link",
-    placeholder: "\u0421\u0441\u044B\u043B\u043A\u0430",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23
-    },
-    __self: this
+    placeholder: "\u0421\u0441\u044B\u043B\u043A\u0430"
   })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-    controlId: "price",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26
-    },
-    __self: this
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27
-    },
-    __self: this
-  }, "\u0426\u0435\u043D\u0430"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+    controlId: "price"
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u0426\u0435\u043D\u0430"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     type: "number",
     name: "price",
-    placeholder: "\u0426\u0435\u043D\u0430",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28
-    },
-    __self: this
+    placeholder: "\u0426\u0435\u043D\u0430"
   })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-    controlId: "image",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31
-    },
-    __self: this
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32
-    },
-    __self: this
-  }, "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+    controlId: "image"
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     type: "file",
     name: "image",
-    placeholder: "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33
-    },
-    __self: this
+    placeholder: "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435"
   })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     variant: "primary",
-    type: "submit",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36
-    },
-    __self: this
+    type: "submit"
   }, "\u0421\u043E\u0437\u0434\u0430\u0442\u044C")))));
 };
 
@@ -30517,7 +30365,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _login_dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../login-dialog */ "./src/components/login-dialog/index.js");
 /* harmony import */ var _add_wish_dialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../add-wish-dialog */ "./src/components/add-wish-dialog/index.js");
 /* harmony import */ var _user_info__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user-info */ "./src/components/user-info/index.js");
-var _jsxFileName = "/Users/viandryushkov/my/ssr-wishlist/src/components/header/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -30529,10 +30376,13 @@ var Brand = react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand,
     Collapse = react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Collapse;
 var Header = function Header(_ref) {
   var isPopupOpen = _ref.isPopupOpen,
+      isAddWishPopupOpen = _ref.isAddWishPopupOpen,
       togglePopup = _ref.togglePopup,
       user = _ref.user,
       onLogin = _ref.onLogin,
       onRegistration = _ref.onRegistration,
+      onAddWishPopupClose = _ref.onAddWishPopupClose,
+      onAddWishPopupOpen = _ref.onAddWishPopupOpen,
       onLogout = _ref.onLogout,
       onAddWish = _ref.onAddWish,
       formErorrs = _ref.formErorrs;
@@ -30545,103 +30395,33 @@ var Header = function Header(_ref) {
     return togglePopup(true);
   };
 
-  var addWishPopupClose = function addWishPopupClose() {
-    return toggleAddWishPopup(false);
-  };
-
-  var addWishPopupShow = function addWishPopupShow() {
-    return toggleAddWishPopup(true);
-  };
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      isAddWishPopupOpen = _useState[0],
-      toggleAddWishPopup = _useState[1];
-
   return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
     bg: "dark",
     variant: "dark",
-    expand: "sm",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31
-    },
-    __self: this
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32
-    },
-    __self: this
-  }, __jsx("a", {
-    href: "/",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33
-    },
-    __self: this
-  }, __jsx(Brand, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34
-    },
-    __self: this
-  }, "My Wishlist")), __jsx(Toggle, {
-    "aria-controls": "basic-navbar-nav",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36
-    },
-    __self: this
+    expand: "sm"
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, __jsx("a", {
+    href: "/"
+  }, __jsx(Brand, null, "My Wishlist")), __jsx(Toggle, {
+    "aria-controls": "basic-navbar-nav"
   }), __jsx(Collapse, {
-    id: "basic-navbar-nav",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37
-    },
-    __self: this
+    id: "basic-navbar-nav"
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
-    className: "mr-auto",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38
-    },
-    __self: this
-  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39
-    },
-    __self: this
-  }, __jsx(_user_info__WEBPACK_IMPORTED_MODULE_4__["UserInfo"], {
+    className: "mr-auto"
+  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], null, __jsx(_user_info__WEBPACK_IMPORTED_MODULE_4__["UserInfo"], {
     user: user,
     onOpen: handleShow,
-    onAddWishPopupOpen: addWishPopupShow,
-    onLogout: onLogout,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40
-    },
-    __self: this
+    onAddWishPopupOpen: onAddWishPopupOpen,
+    onLogout: onLogout
   })))), __jsx(_login_dialog__WEBPACK_IMPORTED_MODULE_2__["LoginDialog"], {
     isOpen: isPopupOpen,
     onLogin: onLogin,
     onRegistration: onRegistration,
     formErorrs: formErorrs,
-    onClose: handleClose,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 49
-    },
-    __self: this
+    onClose: handleClose
   }), __jsx(_add_wish_dialog__WEBPACK_IMPORTED_MODULE_3__["AddWishDialog"], {
     isOpen: isAddWishPopupOpen,
-    onClose: addWishPopupClose,
-    onSubmit: onAddWish,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 56
-    },
-    __self: this
+    onClose: onAddWishPopupClose,
+    onSubmit: onAddWish
   }));
 };
 
@@ -30671,7 +30451,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/viandryushkov/my/ssr-wishlist/src/components/layout/layout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
 
 
@@ -30708,6 +30487,10 @@ var Layout = function Layout(_ref) {
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])({}),
       formErorrs = _useState3[0],
       setFormErrors = _useState3[1];
+
+  var _useState4 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(false),
+      isAddWishPopupOpen = _useState4[0],
+      toggleAddWishPopup = _useState4[1];
 
   var handleLogin = function handleLogin(e) {
     e.preventDefault();
@@ -30756,44 +30539,35 @@ var Layout = function Layout(_ref) {
     e.preventDefault();
     var data = new FormData(e.target);
     console.log(data);
-    Object(_requests__WEBPACK_IMPORTED_MODULE_6__["addWishRequest"])(data).then(function (response) {
-      return console.log(response);
+    Object(_requests__WEBPACK_IMPORTED_MODULE_6__["addWishRequest"])(data).then(function () {
+      toggleAddWishPopup(false);
+    })["catch"](function (err) {
+      return console.log(err);
     });
   };
 
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_3__["Fragment"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 78
-    },
-    __self: this
-  }, __jsx(_header__WEBPACK_IMPORTED_MODULE_5__["Header"], {
+  var handleAddWishPopupOpen = function handleAddWishPopupOpen() {
+    return toggleAddWishPopup(true);
+  };
+
+  var handleAddWishPopupClose = function handleAddWishPopupClose() {
+    return toggleAddWishPopup(false);
+  };
+
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_3__["Fragment"], null, __jsx(_header__WEBPACK_IMPORTED_MODULE_5__["Header"], {
     isPopupOpen: isPopupOpen,
+    isAddWishPopupOpen: isAddWishPopupOpen,
     togglePopup: togglePopup,
     user: userInfo,
     onLogin: handleLogin,
     onRegistration: handleRegistration,
     onLogout: handleLogout,
     onAddWish: handleAddWish,
-    formErorrs: formErorrs,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 79
-    },
-    __self: this
-  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 89
-    },
-    __self: this
-  }, __jsx("div", {
-    className: _styles_css__WEBPACK_IMPORTED_MODULE_7___default.a['root-container'],
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 90
-    },
-    __self: this
+    onAddWishPopupClose: handleAddWishPopupClose,
+    onAddWishPopupOpen: handleAddWishPopupOpen,
+    formErorrs: formErorrs
+  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], null, __jsx("div", {
+    className: _styles_css__WEBPACK_IMPORTED_MODULE_7___default.a['root-container']
   }, children)));
 };
 
@@ -30817,7 +30591,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _registration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration */ "./src/components/login-dialog/components/content/registration.js");
 /* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles.css */ "./src/components/login-dialog/components/content/styles.css");
 /* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_css__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/viandryushkov/my/ssr-wishlist/src/components/login-dialog/components/content/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -30828,27 +30601,12 @@ var TabContent = function TabContent(_ref) {
       submitActions = _ref.submitActions,
       formErorrs = _ref.formErorrs;
   return __jsx("div", {
-    className: _styles_css__WEBPACK_IMPORTED_MODULE_3___default.a.content,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7
-    },
-    __self: this
+    className: _styles_css__WEBPACK_IMPORTED_MODULE_3___default.a.content
   }, selectedtab === 'login' ? __jsx(_login__WEBPACK_IMPORTED_MODULE_1__["LoginContent"], {
-    onSubmit: submitActions.onLogin,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10
-    },
-    __self: this
+    onSubmit: submitActions.onLogin
   }) : __jsx(_registration__WEBPACK_IMPORTED_MODULE_2__["RegContent"], {
     onSubmit: submitActions.onRegistration,
-    formErorrs: formErorrs,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12
-    },
-    __self: this
+    formErorrs: formErorrs
   }));
 };
 
@@ -30867,71 +30625,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-var _jsxFileName = "/Users/viandryushkov/my/ssr-wishlist/src/components/login-dialog/components/content/login.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 var LoginContent = function LoginContent(_ref) {
   var onSubmit = _ref.onSubmit;
   return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-    onSubmit: onSubmit,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 5
-    },
-    __self: this
+    onSubmit: onSubmit
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-    controlId: "login",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 6
-    },
-    __self: this
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7
-    },
-    __self: this
-  }, "\u041B\u043E\u0433\u0438\u043D"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+    controlId: "login"
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u041B\u043E\u0433\u0438\u043D"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     type: "text",
     name: "username",
-    placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448 \u043B\u043E\u0433\u0438\u043D",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8
-    },
-    __self: this
+    placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448 \u043B\u043E\u0433\u0438\u043D"
   })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-    controlId: "password",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11
-    },
-    __self: this
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12
-    },
-    __self: this
-  }, "Password"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+    controlId: "password"
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Password"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     type: "password",
     name: "password",
-    placeholder: "\u041F\u0430\u0440\u043E\u043B\u044C",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13
-    },
-    __self: this
+    placeholder: "\u041F\u0430\u0440\u043E\u043B\u044C"
   })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     variant: "primary",
-    type: "submit",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15
-    },
-    __self: this
+    type: "submit"
   }, "\u0412\u043E\u0439\u0442\u0438"));
 };
 
@@ -30950,7 +30665,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-var _jsxFileName = "/Users/viandryushkov/my/ssr-wishlist/src/components/login-dialog/components/content/registration.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -30964,94 +30678,31 @@ var RegContent = function RegContent(_ref) {
       formErorrs = _ref$formErorrs === void 0 ? {} : _ref$formErorrs;
   var isUsernameInvalid = formErorrs.UserExistsError || formErorrs.MissingUsernameError;
   return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-    onSubmit: onSubmit,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13
-    },
-    __self: this
+    onSubmit: onSubmit
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-    controlId: "login",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14
-    },
-    __self: this
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15
-    },
-    __self: this
-  }, "\u041B\u043E\u0433\u0438\u043D"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+    controlId: "login"
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u041B\u043E\u0433\u0438\u043D"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     isInvalid: isUsernameInvalid,
     type: "text",
     name: "username",
-    placeholder: "\u041F\u0440\u0438\u0434\u0443\u043C\u0430\u0439\u0442\u0435 \u0438\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16
-    },
-    __self: this
+    placeholder: "\u041F\u0440\u0438\u0434\u0443\u043C\u0430\u0439\u0442\u0435 \u0438\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F"
   }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control.Feedback, {
-    type: "invalid",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17
-    },
-    __self: this
+    type: "invalid"
   }, errorMessagesLookup.UserExistsError || errorMessagesLookup.MissingUsernameError)), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-    controlId: "email",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21
-    },
-    __self: this
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22
-    },
-    __self: this
-  }, "E-mail"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+    controlId: "email"
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "E-mail"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     type: "email",
     name: "email",
-    placeholder: "E-mail",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23
-    },
-    __self: this
+    placeholder: "E-mail"
   })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-    controlId: "password",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 25
-    },
-    __self: this
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26
-    },
-    __self: this
-  }, "\u041F\u0430\u0440\u043E\u043B\u044C"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+    controlId: "password"
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u041F\u0430\u0440\u043E\u043B\u044C"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     type: "password",
     name: "password",
-    placeholder: "Password",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27
-    },
-    __self: this
+    placeholder: "Password"
   })), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     variant: "primary",
-    type: "submit",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29
-    },
-    __self: this
+    type: "submit"
   }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C"));
 };
 
@@ -31073,7 +30724,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/content */ "./src/components/login-dialog/components/content/index.js");
 /* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles.css */ "./src/components/login-dialog/styles.css");
 /* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_css__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/viandryushkov/my/ssr-wishlist/src/components/login-dialog/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -31108,37 +30758,16 @@ var LoginDialog = function LoginDialog(_ref) {
   return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
     show: true,
     onHide: onClose,
-    centered: true,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 25
-    },
-    __self: this
-  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26
-    },
-    __self: this
-  }, __jsx("div", {
-    className: _styles_css__WEBPACK_IMPORTED_MODULE_3___default.a.modal,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27
-    },
-    __self: this
+    centered: true
+  }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, __jsx("div", {
+    className: _styles_css__WEBPACK_IMPORTED_MODULE_3___default.a.modal
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tabs"], {
     className: _styles_css__WEBPACK_IMPORTED_MODULE_3___default.a.tabs,
     defaultActiveKey: "login",
     activeKey: key,
     onSelect: function onSelect(k) {
       return changeTab(k);
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28
-    },
-    __self: this
+    }
   }, tabsLookup.map(function (_ref2) {
     var key = _ref2.key,
         title = _ref2.title,
@@ -31147,21 +30776,11 @@ var LoginDialog = function LoginDialog(_ref) {
       key: key,
       eventKey: key,
       title: title,
-      className: _styles_css__WEBPACK_IMPORTED_MODULE_3___default.a['tab-item'],
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 35
-      },
-      __self: this
+      className: _styles_css__WEBPACK_IMPORTED_MODULE_3___default.a['tab-item']
     }, __jsx(_components_content__WEBPACK_IMPORTED_MODULE_2__["TabContent"], {
       selectedtab: key,
       submitActions: submitActions,
-      formErorrs: formErorrs,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 36
-      },
-      __self: this
+      formErorrs: formErorrs
     }));
   })))));
 };
@@ -31184,7 +30803,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils */ "./src/utils/index.js");
-var _jsxFileName = "/Users/viandryushkov/my/ssr-wishlist/src/components/user-info/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -31202,79 +30820,27 @@ var UserInfo = function UserInfo(_ref) {
   if (!isLogin) {
     return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
       variant: "outline-light",
-      onClick: onOpen,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 11
-      },
-      __self: this
+      onClick: onOpen
     }, "\u0412\u043E\u0439\u0442\u0438");
   }
 
   var userName = Object(_utils__WEBPACK_IMPORTED_MODULE_3__["getUserName"])(userInfo);
   return __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NavDropdown"], {
     title: userName,
-    id: "user-nav",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18
-    },
-    __self: this
+    id: "user-nav"
   }, __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NavDropdown"].Item, {
     as: "div",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19
-    },
-    __self: this
-  }, __jsx("a", {
-    onClick: onAddWishPopupOpen,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19
-    },
-    __self: this
-  }, "\u041D\u043E\u0432\u043E\u0435 \u0436\u0435\u043B\u0430\u043D\u0438\u0435")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NavDropdown"].Item, {
-    as: "div",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20
-    },
-    __self: this
+    onClick: onAddWishPopupOpen
+  }, "\u041D\u043E\u0432\u043E\u0435 \u0436\u0435\u043B\u0430\u043D\u0438\u0435"), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NavDropdown"].Item, {
+    as: "div"
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/profile",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21
-    },
-    __self: this
-  }, "\u041C\u043E\u0438 \u0436\u0435\u043B\u0430\u043D\u0438\u044F")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NavDropdown"].Item, {
-    as: "div",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23
-    },
-    __self: this
+    href: "/profile"
+  }, __jsx("a", null, "\u041C\u043E\u0438 \u0436\u0435\u043B\u0430\u043D\u0438\u044F"))), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NavDropdown"].Item, {
+    as: "div"
   }, __jsx("a", {
-    href: "/profile/settings",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23
-    },
-    __self: this
-  }, "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NavDropdown"].Divider, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24
-    },
-    __self: this
-  }), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NavDropdown"].Item, {
-    onClick: onLogout,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 25
-    },
-    __self: this
+    href: "/profile/settings"
+  }, "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438")), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NavDropdown"].Divider, null), __jsx(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NavDropdown"].Item, {
+    onClick: onLogout
   }, "\u0412\u044B\u0439\u0442\u0438"));
 };
 
