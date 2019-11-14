@@ -1,6 +1,7 @@
 import React from 'react';
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import Head from 'next/head';
+import axios from 'axios';
 import { userLoginInfoRequst } from '../src/requests';
 import Layout from '../src/components/layout/layout';
 
@@ -34,7 +35,7 @@ export default class MyApp extends App {
     const accessDenied = protectedRoutes.includes(router.route) && !user.isLogin;
 
     return (
-      <Container>
+      <>
         <Head>
           <link
             rel="stylesheet"
@@ -50,7 +51,7 @@ export default class MyApp extends App {
             <Component {...pageProps} />
           )}
         </Layout>
-      </Container>
+      </>
     );
   }
 }

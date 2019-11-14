@@ -23,7 +23,6 @@ class Home extends React.Component {
 
   render () {
     const { users = [], wishes = [] } = this.props.data;
-    console.log(users)
 
     return (
       <>
