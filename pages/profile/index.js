@@ -46,7 +46,7 @@ class ProfilePage extends React.Component {
                         <Image src={el.image} size={50} crop/>
                       </span>
                     )}
-                    <Link href={`/wish/${el._id}`} prefetch>{ el.name }</Link>
+                    <Link href={`/wish/${el._id}`}>{ el.name }</Link>
                   </td>
                   <td>{ el.price }</td>
                   <td>{ el.assigned && el.assigned }</td>
