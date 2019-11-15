@@ -1,7 +1,8 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { Layout, PageHeader } from 'antd';
-// import { Container } from 'react-bootstrap';
-// import { Header } from '../header';
+import { UserInfo } from '../user-info';
+import { LoginDialog } from '../login-dialog';
+import { AddWishDialog } from '../add-wish-dialog';
 import { loginRequest, logoutRequest, registrationRequest, addWishRequest } from '../../requests';
 import styles from './styles.module.css';
 
@@ -20,31 +21,55 @@ const getFormFields = (form) => {
 };
 
 class PageLayout extends Component {
-  render() {
+  state = {
+    user: this.props.user,
+    isLoginPopupOpen: false,
+    isAddWishPopupOpen: false
+  }
+
+  render () {
     const { children } = this.props;
+    const { isLoginPopupOpen, isAddWishPopupOpen, user } = this.state;
 
     return (
       <Layout className="layout">
-        <Header>
+        <Header className={styles.header}>
           <a href="/" className={styles.logo}>My Wishlist</a>
+          <UserInfo
+            user={user}
+            onOpen={this.handleLoginPopupShow}
+            onAddWishPopupOpen={this.handleAddWishPopupOpen}
+            onLogout={this.handleLogout}
+          />
         </Header>
-        <PageHeader
+        {/* <PageHeader
           style={{
             marginBottom: '20px',
-            background: '#fff',
+            background: '#fff'
           }}
           onBack={() => window.history.back()}
           title="Title"
           subTitle="This is a subtitle"
         >
           asdasd
-        </PageHeader>
+        </PageHeader> */}
         <Content style={{ padding: '0 50px' }}>
           <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
             { children }
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        <LoginDialog
+          isOpen={isLoginPopupOpen}
+          onLogin={this.handleLogin}
+          onRegistration={this.handleRegistration}
+          onClose={this.handleLoginPopupClose}
+        />
+        <AddWishDialog
+          isOpen={isAddWishPopupOpen}
+          onClose={this.handleAddWishPopupClose}
+          onSubmit={this.handleAddWish}
+        />
       </Layout>
     );
   }
@@ -56,15 +81,15 @@ class PageLayout extends Component {
 
     loginRequest(JSON.stringify(data))
       .then(({ data }) => {
-        setUser(data);
-        togglePopup(false);
+        this.setUser(data);
+        this.handleLoginPopupClose();
       })
       .catch(e => console.warn(e));
   };
 
   handleLogout = () => (
     logoutRequest().then(() => {
-      setUser({
+      this.setUser({
         isLogin: false,
         data: null
       });
@@ -80,11 +105,15 @@ class PageLayout extends Component {
       .then(({ data }) => {
         const { status, user, error } = data;
         if (status === 'success') {
-          setUser({ isLogin: true, data: user });
-        } else {
-          setFormErrors({
-            [error.name]: error.message
+          this.setUser({
+            isLogin: true,
+            data: user
           });
+        } else {
+          console.log(error);
+          // setFormErrors({
+          //   [error.name]: error.message
+          // });
         }
       })
       .catch((error) => {
@@ -96,21 +125,21 @@ class PageLayout extends Component {
     e.preventDefault();
 
     const data = new FormData(e.target);
-    console.log(data);
 
     addWishRequest(data)
-      .then(() => {
-        toggleAddWishPopup(false);
-      })
+      .then(this.handleAddWishPopupClose)
       .catch(err => console.log(err));
   };
 
-  handleAddWishPopupOpen = () => toggleAddWishPopup(true);
-  handleAddWishPopupClose = () => toggleAddWishPopup(false);
+  setUser = data => this.setState({ user: data })
+
+  handleAddWishPopupOpen = () => this.setState({ isAddWishPopupOpen: true });
+  handleAddWishPopupClose = () => this.setState({ isAddWishPopupOpen: false });
+  handleLoginPopupShow = () => this.setState({ isLoginPopupOpen: true });
+  handleLoginPopupClose = () => this.setState({ isLoginPopupOpen: false });
 }
 
 export default PageLayout;
-
 
 // <Fragment>
 //   <Header

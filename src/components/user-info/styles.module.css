@@ -1,0 +1,25 @@
+.name {
+  color: #fff;
+  margin-left: 10px;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.account:hover .name {
+  color: #1890ff;
+}
+
+.menu-item,
+.menu-item > a {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item i {
+  width: 20px;
+  margin-right: 8px;
+}

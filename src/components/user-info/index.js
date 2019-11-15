@@ -1,7 +1,50 @@
 import React from 'react';
-import Link from 'next/link';
-import { Button, NavDropdown } from 'react-bootstrap';
 import { getUserName } from '../../utils';
+import { Avatar, Icon, Menu, Dropdown, Button } from 'antd';
+import classNames from 'classnames/bind';
+import styles from './styles.module.css';
+
+const cx = classNames.bind(styles);
+
+const AvatarDropdown = ({ currentUser = {}, actions }) => {
+  const { name, avatar } = currentUser;
+
+  const menuHeaderDropdown = (
+    <Menu className={styles.menu} selectedKeys={[]}>
+      <Menu.Item key="center" className={styles['menu-item']} onClick={actions.onAddWishPopupOpen}>
+        <Icon type="plus-circle" />
+        <span className={styles['menu-item-name']}>Новое желание</span>
+      </Menu.Item>
+      <Menu.Item key="profile" className={styles['menu-item']}>
+        <a href="/profile">
+          <Icon type="profile" />
+          <span className={styles['menu-item-name']}>Мои желания</span>
+        </a>
+      </Menu.Item>
+      <Menu.Item key="settings" className={styles['menu-item']}>
+        <a href="/profile/settings">
+          <Icon type="setting" />
+          <span className={styles['menu-item-name']}>Настройки</span>
+        </a>
+      </Menu.Item>
+      <Menu.Divider />
+
+      <Menu.Item key="logout" className={styles['menu-item']} onClick={actions.onLogout}>
+        <Icon type="logout" />
+        <span className={styles['menu-item-name']}>Выход</span>
+      </Menu.Item>
+    </Menu>
+  );
+
+  return (
+    <Dropdown overlay={menuHeaderDropdown} trigger={['click']}>
+      <span className={cx('action', 'account')}>
+        <Avatar size="small" className={styles.avatar} src={avatar} alt="avatar" />
+        <span className={styles.name}>{name}</span>
+      </span>
+    </Dropdown>
+  );
+};
 
 export const UserInfo = ({ user = {}, onOpen, onAddWishPopupOpen, onLogout }) => {
   const { isLogin, data: userInfo } = user;
@@ -15,14 +58,6 @@ export const UserInfo = ({ user = {}, onOpen, onAddWishPopupOpen, onLogout }) =>
   const userName = getUserName(userInfo);
 
   return (
-    <NavDropdown title={userName} id="user-nav">
-      <NavDropdown.Item as='div' onClick={onAddWishPopupOpen}>Новое желание</NavDropdown.Item>
-      <NavDropdown.Item as='div'>
-        <a href="/profile">Мои желания</a>
-      </NavDropdown.Item>
-      <NavDropdown.Item as='div'><a href="/profile/settings">Настройки</a></NavDropdown.Item>
-      <NavDropdown.Divider />
-      <NavDropdown.Item onClick={onLogout}>Выйти</NavDropdown.Item>
-    </NavDropdown>
+    <AvatarDropdown currentUser={{ ...userInfo, name: userName }} actions={{ onAddWishPopupOpen, onLogout }}/>
   );
 };
