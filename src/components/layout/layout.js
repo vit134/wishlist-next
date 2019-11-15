@@ -1,8 +1,11 @@
-import React, { Fragment, useState } from 'react';
-import { Container } from 'react-bootstrap';
-import { Header } from '../header';
+import React, { Component, useState } from 'react';
+import { Layout, PageHeader } from 'antd';
+// import { Container } from 'react-bootstrap';
+// import { Header } from '../header';
 import { loginRequest, logoutRequest, registrationRequest, addWishRequest } from '../../requests';
-import styles from './styles.css';
+import styles from './styles.module.css';
+
+const { Header, Content, Footer } = Layout;
 
 const getFormFields = (form) => {
   return Array.from(form).reduce((acc, node) => {
@@ -16,13 +19,37 @@ const getFormFields = (form) => {
   }, {});
 };
 
-const Layout = ({ user, children }) => {
-  const [userInfo, setUser] = useState(user);
-  const [isPopupOpen, togglePopup] = useState(false);
-  const [formErorrs, setFormErrors] = useState({});
-  const [isAddWishPopupOpen, toggleAddWishPopup] = useState(false);
+class PageLayout extends Component {
+  render() {
+    const { children } = this.props;
 
-  const handleLogin = (e) => {
+    return (
+      <Layout className="layout">
+        <Header>
+          <a href="/" className={styles.logo}>My Wishlist</a>
+        </Header>
+        <PageHeader
+          style={{
+            marginBottom: '20px',
+            background: '#fff',
+          }}
+          onBack={() => window.history.back()}
+          title="Title"
+          subTitle="This is a subtitle"
+        >
+          asdasd
+        </PageHeader>
+        <Content style={{ padding: '0 50px' }}>
+          <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+            { children }
+          </div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+      </Layout>
+    );
+  }
+
+  handleLogin = (e) => {
     e.preventDefault();
 
     const data = getFormFields(e.target);
@@ -35,7 +62,7 @@ const Layout = ({ user, children }) => {
       .catch(e => console.warn(e));
   };
 
-  const handleLogout = () => (
+  handleLogout = () => (
     logoutRequest().then(() => {
       setUser({
         isLogin: false,
@@ -44,7 +71,7 @@ const Layout = ({ user, children }) => {
     })
   );
 
-  const handleRegistration = (e) => {
+  handleRegistration = (e) => {
     e.preventDefault();
 
     const data = getFormFields(e.target);
@@ -65,7 +92,7 @@ const Layout = ({ user, children }) => {
       });
   };
 
-  const handleAddWish = (e) => {
+  handleAddWish = (e) => {
     e.preventDefault();
 
     const data = new FormData(e.target);
@@ -78,31 +105,30 @@ const Layout = ({ user, children }) => {
       .catch(err => console.log(err));
   };
 
-  const handleAddWishPopupOpen = () => toggleAddWishPopup(true);
-  const handleAddWishPopupClose = () => toggleAddWishPopup(false);
+  handleAddWishPopupOpen = () => toggleAddWishPopup(true);
+  handleAddWishPopupClose = () => toggleAddWishPopup(false);
+}
 
-  return (
-    <Fragment>
-      <Header
-        isPopupOpen={isPopupOpen}
-        isAddWishPopupOpen={isAddWishPopupOpen}
-        togglePopup={togglePopup}
-        user={userInfo}
-        onLogin={handleLogin}
-        onRegistration={handleRegistration}
-        onLogout={handleLogout}
-        onAddWish={handleAddWish}
-        onAddWishPopupClose={handleAddWishPopupClose}
-        onAddWishPopupOpen={handleAddWishPopupOpen}
-        formErorrs={formErorrs}
-      />
-      <Container>
-        <div className={styles['root-container']}>
-          { children }
-        </div>
-      </Container>
-    </Fragment>
-  );
-};
+export default PageLayout;
 
-export default Layout;
+
+// <Fragment>
+//   <Header
+//     isPopupOpen={isPopupOpen}
+//     isAddWishPopupOpen={isAddWishPopupOpen}
+//     togglePopup={togglePopup}
+//     user={userInfo}
+//     onLogin={handleLogin}
+//     onRegistration={handleRegistration}
+//     onLogout={handleLogout}
+//     onAddWish={handleAddWish}
+//     onAddWishPopupClose={handleAddWishPopupClose}
+//     onAddWishPopupOpen={handleAddWishPopupOpen}
+//     formErorrs={formErorrs}
+//   />
+//   <Container>
+//     <div className={styles['root-container']}>
+//       { children }
+//     </div>
+//   </Container>
+// </Fragment>

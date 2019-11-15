@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Tabs, Tab } from 'react-bootstrap';
 import { TabContent } from './components/content';
-import styles from './styles.css';
+import styles from './styles.less';
 
 const tabsLookup = [
   {

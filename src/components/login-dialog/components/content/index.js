@@ -1,7 +1,7 @@
 import React from 'react';
 import { LoginContent } from './login';
 import { RegContent } from './registration';
-import styles from './styles.css';
+import styles from './styles.less';
 
 export const TabContent = ({ selectedtab, submitActions, formErorrs }) => (
   <div className={styles.content}>

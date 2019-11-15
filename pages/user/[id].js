@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { wishByUserIdRequest, userInfoRequst } from '../../src/requests';
 import { getUserName } from '../../src/utils';
 import { CardColumns, Card } from 'react-bootstrap';
-import './styles.css';
+import './styles.less';
 
 class UserPage extends React.Component {
   static async getInitialProps ({ req, query }) {

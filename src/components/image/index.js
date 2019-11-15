@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image as BootstrapImage } from 'react-bootstrap';
 import classNames from 'classnames/bind';
-import styles from './styles.css';
+import styles from './styles.less';
 
 const cx = classNames.bind(styles);
 
