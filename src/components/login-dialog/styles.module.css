@@ -1,0 +1,11 @@
+.close {
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

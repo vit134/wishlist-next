@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, PageHeader } from 'antd';
+import { Layout } from 'antd';
 import { UserInfo } from '../user-info';
 import { LoginDialog } from '../login-dialog';
 import { AddWishDialog } from '../add-wish-dialog';
@@ -7,18 +7,6 @@ import { loginRequest, logoutRequest, registrationRequest, addWishRequest } from
 import styles from './styles.module.css';
 
 const { Header, Content, Footer } = Layout;
-
-const getFormFields = (form) => {
-  return Array.from(form).reduce((acc, node) => {
-    if (node.name) {
-      if (node.name === 'image') {
-        console.log(node, node.files[0]);
-      }
-      acc[node.name] = node.value;
-    }
-    return acc;
-  }, {});
-};
 
 class PageLayout extends Component {
   state = {
@@ -42,17 +30,6 @@ class PageLayout extends Component {
             onLogout={this.handleLogout}
           />
         </Header>
-        {/* <PageHeader
-          style={{
-            marginBottom: '20px',
-            background: '#fff'
-          }}
-          onBack={() => window.history.back()}
-          title="Title"
-          subTitle="This is a subtitle"
-        >
-          asdasd
-        </PageHeader> */}
         <Content style={{ padding: '0 50px' }}>
           <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
             { children }
@@ -74,52 +51,41 @@ class PageLayout extends Component {
     );
   }
 
-  handleLogin = (e) => {
-    e.preventDefault();
+  handleLogin = (data) => loginRequest(JSON.stringify(data))
+    .then(({ data }) => {
+      if (!data.error) {
+        this.setUser(data, this.handleLoginPopupClose);
+        return data;
+      }
 
-    const data = getFormFields(e.target);
+      return { error: data.error };
+    })
+    .catch(e => {
+      throw new Error(e);
+    });
 
-    loginRequest(JSON.stringify(data))
-      .then(({ data }) => {
-        this.setUser(data);
-        this.handleLoginPopupClose();
-      })
-      .catch(e => console.warn(e));
-  };
-
-  handleLogout = () => (
-    logoutRequest().then(() => {
+  handleLogout = () => logoutRequest()
+    .then(() => {
       this.setUser({
         isLogin: false,
         data: null
       });
     })
-  );
 
-  handleRegistration = (e) => {
-    e.preventDefault();
-
-    const data = getFormFields(e.target);
-
-    registrationRequest(data)
-      .then(({ data }) => {
-        const { status, user, error } = data;
-        if (status === 'success') {
-          this.setUser({
-            isLogin: true,
-            data: user
-          });
-        } else {
-          console.log(error);
-          // setFormErrors({
-          //   [error.name]: error.message
-          // });
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
+  handleRegistration = data => registrationRequest(JSON.stringify(data))
+    .then(({ data }) => {
+      if (!data.error) {
+        this.setUser({
+          isLogin: true,
+          data: data.user
+        }, this.handleLoginPopupClose);
+        return data;
+      }
+      return { error: data.error };
+    })
+    .catch((error) => {
+      throw new Error(error);
+    });
 
   handleAddWish = (e) => {
     e.preventDefault();
@@ -131,7 +97,7 @@ class PageLayout extends Component {
       .catch(err => console.log(err));
   };
 
-  setUser = data => this.setState({ user: data })
+  setUser = (data, cb) => this.setState({ user: data }, cb && cb);
 
   handleAddWishPopupOpen = () => this.setState({ isAddWishPopupOpen: true });
   handleAddWishPopupClose = () => this.setState({ isAddWishPopupOpen: false });
@@ -140,24 +106,3 @@ class PageLayout extends Component {
 }
 
 export default PageLayout;
-
-// <Fragment>
-//   <Header
-//     isPopupOpen={isPopupOpen}
-//     isAddWishPopupOpen={isAddWishPopupOpen}
-//     togglePopup={togglePopup}
-//     user={userInfo}
-//     onLogin={handleLogin}
-//     onRegistration={handleRegistration}
-//     onLogout={handleLogout}
-//     onAddWish={handleAddWish}
-//     onAddWishPopupClose={handleAddWishPopupClose}
-//     onAddWishPopupOpen={handleAddWishPopupOpen}
-//     formErorrs={formErorrs}
-//   />
-//   <Container>
-//     <div className={styles['root-container']}>
-//       { children }
-//     </div>
-//   </Container>
-// </Fragment>

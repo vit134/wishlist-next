@@ -73,7 +73,9 @@ module.exports = (nextConfig = {}) => {
       options.defaultLoaders.css = cssLoaderConfig(config, {
         extensions: ['css'],
         cssModules: true,
-        cssLoaderOptions,
+        cssLoaderOptions: {
+          localIdentName: '_[local]--[hash:base64:5]'
+        },
         postcssLoaderOptions,
         dev,
         isServer

@@ -15,7 +15,7 @@ router.post('/', function (req, res, next) {
   }), password, (error, account) => {
     if (error) {
       console.log('error', error);
-      return res.status(200).send({ status: 'error', error, account });
+      return res.send({ status: 'error', error, account });
     }
 
     passport.authenticate('local')(req, res, () => {
