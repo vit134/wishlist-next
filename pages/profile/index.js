@@ -5,8 +5,10 @@ import { Table } from 'react-bootstrap';
 import { Image } from '../../src/components/image';
 
 class ProfilePage extends React.Component {
-  static async getInitialProps ({ req, res }) {
+  static async getInitialProps ({ req, res, ...props }) {
     let data = {};
+
+    console.log('profile props', props);
 
     if (req.user && req.user._id) {
       try {

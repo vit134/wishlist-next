@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { getAllUsers, getAllWishes } from '../src/requests';
 import { CardColumns, Card } from 'react-bootstrap';
 import { getUserName } from '../src/utils';
-import './styles.css';
 
 class Home extends React.Component {
   static async getInitialProps ({ req }) {

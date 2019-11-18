@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 
-import styles from './styles.css';
+import styles from './styles.less';
 
 export const AddWishDialog = ({ isOpen, onSubmit, onClose }) => {
   if (!isOpen) {

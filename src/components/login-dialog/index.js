@@ -1,45 +1,31 @@
-import React, { useState } from 'react';
-import { Modal, Tabs, Tab } from 'react-bootstrap';
-import { TabContent } from './components/content';
-import styles from './styles.css';
+import React from 'react';
+import { Modal, Tabs } from 'antd';
+import LoginContent from './components/login';
+import RegContent from './components/registration';
 
-const tabsLookup = [
-  {
-    key: 'login',
-    title: 'Войти'
-  },
-  {
-    key: 'registration',
-    title: 'Зарегистрироваться'
-  }
-];
+const { TabPane } = Tabs;
 
-export const LoginDialog = ({ isOpen, onLogin, onRegistration, formErorrs, onClose }) => {
+export const LoginDialog = ({ isOpen, onLogin, onRegistration, onClose }) => {
   if (!isOpen) {
     return null;
   }
 
-  const [key, changeTab] = useState('login');
   const submitActions = { onLogin, onRegistration };
   return (
-    <Modal show onHide={onClose} centered>
-      <Modal.Body>
-        <div className={styles.modal}>
-          <Tabs
-            className={styles.tabs}
-            defaultActiveKey="login"
-            activeKey={key}
-            onSelect={k => changeTab(k)}>
-            {
-              tabsLookup.map(({ key, title, onSubmit }) => (
-                <Tab key={key} eventKey={key} title={title} className={styles['tab-item']}>
-                  <TabContent selectedtab={key} submitActions={submitActions} formErorrs={formErorrs} />
-                </Tab>
-              ))
-            }
-          </Tabs>
-        </div>
-      </Modal.Body>
+    <Modal
+      bodyStyle={{ paddingRight: '60px' }}
+      visible
+      footer={null}
+      onCancel={onClose}
+    >
+      <Tabs tabPosition='left'>
+        <TabPane tab="Вход" key="1">
+          <LoginContent onSubmit={submitActions.onLogin} />
+        </TabPane>
+        <TabPane tab="Регистрация" key="2">
+          <RegContent onSubmit={submitActions.onRegistration} />
+        </TabPane>
+      </Tabs>
     </Modal>
   );
 };
