@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout } from 'antd';
+import { Layout, PageHeader } from 'antd';
 import { UserInfo } from '../user-info';
 import { LoginDialog } from '../login-dialog';
 import { AddWishDialog } from '../add-wish-dialog';
@@ -16,11 +16,11 @@ class PageLayout extends Component {
   }
 
   render () {
-    const { children } = this.props;
+    const { children, pageHeader } = this.props;
     const { isLoginPopupOpen, isAddWishPopupOpen, user } = this.state;
 
     return (
-      <Layout className="layout">
+      <Layout>
         <Header className={styles.header}>
           <a href="/" className={styles.logo}>My Wishlist</a>
           <UserInfo
@@ -30,12 +30,21 @@ class PageLayout extends Component {
             onLogout={this.handleLogout}
           />
         </Header>
-        <Content style={{ padding: '0 50px' }}>
-          <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+        {pageHeader && (
+          <PageHeader
+            className={styles['page-header']}
+            title={pageHeader.title}
+            subTitle={pageHeader.subtitle}
+            avatar={{ src: pageHeader.avatar }}
+          >
+          </PageHeader>
+        )}
+        <Content className={styles.content}>
+          <div className={styles.body}>
             { children }
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        <Footer className={styles.footer}>Ant Design ©2018 Created by Ant UED</Footer>
         <LoginDialog
           isOpen={isLoginPopupOpen}
           onLogin={this.handleLogin}

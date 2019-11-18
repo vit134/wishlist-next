@@ -1,9 +1,8 @@
 import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
-import axios from 'axios';
 import { userLoginInfoRequst } from '../src/requests';
-import Layout from '../src/components/layout/layout';
+import PageLayout from '../src/components/layout/layout';
 
 const protectedRoutes = [
   '/profile',
@@ -11,26 +10,22 @@ const protectedRoutes = [
 ];
 
 export default class MyApp extends App {
-  static async getInitialProps ({ Component, router, ctx }) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
+  static async getInitialProps (appContext) {
+    const appProps = await App.getInitialProps(appContext);
 
     try {
-      const res = await userLoginInfoRequst(ctx.req);
-      pageProps.user = res.data;
+      const res = await userLoginInfoRequst(appContext.req);
+      appProps.user = res.data;
     } catch (e) {
-      pageProps.err = e;
+      appProps.err = e;
     }
 
-    return { pageProps };
+    return { ...appProps };
   }
 
   render () {
     const { Component, pageProps, router } = this.props;
-    const { user } = pageProps;
+    const { user, pageHeader = false } = pageProps.data;
 
     const accessDenied = protectedRoutes.includes(router.route) && !user.isLogin;
 
@@ -44,13 +39,13 @@ export default class MyApp extends App {
             crossOrigin="anonymous"
           />
         </Head>
-        <Layout user={pageProps.user}>
+        <PageLayout user={pageProps.user} pageHeader={pageHeader}>
           {accessDenied ? (
             <div>Доступ запрещен</div>
           ) : (
             <Component {...pageProps} />
           )}
-        </Layout>
+        </PageLayout>
       </>
     );
   }

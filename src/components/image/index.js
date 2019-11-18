@@ -7,18 +7,32 @@ const cx = classNames.bind(styles);
 
 const CLOUDINARY_URL = 'http://res.cloudinary.com/vit134/image/upload';
 
-export const Image = ({ src, rounded, width = 200, height = 200, crop }) => {
+// http://res.cloudinary.com/vit134/image/upload/w_250,h_200,c_fill/undefined
+
+export const Image = ({
+  src,
+  rounded,
+  width = 200,
+  height = 200,
+  crop
+}) => {
+  if (!src) {
+    return null;
+  }
+
   const rootClassName = cx('image', { rounded });
   const transformParams = [
-    `w_${width}`,
+    width && `w_${width}`,
     `h_${height}`
   ];
 
   if (crop) {
-    transformParams.push('c_crop');
+    transformParams.push(`c_${typeof crop === 'boolean' ? 'crop' : crop}`);
   }
 
   const filePath = src.split(CLOUDINARY_URL)[1];
+
+  console.log(src, filePath)
   const params = transformParams.join(',');
   const imageUrl = `${CLOUDINARY_URL}/${params}/${filePath}`;
 
