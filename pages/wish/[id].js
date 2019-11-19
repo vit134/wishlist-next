@@ -18,7 +18,7 @@ const SingleWishPage = ({ wish, user }) => {
     );
   }
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <Container fluid>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { wishesRequest } from '../../src/requests';
 import Link from 'next/link';
 import { Table } from 'react-bootstrap';
@@ -8,7 +9,7 @@ class ProfilePage extends React.Component {
   static async getInitialProps ({ req, res, ...props }) {
     let data = {};
 
-    console.log('profile props', props);
+    // console.log('profile props', props);
 
     if (req.user && req.user._id) {
       try {
@@ -25,6 +26,7 @@ class ProfilePage extends React.Component {
   render () {
     const { wishes } = this.props;
     const { data = [] } = wishes;
+    console.log(this.props);
 
     return (
       <Table striped bordered hover>
@@ -62,4 +64,4 @@ class ProfilePage extends React.Component {
   }
 };
 
-export default ProfilePage;
+export default connect(state => state)(ProfilePage);

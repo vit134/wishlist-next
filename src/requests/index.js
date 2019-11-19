@@ -5,6 +5,13 @@ const headers = {
   'Content-Type': 'application/json'
 };
 
+export const getPosts = () => dispatch =>
+  axios({
+    method: 'GET',
+    url: `https://jsonplaceholder.typicode.com/posts`,
+    headers: []
+  }).then(response => dispatch({ type: 'FOO', payload: response.data }));
+
 // http://localhost:3000
 
 export const userLoginInfoRequst = (req) => {
