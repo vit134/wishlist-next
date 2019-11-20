@@ -34,6 +34,6 @@ export const WishCard = ({
       </Card>
     </Col>
   );
-}
+};
 
 export default withRouter(WishCard);

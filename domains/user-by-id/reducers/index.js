@@ -1,3 +1,5 @@
+import { normalizedWishes } from '../normlize';
+
 import {
   GET_WISHES_BY_USER_REQUEST,
   GET_WISHES_BY_USER_SUCCESS,
@@ -24,10 +26,13 @@ export const wishesReducer = (state = wishesInitialState, { type, payload }) => 
         isLoading: true
       };
     case GET_WISHES_BY_USER_SUCCESS:
+      const { entities, result } = normalizedWishes({ wishes: payload.data }); // eslint-disable-line
+
       return {
         ...state,
         isLoading: false,
-        data: payload.data
+        entities: entities.wishes,
+        result: result.wishes
       };
     case GET_WISHES_BY_USER_FAIL:
       return {

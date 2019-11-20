@@ -54,4 +54,11 @@ class MyApp extends App {
   }
 }
 
-export default withRedux(makeStore)(MyApp);
+export default withRedux(makeStore, {
+  storeKey: 'Wishlist',
+  debug: true,
+  serializeState: state => {
+    console.log(state);
+    return state;
+  }
+})(MyApp);

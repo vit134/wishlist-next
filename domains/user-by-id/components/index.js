@@ -5,7 +5,7 @@ import { Layout, Row } from 'antd';
 import WishCard from '../components/wish-card';
 import Filters from '../components/filters';
 import { Pagination } from '../components/pagination';
-import { selectFilters, selectWishesData } from '../selectors';
+import { selectFilters, selectWishesData, selectWishesCount } from '../selectors';
 import { setFilters } from '../actions';
 import styles from './styles.module.css';
 
@@ -13,9 +13,9 @@ const cx = classnames.bind(styles);
 
 class UserPageContent extends React.Component {
   render () {
-    const { wishes, filters } = this.props;
+    const { wishes, wishesCount, filters } = this.props;
     const { currentPage, pageSize } = filters;
-    console.log(filters);
+
     return (
       <main className={styles.root}>
         <Layout.Content>
@@ -27,7 +27,7 @@ class UserPageContent extends React.Component {
               showSizeChanger
               defaultPageSize={pageSize}
               defaultCurrent={currentPage}
-              totalCount={wishes.length}
+              totalCount={wishesCount}
               onChange={this.handlePageSizeChange}
             />
           </section>
@@ -64,7 +64,8 @@ UserPageContent.defaultProps = {
 const mapStateToProps = state => {
   return {
     filters: selectFilters(state),
-    wishes: selectWishesData(state)
+    wishes: selectWishesData(state),
+    wishesCount: selectWishesCount(state)
   };
 };
 

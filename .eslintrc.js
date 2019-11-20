@@ -3,7 +3,8 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    node: true
+    node: true,
+    jest: true
   },
   extends: [
     'standard',
@@ -22,10 +23,12 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'react'
+    'react',
+    'jest'
   ],
   rules: {
     "react/prop-types": [0],
-    "semi": ["error", "always", { "omitLastInOneLineBlock": true}]
+    "semi": ["error", "always", { "omitLastInOneLineBlock": true}],
+    "no-case-declarations)": [0]
   }
 }

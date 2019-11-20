@@ -1,7 +1,5 @@
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
-
 import { wishesReducer, userInfoReducer } from './domains/user-by-id/reducers';
 
 const initialState = {};
