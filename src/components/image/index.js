@@ -32,7 +32,6 @@ export const Image = ({
 
   const filePath = src.split(CLOUDINARY_URL)[1];
 
-  console.log(src, filePath)
   const params = transformParams.join(',');
   const imageUrl = `${CLOUDINARY_URL}/${params}/${filePath}`;
 

@@ -5,4 +5,4 @@ export const getUserName = user => {
   }
 
   return username;
-}
+};
