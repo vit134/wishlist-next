@@ -1,13 +1,14 @@
 export const GET_WISHES_BY_USER_REQUEST = 'GET_WISHES_BY_USER_REQUEST';
 export const GET_WISHES_BY_USER_SUCCESS = 'GET_WISHES_BY_USER_SUCCESS';
 export const GET_WISHES_BY_USER_FAIL = 'GET_WISHES_BY_USER_FAIL';
-
 export const SET_WISHES = 'SET_WISHES';
+
+export const SET_FILTERS = 'SET_FILTERS';
+export const CLEAR_FILTERS = 'CLEAR_FILTERS';
 
 export const GET_USER_INFO_REQUEST = 'GET_USER_INFO_REQUEST';
 export const GET_USER_INFO_SUCCESS = 'GET_USER_INFO_SUCCESS';
 export const GET_USER_INFO_FAIL = 'GET_USER_INFO_FAIL';
-
 export const SET_USER_INFO = 'SET_USER_INFO';
 
 export const wishesFetching = () => ({
@@ -27,6 +28,15 @@ export const failWishesFetching = error => ({
 export const setWishes = data => ({
   type: SET_WISHES,
   payload: { data }
+});
+
+export const setFilters = filters => ({
+  type: SET_FILTERS,
+  payload: { filters }
+});
+
+export const clearFilters = () => ({
+  type: SET_FILTERS
 });
 
 export const userInfoFetching = () => ({

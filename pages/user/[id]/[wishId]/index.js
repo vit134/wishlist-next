@@ -1,8 +1,8 @@
 import React from 'react';
 import CurrencyFormat from 'react-currency-format';
-import { Container, Row, Col, Button, Image, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { useRouter } from 'next/router';
-import { wishByIdRequest } from '../../src/requests';
+import { wishByIdRequest } from '../../../../src/requests';
 
 const { Title, Body, Img } = Card;
 
@@ -17,8 +17,6 @@ const SingleWishPage = ({ wish, user }) => {
       </div>
     );
   }
-
-  // console.log(data);
 
   return (
     <Container fluid>
@@ -65,11 +63,11 @@ const SingleWishPage = ({ wish, user }) => {
 
 SingleWishPage.getInitialProps = async ({ query }) => {
   let data = {};
-  const { id } = query;
+  const { wishId } = query;
 
-  if (id) {
+  if (wishId) {
     try {
-      const res = await wishByIdRequest(id);
+      const res = await wishByIdRequest(wishId);
       data = res.data;
     } catch (e) {
       data.err = e;

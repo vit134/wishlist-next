@@ -11,3 +11,8 @@ export const selectUserInfoData = pipe([
   selectUserPageData,
   get(['userInfo', 'data'])
 ]);
+
+export const selectFilters = pipe([
+  selectUserPageData,
+  get(['filters'])
+]);

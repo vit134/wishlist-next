@@ -2,6 +2,9 @@ import {
   GET_WISHES_BY_USER_REQUEST,
   GET_WISHES_BY_USER_SUCCESS,
   GET_WISHES_BY_USER_FAIL,
+  SET_FILTERS,
+  CLEAR_FILTERS,
+
   GET_USER_INFO_REQUEST,
   GET_USER_INFO_SUCCESS,
   GET_USER_INFO_FAIL
@@ -62,6 +65,33 @@ export const userInfoReducer = (state = userInfoInitialState, { type, payload })
         ...state,
         isLoading: false,
         error: payload.error
+      };
+    default:
+      return state;
+  }
+};
+
+const filtersInitialState = {
+  search: '',
+  categories: 'phones',
+  tags: '',
+  date: 'asc',
+  price: 'desc',
+  pageSize: 10,
+  currentPage: 1
+};
+
+export const filtersReducer = (state = filtersInitialState, { type, payload }) => {
+  switch (type) {
+    case SET_FILTERS:
+      return {
+        ...state,
+        ...payload.filters
+      };
+    case CLEAR_FILTERS:
+      return {
+        ...state,
+        ...filtersInitialState
       };
     default:
       return state;

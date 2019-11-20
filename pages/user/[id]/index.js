@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { UserPageContent } from '../../domains/user-by-id/components';
-import { getUserName } from '../../src/utils';
-import { selectWishesData, selectUserInfoData } from '../../domains/user-by-id/selectors';
-import { getWishes, getUserInfo } from '../../domains/user-by-id/operations';
+import UserPageContent from '../../../domains/user-by-id/components';
+import { getUserName } from '../../../src/utils';
+import { selectUserInfoData } from '../../../domains/user-by-id/selectors';
+import { getWishes, getUserInfo } from '../../../domains/user-by-id/operations';
 
 class UserPage extends React.Component {
-  static async getInitialProps ({ query, store }) {
+  static async getInitialProps ({ query, store, asPath }) {
     const { dispatch } = store;
     const userId = query.id;
 
@@ -14,28 +14,29 @@ class UserPage extends React.Component {
     await dispatch(getUserInfo(userId));
 
     const userInfo = selectUserInfoData(store.getState());
+    let pageHeader;
 
-    return {
-      pageHeader: {
+    if (userInfo) {
+      pageHeader = {
         title: getUserName(userInfo),
         avatar: userInfo.avatar
-      }
+      };
+    }
+
+    return {
+      pageHeader,
+      asPath
     };
   }
 
   render () {
     return (
-      <UserPageContent wishes={this.props.wishes} />
+      <UserPageContent />
     );
   }
 };
 
-const mapStateToProps = state => {
-  return {
-    wishes: selectWishesData(state),
-    userInfo: selectUserInfoData(state)
-  };
-};
+const mapStateToProps = state => state;
 
 const mapDispatchToProps = {
   getWishes,

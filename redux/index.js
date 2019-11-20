@@ -1,7 +1,7 @@
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { wishesReducer, userInfoReducer } from '../domains/user-by-id/reducers';
+import { wishesReducer, userInfoReducer, filtersReducer } from '../domains/user-by-id/reducers';
 
 const composeEnhancers = composeWithDevTools({
   name: 'USER/:id'
@@ -9,7 +9,8 @@ const composeEnhancers = composeWithDevTools({
 
 const userPage = combineReducers({
   wishes: wishesReducer,
-  userInfo: userInfoReducer
+  userInfo: userInfoReducer,
+  filters: filtersReducer
 });
 
 const rootReducer = combineReducers({
