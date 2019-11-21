@@ -21,7 +21,7 @@ router.get('/all', (req, res) => {
           $sum: 1
         }
       }
-    }
+    },
   ];
 
   Wishes

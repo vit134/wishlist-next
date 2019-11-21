@@ -5,7 +5,7 @@ import {
 
   userInfoFetching,
   successUserInfoFetching,
-  failUserInfoFetching
+  failUserInfoFetching,
 } from '../actions';
 
 import { wishByUserIdRequest, userInfoRequst } from '../../../src/requests';

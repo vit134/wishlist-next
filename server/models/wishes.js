@@ -10,7 +10,7 @@ var Wishes = new Schema({
   image: String,
   tags: [String],
   category: [
-    { type: Schema.Types.ObjectId, ref: 'Categories' }
+    { type: Schema.Types.ObjectId, ref: 'Categories' },
   ],
   assigned: { type: Schema.Types.ObjectId, ref: 'Account', null: true, default: null },
   price: Number,

@@ -23,7 +23,7 @@ export const Image = ({
   const rootClassName = cx('image', { rounded });
   const transformParams = [
     width && `w_${width}`,
-    `h_${height}`
+    `h_${height}`,
   ];
 
   if (crop) {

@@ -21,7 +21,7 @@ export const WishCard = ({
         actions={[
           <Icon type="setting" key="setting" />,
           <Icon type="edit" key="edit" />,
-          <Icon type="ellipsis" key="ellipsis" />
+          <Icon type="ellipsis" key="ellipsis" />,
         ]}
       >
         <Meta

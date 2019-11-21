@@ -29,6 +29,13 @@ module.exports = {
   rules: {
     "react/prop-types": [0],
     "semi": ["error", "always", { "omitLastInOneLineBlock": true}],
-    "no-case-declarations)": [0]
+    "no-case-declarations)": [0],
+    "comma-dangle": ["error", {
+      "arrays": "only-multiline",
+      "objects": "only-multiline",
+      "imports": "always-multiline",
+      "exports": "only-multiline",
+      "functions": "never"
+  }]
   }
 }

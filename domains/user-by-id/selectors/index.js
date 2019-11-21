@@ -5,7 +5,7 @@ import {
   pipe,
   join,
   values,
-  size
+  size,
 } from 'lodash/fp';
 import { reduce } from 'lodash';
 
@@ -17,23 +17,23 @@ export const selectWishesResult = getOr({}, ['wishes', 'result']);
 export const selectWishesData = pipe([
   selectUserPageData,
   selectWishesEntities,
-  values
+  values,
 ]);
 
 export const selectWishesCount = pipe([
   selectUserPageData,
   selectWishesResult,
-  size
+  size,
 ]);
 
 export const selectUserInfoData = pipe([
   selectUserPageData,
-  get(['userInfo', 'data'])
+  get(['userInfo', 'data']),
 ]);
 
 export const selectFilters = pipe([
   selectUserPageData,
-  get(['filters'])
+  get(['filters']),
 ]);
 
 export const selectFiltersString = createSelector(
@@ -44,7 +44,7 @@ export const selectFiltersString = createSelector(
         result.push(`${key}=${value}`);
       }
       return result;
-    }, [])
+    }, []),
   ]),
   filters => join(';', filters)
 );

@@ -2,7 +2,7 @@ import { set } from 'lodash/fp';
 import {
   selectWishesData,
   selectWishesCount,
-  selectFiltersString
+  selectFiltersString,
 } from '../selectors';
 
 const mockState = {
@@ -55,7 +55,7 @@ describe('user-by-id -> selectors', () => {
         },
         {
           id: 2
-        }
+        },
       ]);
     });
 

@@ -14,7 +14,7 @@ describe('sorting', () => {
     {
       name: 'blabla',
       categories: 'phone'
-    }
+    },
   ];
 
   describe('name', () => {
@@ -23,7 +23,7 @@ describe('sorting', () => {
         {
           name: 'blabla',
           categories: 'phone'
-        }
+        },
       ]);
     });
 
@@ -43,7 +43,7 @@ describe('sorting', () => {
         {
           name: 'blabla',
           categories: 'phone'
-        }
+        },
       ]);
     });
 
@@ -65,7 +65,7 @@ describe('sorting', () => {
         {
           name: 'blabla',
           categories: 'phone'
-        }
+        },
       ]);
     });
 
@@ -83,7 +83,7 @@ describe('sorting', () => {
         {
           name: 'blabla',
           categories: 'phone'
-        }
+        },
       ]);
 
       expect(sorting.categories(undefined)(mockData)).toEqual([
@@ -99,7 +99,7 @@ describe('sorting', () => {
         {
           name: 'blabla',
           categories: 'phone'
-        }
+        },
       ]);
     });
   });
@@ -111,7 +111,7 @@ describe('sorting', () => {
           name: 'hui',
           categories: 'phone',
           tags: 'kek'
-        }
+        },
       ]);
     });
 
@@ -133,7 +133,7 @@ describe('sorting', () => {
         {
           name: 'blabla',
           categories: 'phone'
-        }
+        },
       ]);
     });
 
@@ -151,7 +151,7 @@ describe('sorting', () => {
         {
           name: 'blabla',
           categories: 'phone'
-        }
+        },
       ]);
 
       expect(sorting.tags(undefined)(mockData)).toEqual([
@@ -167,7 +167,7 @@ describe('sorting', () => {
         {
           name: 'blabla',
           categories: 'phone'
-        }
+        },
       ]);
     });
   });
@@ -183,7 +183,7 @@ describe('sorting', () => {
         },
         {
           price: 2
-        }
+        },
       ];
 
       expect(sorting.price('asc')(data)).toEqual([
@@ -195,7 +195,7 @@ describe('sorting', () => {
         },
         {
           price: 3
-        }
+        },
       ]);
     });
 
@@ -209,7 +209,7 @@ describe('sorting', () => {
         },
         {
           price: 2
-        }
+        },
       ];
 
       expect(sorting.price('desc')(data)).toEqual([
@@ -221,7 +221,7 @@ describe('sorting', () => {
         },
         {
           price: 1
-        }
+        },
       ]);
     });
   });
@@ -237,7 +237,7 @@ describe('sorting', () => {
         },
         {
           date: 2
-        }
+        },
       ];
 
       expect(sorting.date('asc')(data)).toEqual([
@@ -249,7 +249,7 @@ describe('sorting', () => {
         },
         {
           date: 3
-        }
+        },
       ]);
     });
 
@@ -263,7 +263,7 @@ describe('sorting', () => {
         },
         {
           date: 2
-        }
+        },
       ];
 
       expect(sorting.date('desc')(data)).toEqual([
@@ -275,7 +275,7 @@ describe('sorting', () => {
         },
         {
           date: 1
-        }
+        },
       ]);
     });
   });
@@ -291,7 +291,7 @@ describe('sorting', () => {
         },
         {
           id: 3
-        }
+        },
       ];
       expect(sorting.pageSize(2)(data)).toEqual([
         {
@@ -299,7 +299,7 @@ describe('sorting', () => {
         },
         {
           id: 2
-        }
+        },
       ]);
     });
   });
@@ -315,7 +315,7 @@ describe('sorting', () => {
         },
         {
           id: 3
-        }
+        },
       ];
       expect(sorting.currentPage(1, 2)(data)).toEqual([
         {
@@ -323,7 +323,7 @@ describe('sorting', () => {
         },
         {
           id: 2
-        }
+        },
       ]);
     });
 
@@ -343,7 +343,7 @@ describe('sorting', () => {
         },
         {
           id: 5
-        }
+        },
       ];
       expect(sorting.currentPage(2, 2)(data)).toEqual([
         {
@@ -351,7 +351,7 @@ describe('sorting', () => {
         },
         {
           id: 4
-        }
+        },
       ]);
     });
 
@@ -371,12 +371,12 @@ describe('sorting', () => {
         },
         {
           id: 5
-        }
+        },
       ];
       expect(sorting.currentPage(3, 2)(data)).toEqual([
         {
           id: 5
-        }
+        },
       ]);
     });
   });

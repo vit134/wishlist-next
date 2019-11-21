@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Navbar,
   Nav,
-  Container
+  Container,
 } from 'react-bootstrap';
 import { LoginDialog } from '../login-dialog';
 import { AddWishDialog } from '../add-wish-dialog';

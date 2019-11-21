@@ -9,13 +9,14 @@ import {
 
   GET_USER_INFO_REQUEST,
   GET_USER_INFO_SUCCESS,
-  GET_USER_INFO_FAIL
+  GET_USER_INFO_FAIL,
 } from '../actions';
 
 const wishesInitialState = {
   isLoading: false,
-  data: [],
-  error: null
+  error: null,
+  entities: {},
+  result: [],
 };
 
 export const wishesReducer = (state = wishesInitialState, { type, payload }) => {
@@ -23,7 +24,7 @@ export const wishesReducer = (state = wishesInitialState, { type, payload }) => 
     case GET_WISHES_BY_USER_REQUEST:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
       };
     case GET_WISHES_BY_USER_SUCCESS:
       const { entities, result } = normalizedWishes({ wishes: payload.data }); // eslint-disable-line
@@ -32,13 +33,13 @@ export const wishesReducer = (state = wishesInitialState, { type, payload }) => 
         ...state,
         isLoading: false,
         entities: entities.wishes,
-        result: result.wishes
+        result: result.wishes,
       };
     case GET_WISHES_BY_USER_FAIL:
       return {
         ...state,
         isLoading: false,
-        error: payload.error
+        error: payload.error,
       };
     default:
       return state;
@@ -48,7 +49,7 @@ export const wishesReducer = (state = wishesInitialState, { type, payload }) => 
 const userInfoInitialState = {
   isLoading: false,
   data: [],
-  error: null
+  error: null,
 };
 
 export const userInfoReducer = (state = userInfoInitialState, { type, payload }) => {
@@ -56,20 +57,20 @@ export const userInfoReducer = (state = userInfoInitialState, { type, payload })
     case GET_USER_INFO_REQUEST:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
       };
     case GET_USER_INFO_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        data: payload.data
+        data: payload.data,
       };
 
     case GET_USER_INFO_FAIL:
       return {
         ...state,
         isLoading: false,
-        error: payload.error
+        error: payload.error,
       };
     default:
       return state;
@@ -83,7 +84,7 @@ const filtersInitialState = {
   date: 'asc',
   price: 'desc',
   pageSize: 10,
-  currentPage: 1
+  currentPage: 1,
 };
 
 export const filtersReducer = (state = filtersInitialState, { type, payload }) => {
@@ -91,12 +92,12 @@ export const filtersReducer = (state = filtersInitialState, { type, payload }) =
     case SET_FILTERS:
       return {
         ...state,
-        ...payload.filters
+        ...payload.filters,
       };
     case CLEAR_FILTERS:
       return {
         ...state,
-        ...filtersInitialState
+        ...filtersInitialState,
       };
     default:
       return state;

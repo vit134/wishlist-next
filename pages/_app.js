@@ -9,7 +9,7 @@ import PageLayout from '../src/components/layout/layout';
 
 const protectedRoutes = [
   '/profile',
-  '/profile/settings'
+  '/profile/settings',
 ];
 
 class MyApp extends App {
