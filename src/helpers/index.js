@@ -2,7 +2,7 @@ import {
   includes,
   filter,
   sortBy,
-  slice
+  slice,
 } from 'lodash/fp';
 
 export const sorting = {

@@ -14,13 +14,13 @@ const ButtonGroup = Button.Group;
 const categoriesList = [
   ['phones', 'Телефоны'],
   ['computers', 'Компьютеры'],
-  ['cameras', 'Камеры']
+  ['cameras', 'Камеры'],
 ];
 
 const tagsList = [
   ['birthday', 'День рождения'],
   ['for_fun', 'Для фана'],
-  ['for_soul', 'Для души']
+  ['for_soul', 'Для души'],
 ];
 
 const getSortType = sortType => {

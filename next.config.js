@@ -37,7 +37,7 @@ module.exports = (nextConfig = {}) => {
               javascriptEnabled: true,
               modifyVars: themeVariables
             }
-          }
+          },
         ]
       });
 
