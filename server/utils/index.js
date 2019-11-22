@@ -1,9 +1,7 @@
-// const nodemailer = require('nodemailer')
 const trans = require('transliteration').transliterate;
 const R = require('ramda');
 const Datauri = require('datauri');
 const datauri = new Datauri();
-// const moment = require('moment');
 
 var cloudinary = require('cloudinary');
 
@@ -39,10 +37,8 @@ const renameFile = function (file, folder = 'item-images') {
       },
       function (error, data) {
         if (!error) {
-          // console.log('RESULT', data);
           resolve({ success: true, data });
         } else {
-          // console.log('ERROR', error);
           reject(error);
         }
       });
@@ -62,10 +58,8 @@ const uploadFile = (file, folder = 'item-images') => {
       },
       function (error, data) {
         if (!error) {
-          // console.log('SUCCESS', result);
           resolve({ success: true, data });
         } else {
-          // console.log('ERROR');
           reject(error);
         }
       });

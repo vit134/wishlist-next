@@ -32,7 +32,6 @@ class UserPage extends React.Component {
   }
 
   render () {
-    console.log(this.props.userPage.wishes);
     const bla = { wishes: this.props.userPage.wishes.data };
 
     console.log(normalizedWishes(bla));

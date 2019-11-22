@@ -1,11 +1,17 @@
 {
-  "presets": ["next/babel"],
+  "presets": [
+    "next/babel",
+    ["@babel/env", { "targets": { "node": 6 } }]
+  ],
   "plugins": [
     [
       "import", {
         "libraryName": "antd",
         "style": true
-      },
+      }
+    ],
+    [
+      "lodash"
     ]
   ]
 }

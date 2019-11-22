@@ -1,5 +1,6 @@
 const cssLoaderConfig = require('@zeit/next-css/css-loader-config');
 const lessToJS = require('less-vars-to-js');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const fs = require('fs');
 const path = require('path');
 
@@ -62,6 +63,17 @@ module.exports = (nextConfig = {}) => {
         include: /\.module\.css$/,
         use: options.defaultLoaders.css
       });
+
+      if (process.env.ANALYZE) {
+        config.plugins.push(
+          new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            reportFilename: options.isServer
+              ? '../analyze/server.html'
+              : './analyze/client.html',
+          })
+        );
+      }
 
       return config;
     }
