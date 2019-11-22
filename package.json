@@ -48,6 +48,7 @@
     "nodemailer": "^6.3.1",
     "nodemon": "^1.19.4",
     "normalizr": "^3.4.1",
+    "null-loader": "^3.0.0",
     "passport": "^0.4.0",
     "passport-local-mongoose": "^5.0.1",
     "ramda": "^0.26.1",
