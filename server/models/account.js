@@ -18,7 +18,7 @@ var Account = new Schema({
   last_login: Date,
   was_register: { type: Date, default: Date.now },
   wishes: [{ type: Schema.Types.ObjectId, ref: 'Wishes' }],
-  is_activate: { type: Boolean, default: false }
+  is_activate: { type: Boolean, default: false },
 });
 
 Account.plugin(passportLocalMongoose);

@@ -5,21 +5,21 @@ export const schema = {
         id: 1,
         price: 100,
         category: 'phone',
-        name: 'keke'
+        name: 'keke',
       },
       2: {
         id: 2,
         price: 200,
         category: 'comp',
-        name: 'lol'
+        name: 'lol',
       },
       3: {
         id: 3,
         price: 300,
         category: 'comp',
-        name: 'hui'
-      }
-    }
+        name: 'hui',
+      },
+    },
   },
   filters: {
     search: '',
@@ -28,6 +28,6 @@ export const schema = {
     date: 'asc',
     price: 'desc',
     pageSize: 10,
-    currentPage: 1
-  }
+    currentPage: 1,
+  },
 };

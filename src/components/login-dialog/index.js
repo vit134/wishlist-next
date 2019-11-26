@@ -5,12 +5,14 @@ import RegContent from './components/registration';
 
 const { TabPane } = Tabs;
 
-export const LoginDialog = ({ isOpen, onLogin, onRegistration, onClose }) => {
+export const LoginDialog = (props) => {
+  const { isOpen, onClose, userLogin } = props;
   if (!isOpen) {
     return null;
   }
 
-  const submitActions = { onLogin, onRegistration };
+  console.log('loginDialog', props);
+
   return (
     <Modal
       bodyStyle={{ paddingRight: '60px' }}
@@ -20,10 +22,10 @@ export const LoginDialog = ({ isOpen, onLogin, onRegistration, onClose }) => {
     >
       <Tabs tabPosition='left'>
         <TabPane tab="Вход" key="1">
-          <LoginContent onSubmit={submitActions.onLogin} />
+          <LoginContent onSubmit={userLogin} />
         </TabPane>
         <TabPane tab="Регистрация" key="2">
-          <RegContent onSubmit={submitActions.onRegistration} />
+          <RegContent onSubmit={() => console.log('write me')} />
         </TabPane>
       </Tabs>
     </Modal>

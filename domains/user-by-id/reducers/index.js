@@ -4,8 +4,13 @@ import {
   GET_WISHES_BY_USER_REQUEST,
   GET_WISHES_BY_USER_SUCCESS,
   GET_WISHES_BY_USER_FAIL,
+
+  SET_FILTERED_WISHES,
+
   SET_FILTERS,
   CLEAR_FILTERS,
+
+  SET_PAGINATION,
 
   GET_USER_INFO_REQUEST,
   GET_USER_INFO_SUCCESS,
@@ -17,7 +22,10 @@ const wishesInitialState = {
   error: null,
   entities: {},
   result: [],
+  data: null,
 };
+
+const getWishesEntities = wishes => normalizedWishes({ wishes });
 
 export const wishesReducer = (state = wishesInitialState, { type, payload }) => {
   switch (type) {
@@ -27,19 +35,22 @@ export const wishesReducer = (state = wishesInitialState, { type, payload }) => 
         isLoading: true,
       };
     case GET_WISHES_BY_USER_SUCCESS:
-      const { entities, result } = normalizedWishes({ wishes: payload.data }); // eslint-disable-line
-
       return {
         ...state,
         isLoading: false,
-        entities: entities.wishes,
-        result: result.wishes,
+        entities: getWishesEntities(payload.data).entities.wishes,
+        result: getWishesEntities(payload.data).result.wishes,
       };
     case GET_WISHES_BY_USER_FAIL:
       return {
         ...state,
         isLoading: false,
         error: payload.error,
+      };
+    case SET_FILTERED_WISHES:
+      return {
+        ...state,
+        data: payload.data,
       };
     default:
       return state;
@@ -77,14 +88,12 @@ export const userInfoReducer = (state = userInfoInitialState, { type, payload })
   }
 };
 
-const filtersInitialState = {
-  search: '',
-  categories: 'phones',
-  tags: '',
+export const filtersInitialState = {
+  name: '',
+  categories: undefined,
+  tags: undefined,
   date: 'asc',
   price: 'desc',
-  pageSize: 10,
-  currentPage: 1,
 };
 
 export const filtersReducer = (state = filtersInitialState, { type, payload }) => {
@@ -98,6 +107,23 @@ export const filtersReducer = (state = filtersInitialState, { type, payload }) =
       return {
         ...state,
         ...filtersInitialState,
+      };
+    default:
+      return state;
+  }
+};
+
+const paginationInitialState = {
+  pageSize: 10,
+  currentPage: 1,
+};
+
+export const paginationReducer = (state = paginationInitialState, { type, payload }) => {
+  switch (type) {
+    case SET_PAGINATION:
+      return {
+        ...state,
+        ...payload,
       };
     default:
       return state;

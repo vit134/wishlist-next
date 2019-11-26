@@ -40,16 +40,16 @@ module.exports = withLess({
       extensions: ['css'],
       cssModules: true,
       cssLoaderOptions: {
-        localIdentName: '_[local]--[hash:base64:5]'
+        localIdentName: '_[local]--[hash:base64:5]',
       },
       dev,
-      isServer
+      isServer,
     });
 
     config.module.rules.push({
       test: /\.css$/,
       include: /\.module\.css$/,
-      use: defaultLoaders.css
+      use: defaultLoaders.css,
     });
 
     if (process.env.ANALYZE) {

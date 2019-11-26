@@ -5,5 +5,5 @@ const consl = (color, message) => {
 };
 
 module.exports = {
-  consl
+  consl,
 };

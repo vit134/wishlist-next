@@ -1,30 +1,36 @@
-import { createSelector } from 'reselect';
 import {
   get,
   getOr,
   pipe,
-  join,
-  values,
   size,
 } from 'lodash/fp';
-import { reduce } from 'lodash';
 
 export const selectUserPageData = get('userPage');
 
-export const selectWishesEntities = getOr({}, ['wishes', 'entities']);
-export const selectWishesResult = getOr({}, ['wishes', 'result']);
+export const selectWishesEntities = pipe([
+  selectUserPageData,
+  getOr({}, ['wishes', 'entities'])
+]);
+
+export const selectWishesResult = pipe([
+  selectUserPageData,
+  getOr({}, ['wishes', 'result'])
+]);
 
 export const selectWishesData = pipe([
   selectUserPageData,
-  selectWishesEntities,
-  values,
+  getOr([], ['wishes', 'data'])
 ]);
 
-export const selectWishesCount = pipe([
+export const selectPagination = pipe([
   selectUserPageData,
+  get(['pagination'])
+]);
+
+export const selectWishesCount = state => pipe([
   selectWishesResult,
   size,
-]);
+])(state);
 
 export const selectUserInfoData = pipe([
   selectUserPageData,
@@ -33,18 +39,30 @@ export const selectUserInfoData = pipe([
 
 export const selectFilters = pipe([
   selectUserPageData,
-  get(['filters']),
+  get(['filters'])
 ]);
 
-export const selectFiltersString = createSelector(
-  pipe([
-    selectFilters,
-    filters => reduce(filters, (result, value, key) => {
-      if (value) {
-        result.push(`${key}=${value}`);
-      }
-      return result;
-    }, []),
-  ]),
-  filters => join(';', filters)
-);
+// export const selectWishesWithPagination = createSelector(
+//   pipe([
+//     selectWishesEntities,
+//     values,
+//   ]),
+//   selectPagination,
+//   (wishes, { currentPage, pageSize }) => pipe([
+//     sorting.currentPage(currentPage, pageSize),
+//     sorting.pageSize(pageSize)
+//   ])(wishes)
+// );
+
+// export const selectFiltersString = createSelector(
+//   pipe([
+//     selectFilters,
+//     filters => reduce(filters, (result, value, key) => {
+//       if (value) {
+//         result.push(`${key}=${value}`);
+//       }
+//       return result;
+//     }, []),
+//   ]),
+//   filters => join(';', filters)
+// );

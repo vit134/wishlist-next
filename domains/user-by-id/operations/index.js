@@ -3,11 +3,15 @@ import {
   successWishesFetching,
   failWishesFetching,
 
+  setFilters,
+  clearFilters,
+
+  setPagination,
+
   userInfoFetching,
   successUserInfoFetching,
   failUserInfoFetching,
 } from '../actions';
-
 import { wishByUserIdRequest, userInfoRequst } from '../../../src/requests';
 
 export const getWishes = (userId) => dispatch => {
@@ -24,4 +28,29 @@ export const getUserInfo = (userId) => dispatch => {
   return userInfoRequst(userId)
     .then(result => dispatch(successUserInfoFetching(result.data.data)))
     .catch(error => dispatch(failUserInfoFetching(error)));
+};
+
+export const setFilteredWishesData = filters => (dispatch, getState) => {
+  dispatch(setFilters(filters));
+
+  // const state = getState();
+
+  // const filteredData = selectWishesWithFilters(state);
+  // const filterIsInitial = isFilterInitial(filters);
+  // console.log(filters, filterIsInitial);
+
+  // dispatch(setWishes(filterIsInitial ? null : filteredData));
+};
+
+export const setPaginationWishesData = pagination => (dispatch, getState) => {
+  dispatch(setPagination(pagination));
+  dispatch(clearFilters());
+
+  // const state = getState();
+
+  // const filteredData = selectWishesWithPagination(state);
+
+  // console.log(filteredData);
+
+  // dispatch(setWishes(filteredData));
 };

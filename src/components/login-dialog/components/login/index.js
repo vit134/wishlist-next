@@ -11,7 +11,7 @@ const InputIcon = ({ type }) => (
 class LoginContent extends Component {
   state = {
     isLoading: false,
-    error: null
+    error: null,
   }
 
   render () {
@@ -23,7 +23,7 @@ class LoginContent extends Component {
       <Form onSubmit={this.handleLoginSubmit}>
         <Form.Item>
           {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Пожалуйста введите имя пользователя' }]
+            rules: [{ required: true, message: 'Пожалуйста введите имя пользователя' }],
           })(
             <Input
               prefix={<InputIcon type="user" />}
@@ -33,7 +33,7 @@ class LoginContent extends Component {
         </Form.Item>
         <Form.Item>
           {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Пожалуйста введите пароль' }]
+            rules: [{ required: true, message: 'Пожалуйста введите пароль' }],
           })(
             <Input
               prefix={<InputIcon type="lock" />}
@@ -60,7 +60,7 @@ class LoginContent extends Component {
     const { form, onSubmit } = this.props;
 
     this.setState({
-      isLoading: true
+      isLoading: true,
     }, () => {
       form.validateFields((err, formData) => {
         if (!err) {
@@ -75,7 +75,7 @@ class LoginContent extends Component {
               this.setState({
                 error,
                 data,
-                isLoading: false
+                isLoading: false,
               });
 
               return data;
@@ -83,7 +83,7 @@ class LoginContent extends Component {
             .catch(error => {
               this.setState({
                 error,
-                isLoading: false
+                isLoading: false,
               });
             });
         }

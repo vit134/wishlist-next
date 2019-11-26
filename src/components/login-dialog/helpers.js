@@ -7,8 +7,8 @@ export const handleSetError = (form, error) => {
   setFields({
     [fieldName]: {
       value: getFieldValue(fieldName),
-      errors: [new Error(message)]
-    }
+      errors: [new Error(message)],
+    },
   });
 };
 

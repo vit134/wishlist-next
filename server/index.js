@@ -1,4 +1,5 @@
 const express = require('express');
+const methodOverride = require('method-override');
 const next = require('next');
 const chalk = require('chalk');
 const bodyParser = require('body-parser');
@@ -19,6 +20,24 @@ const logotRoutes = require('./routes/logout');
 const registrationRoutes = require('./routes/registration');
 
 const wishesRoutes = require('./routes/wishes');
+
+const logErrors = (err, req, res, next) => {
+  console.error(chalk.red(err.stack));
+  next(err);
+};
+
+const clientErrorHandler = (err, req, res, next) => {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' });
+  } else {
+    next(err);
+  }
+};
+
+const errorHandler = (err, req, res, next) => {
+  res.status(500);
+  res.render('error', { error: err });
+};
 
 nextApp.prepare().then(() => {
   const app = express();
@@ -42,10 +61,10 @@ nextApp.prepare().then(() => {
   app.use(Sessions({
     secret: 'asdasd',
     cookie: {
-      maxAge: 86400 * 1000 // 24 hours in milliseconds
+      maxAge: 86400 * 1000, // 24 hours in milliseconds
     },
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
   }));
   app.use(passport.initialize());
   app.use(passport.session());
@@ -70,6 +89,11 @@ nextApp.prepare().then(() => {
   app.get('*', (req, res) => {
     return handle(req, res); // for all the react stuff
   });
+
+  app.use(methodOverride());
+  app.use(logErrors);
+  app.use(clientErrorHandler);
+  app.use(errorHandler);
 
   app.listen(PORT, err => {
     if (err) throw err;

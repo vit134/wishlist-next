@@ -4,14 +4,14 @@ var router = express.Router();
 
 router.get('/', function (req, res) {
   var query = {
-    username: req.user.username
+    username: req.user.username,
   };
 
   req.logout();
 
   var update = {
     last_login: Date.now(),
-    online: false
+    online: false,
   };
 
   Account.findOneAndUpdate(

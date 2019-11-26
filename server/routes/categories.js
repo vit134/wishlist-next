@@ -16,7 +16,7 @@ router.post('/categories', function (req, res) {
   if (!body.name) {
     res.status(400).send({
       error: true,
-      message: 'name is required'
+      message: 'name is required',
     });
   }
 

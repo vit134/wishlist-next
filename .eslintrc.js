@@ -32,7 +32,7 @@ module.exports = {
     "no-case-declarations)": [0],
     "comma-dangle": ["error", {
       "arrays": "only-multiline",
-      "objects": "only-multiline",
+      "objects": "always-multiline",
       "imports": "always-multiline",
       "exports": "only-multiline",
       "functions": "never"

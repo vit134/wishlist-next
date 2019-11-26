@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Link from 'next/link';
 import { getAllUsers, getAllWishes } from '../src/requests';
 import { CardColumns, Card } from 'react-bootstrap';
@@ -21,6 +22,7 @@ class Home extends React.Component {
   }
 
   render () {
+    console.log(this.props);
     const { users = [], wishes = [] } = this.props.data;
 
     return (
@@ -93,4 +95,8 @@ class Home extends React.Component {
   }
 };
 
-export default Home;
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

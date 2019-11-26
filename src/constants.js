@@ -1,14 +1,14 @@
 export const ERROR_MESSAGES = {
   IncorrectUsernameError: {
     message: 'Не правильное имя пользователя',
-    fieldName: 'username'
+    fieldName: 'username',
   },
   IncorrectPasswordError: {
     message: 'Не правильный пароль',
-    fieldName: 'password'
+    fieldName: 'password',
   },
   UserExistsError: {
     message: 'Пользователем с таким именем уже зарегестрирован',
-    fieldName: 'username'
-  }
+    fieldName: 'username',
+  },
 };

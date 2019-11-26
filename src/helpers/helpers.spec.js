@@ -5,15 +5,15 @@ describe('sorting', () => {
     {
       name: 'hui',
       categories: 'phone',
-      tags: 'kek'
+      tags: 'kek',
     },
     {
       name: 'kek',
-      categories: 'comp'
+      categories: 'comp',
     },
     {
       name: 'blabla',
-      categories: 'phone'
+      categories: 'phone',
     },
   ];
 
@@ -22,13 +22,17 @@ describe('sorting', () => {
       expect(sorting.name('bla')(mockData)).toEqual([
         {
           name: 'blabla',
-          categories: 'phone'
+          categories: 'phone',
         },
       ]);
     });
 
     it('should return correct data if name was not found', () => {
       expect(sorting.name('lol')(mockData)).toEqual([]);
+    });
+
+    it('should return correct data if name is empty', () => {
+      expect(sorting.name('')(mockData)).toEqual(mockData);
     });
   });
 
@@ -38,11 +42,11 @@ describe('sorting', () => {
         {
           name: 'hui',
           categories: 'phone',
-          tags: 'kek'
+          tags: 'kek',
         },
         {
           name: 'blabla',
-          categories: 'phone'
+          categories: 'phone',
         },
       ]);
     });
@@ -56,15 +60,15 @@ describe('sorting', () => {
         {
           name: 'hui',
           categories: 'phone',
-          tags: 'kek'
+          tags: 'kek',
         },
         {
           name: 'kek',
-          categories: 'comp'
+          categories: 'comp',
         },
         {
           name: 'blabla',
-          categories: 'phone'
+          categories: 'phone',
         },
       ]);
     });
@@ -74,15 +78,15 @@ describe('sorting', () => {
         {
           name: 'hui',
           categories: 'phone',
-          tags: 'kek'
+          tags: 'kek',
         },
         {
           name: 'kek',
-          categories: 'comp'
+          categories: 'comp',
         },
         {
           name: 'blabla',
-          categories: 'phone'
+          categories: 'phone',
         },
       ]);
 
@@ -90,15 +94,15 @@ describe('sorting', () => {
         {
           name: 'hui',
           categories: 'phone',
-          tags: 'kek'
+          tags: 'kek',
         },
         {
           name: 'kek',
-          categories: 'comp'
+          categories: 'comp',
         },
         {
           name: 'blabla',
-          categories: 'phone'
+          categories: 'phone',
         },
       ]);
     });
@@ -110,7 +114,7 @@ describe('sorting', () => {
         {
           name: 'hui',
           categories: 'phone',
-          tags: 'kek'
+          tags: 'kek',
         },
       ]);
     });
@@ -124,15 +128,15 @@ describe('sorting', () => {
         {
           name: 'hui',
           categories: 'phone',
-          tags: 'kek'
+          tags: 'kek',
         },
         {
           name: 'kek',
-          categories: 'comp'
+          categories: 'comp',
         },
         {
           name: 'blabla',
-          categories: 'phone'
+          categories: 'phone',
         },
       ]);
     });
@@ -142,15 +146,15 @@ describe('sorting', () => {
         {
           name: 'hui',
           categories: 'phone',
-          tags: 'kek'
+          tags: 'kek',
         },
         {
           name: 'kek',
-          categories: 'comp'
+          categories: 'comp',
         },
         {
           name: 'blabla',
-          categories: 'phone'
+          categories: 'phone',
         },
       ]);
 
@@ -158,15 +162,15 @@ describe('sorting', () => {
         {
           name: 'hui',
           categories: 'phone',
-          tags: 'kek'
+          tags: 'kek',
         },
         {
           name: 'kek',
-          categories: 'comp'
+          categories: 'comp',
         },
         {
           name: 'blabla',
-          categories: 'phone'
+          categories: 'phone',
         },
       ]);
     });
@@ -176,25 +180,25 @@ describe('sorting', () => {
     it('should sort by price from bigger to smaller', () => {
       const data = [
         {
-          price: 1
+          price: 1,
         },
         {
-          price: 3
+          price: 3,
         },
         {
-          price: 2
+          price: 2,
         },
       ];
 
       expect(sorting.price('asc')(data)).toEqual([
         {
-          price: 1
+          price: 1,
         },
         {
-          price: 2
+          price: 2,
         },
         {
-          price: 3
+          price: 3,
         },
       ]);
     });
@@ -202,25 +206,25 @@ describe('sorting', () => {
     it('should sort by price from smaller to bigger', () => {
       const data = [
         {
-          price: 1
+          price: 1,
         },
         {
-          price: 3
+          price: 3,
         },
         {
-          price: 2
+          price: 2,
         },
       ];
 
       expect(sorting.price('desc')(data)).toEqual([
         {
-          price: 3
+          price: 3,
         },
         {
-          price: 2
+          price: 2,
         },
         {
-          price: 1
+          price: 1,
         },
       ]);
     });
@@ -230,25 +234,25 @@ describe('sorting', () => {
     it('should sort by date from bigger to smaller', () => {
       const data = [
         {
-          date: 1
+          date: 1,
         },
         {
-          date: 3
+          date: 3,
         },
         {
-          date: 2
+          date: 2,
         },
       ];
 
       expect(sorting.date('asc')(data)).toEqual([
         {
-          date: 1
+          date: 1,
         },
         {
-          date: 2
+          date: 2,
         },
         {
-          date: 3
+          date: 3,
         },
       ]);
     });
@@ -256,25 +260,25 @@ describe('sorting', () => {
     it('should sort by date from smaller to bigger', () => {
       const data = [
         {
-          date: 1
+          date: 1,
         },
         {
-          date: 3
+          date: 3,
         },
         {
-          date: 2
+          date: 2,
         },
       ];
 
       expect(sorting.date('desc')(data)).toEqual([
         {
-          date: 3
+          date: 3,
         },
         {
-          date: 2
+          date: 2,
         },
         {
-          date: 1
+          date: 1,
         },
       ]);
     });
@@ -284,21 +288,21 @@ describe('sorting', () => {
     it('should return only 2 items', () => {
       const data = [
         {
-          id: 1
+          id: 1,
         },
         {
-          id: 2
+          id: 2,
         },
         {
-          id: 3
+          id: 3,
         },
       ];
       expect(sorting.pageSize(2)(data)).toEqual([
         {
-          id: 1
+          id: 1,
         },
         {
-          id: 2
+          id: 2,
         },
       ]);
     });
@@ -308,21 +312,21 @@ describe('sorting', () => {
     it('should return first 2 items if pageSize is 2 and currentPage is 1', () => {
       const data = [
         {
-          id: 1
+          id: 1,
         },
         {
-          id: 2
+          id: 2,
         },
         {
-          id: 3
+          id: 3,
         },
       ];
       expect(sorting.currentPage(1, 2)(data)).toEqual([
         {
-          id: 1
+          id: 1,
         },
         {
-          id: 2
+          id: 2,
         },
       ]);
     });
@@ -330,27 +334,27 @@ describe('sorting', () => {
     it('should return correct data if pageSize is 2 and currentPage is 2', () => {
       const data = [
         {
-          id: 1
+          id: 1,
         },
         {
-          id: 2
+          id: 2,
         },
         {
-          id: 3
+          id: 3,
         },
         {
-          id: 4
+          id: 4,
         },
         {
-          id: 5
+          id: 5,
         },
       ];
       expect(sorting.currentPage(2, 2)(data)).toEqual([
         {
-          id: 3
+          id: 3,
         },
         {
-          id: 4
+          id: 4,
         },
       ]);
     });
@@ -358,24 +362,24 @@ describe('sorting', () => {
     it('should return last 1 item if pageSize is 2 and currentPage is 3', () => {
       const data = [
         {
-          id: 1
+          id: 1,
         },
         {
-          id: 2
+          id: 2,
         },
         {
-          id: 3
+          id: 3,
         },
         {
-          id: 4
+          id: 4,
         },
         {
-          id: 5
+          id: 5,
         },
       ];
       expect(sorting.currentPage(3, 2)(data)).toEqual([
         {
-          id: 5
+          id: 5,
         },
       ]);
     });

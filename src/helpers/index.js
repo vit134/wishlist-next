@@ -6,7 +6,12 @@ import {
 } from 'lodash/fp';
 
 export const sorting = {
-  name: subString => filter(el => includes(subString, el.name)),
+  name: subString => data => {
+    if (subString === '') {
+      return data;
+    }
+    return filter(el => includes(subString, el.name))(data);
+  },
   categories: category => data => {
     if (!category) {
       return data;
@@ -34,5 +39,5 @@ export const sorting = {
     return data => data.sort((a, b) => b.price - a.price);
   },
   pageSize: count => slice(0, count),
-  currentPage: (num, pageSize) => slice((num - 1) * pageSize, ((num - 1) * pageSize) + pageSize)
+  currentPage: (num, pageSize) => slice((num - 1) * pageSize, ((num - 1) * pageSize) + pageSize),
 };

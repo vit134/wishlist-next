@@ -11,7 +11,7 @@ router.post('/', function (req, res, next) {
   Account.register(new Account({
     _id,
     username,
-    email
+    email,
   }), password, (error, account) => {
     if (error) {
       console.log('error', error);

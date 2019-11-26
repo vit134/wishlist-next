@@ -14,7 +14,7 @@ export const Image = ({
   rounded,
   width = 200,
   height = 200,
-  crop
+  crop,
 }) => {
   if (!src) {
     return null;

@@ -15,7 +15,7 @@ var Wishes = new Schema({
   assigned: { type: Schema.Types.ObjectId, ref: 'Account', null: true, default: null },
   price: Number,
   price_currency: String,
-  description: String
+  description: String,
 });
 
 module.exports = mongoose.model('Wishes', Wishes);

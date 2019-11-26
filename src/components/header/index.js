@@ -21,7 +21,7 @@ export const Header = ({
   onAddWishPopupOpen,
   onLogout,
   onAddWish,
-  formErorrs
+  formErorrs,
 }) => {
   const handleClose = () => togglePopup(false);
   const handleShow = () => togglePopup(true);

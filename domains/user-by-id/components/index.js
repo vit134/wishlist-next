@@ -1,21 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames/bind';
-import { Layout, Row } from 'antd';
+import { Layout, Row, Empty } from 'antd';
 import WishCard from '../components/wish-card';
 import Filters from '../components/filters';
 import { Pagination } from '../components/pagination';
-import { selectFilters, selectWishesData, selectWishesCount } from '../selectors';
-import { setFilters } from '../actions';
+import { selectFilters, selectWishesCount, selectWishesData, selectPagination } from '../selectors';
 import styles from './styles.module.css';
 
 const cx = classnames.bind(styles);
+
+const WishesList = ({ wishes }) => {
+  if (!wishes || !wishes.length) {
+    return (
+      <div className={styles.empty}>
+        <Empty />
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {
+        wishes.map(({ _id, name, image }) => (
+          <WishCard
+            id={_id}
+            key={_id}
+            name={name}
+            image={image}
+          />
+        ))
+      }
+    </>
+  );
+};
 
 class UserPageContent extends React.Component {
   render () {
     const { wishes, wishesCount, filters } = this.props;
     const { currentPage, pageSize } = filters;
-
     return (
       <main className={styles.root}>
         <Layout.Content>
@@ -33,16 +56,7 @@ class UserPageContent extends React.Component {
           </section>
           <section className={styles.section}>
             <Row gutter={16}>
-              {
-                wishes.map(({ _id, name, image }) => (
-                  <WishCard
-                    id={_id}
-                    key={_id}
-                    name={name}
-                    image={image}
-                  />
-                ))
-              }
+              <WishesList wishes={wishes} />
             </Row>
           </section>
         </Layout.Content>
@@ -50,27 +64,27 @@ class UserPageContent extends React.Component {
     );
   }
 
-  handlePageSizeChange = (current, pageSize) => {
-    const { filters, setFilters } = this.props;
+  handlePageSizeChange = (currentPage, pageSize) => {
+    const { setPaginationWishesData } = this.props;
 
-    setFilters({ ...filters, pageSize });
+    setPaginationWishesData({ currentPage, pageSize });
   }
 };
 
 UserPageContent.defaultProps = {
-  wiishes: []
+  wishes: [],
 };
 
 const mapStateToProps = state => {
   return {
-    filters: selectFilters(state),
     wishes: selectWishesData(state),
-    wishesCount: selectWishesCount(state)
+    filters: selectFilters(state),
+    wishesCount: selectWishesCount(state),
+    pagination: selectPagination(state),
   };
 };
 
 const mapDispatchToProps = {
-  setFilters
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPageContent);
