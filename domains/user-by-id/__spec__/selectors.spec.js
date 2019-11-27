@@ -31,7 +31,7 @@ const mockState = {
   },
 };
 
-describe('user-by-id -> selectors', () => {
+describe.skip('user-by-id -> selectors', () => {
   describe('selectFiltersString', () => {
     it('should return correct filters string with some of filter is emty', () => {
       const string = selectFiltersString(mockState);
