@@ -37,7 +37,6 @@ export const setFilteredWishesData = filters => (dispatch, getState) => {
 
   // const filteredData = selectWishesWithFilters(state);
   // const filterIsInitial = isFilterInitial(filters);
-  // console.log(filters, filterIsInitial);
 
   // dispatch(setWishes(filterIsInitial ? null : filteredData));
 };
@@ -49,8 +48,6 @@ export const setPaginationWishesData = pagination => (dispatch, getState) => {
   // const state = getState();
 
   // const filteredData = selectWishesWithPagination(state);
-
-  // console.log(filteredData);
 
   // dispatch(setWishes(filteredData));
 };

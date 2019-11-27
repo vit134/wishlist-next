@@ -34,7 +34,6 @@ router.get('/parsing', (req, res) => {
         result = data;
       })
       .done(() => {
-        console.log(result);
         res.send(normaliseData(result));
       });
   } else {

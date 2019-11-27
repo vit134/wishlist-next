@@ -20,9 +20,9 @@ class MyApp extends App {
 
     if (!req.user) {
       await store.dispatch(setUserLogin({ isLogin: false, data: null }));
+    } else {
+      await store.dispatch(setUserLogin({ isLogin: true, data: req.user }));
     }
-
-    await store.dispatch(setUserLogin({ isLogin: true, data: req.user }));
 
     return { pageProps };
   }
@@ -57,5 +57,5 @@ class MyApp extends App {
 
 export default withRedux(makeStore, {
   storeKey: 'Wishlist',
-  debug: true,
+  debug: false,
 })(MyApp);

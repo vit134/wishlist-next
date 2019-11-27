@@ -58,6 +58,7 @@ router.post('/', (req, res, next) => {
 
 router.get('/', function (req, res) {
   const { user } = req;
+  console.log(user);
   res.send({ isLogin: Boolean(user), data: user });
 });
 

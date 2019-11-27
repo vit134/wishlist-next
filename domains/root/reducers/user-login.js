@@ -17,11 +17,6 @@ const initialState = {
 export const userLoginReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_USER_LOGIN:
-      console.log('payload', payload);
-      // return pipe([
-      //   set(['isLogin'], true),
-      //   set(['data'], payload)
-      // ])(state);
       return {
         ...state,
         isLogin: payload.isLogin,

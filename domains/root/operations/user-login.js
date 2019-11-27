@@ -12,7 +12,6 @@ export const userLogin = (userFormData) => dispatch => {
 
   return loginRequest(userFormData)
     .then(data => {
-      console.log(data);
       dispatch(userLoginSuccess(data));
       dispatch(closeLoginPopup());
     })

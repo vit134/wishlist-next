@@ -106,7 +106,6 @@ router.get('/logout', function (req, res) {
   };
   Account.findOneAndUpdate(query, update, options, function (err, user) {
     if (err) {
-      console.log(err);
     }
     res.send({ user: req.user });
   });

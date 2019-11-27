@@ -22,7 +22,6 @@ class Home extends React.Component {
   }
 
   render () {
-    console.log(this.props);
     const { users = [], wishes = [] } = this.props.data;
 
     return (
@@ -31,7 +30,7 @@ class Home extends React.Component {
           <h3>Users</h3>
           <CardColumns>
             {
-              users.reduce((acc, el) => {
+              users.reduce((acc, el = {}) => {
                 const { _id, username, firstname, lastname, count } = el;
                 if (firstname && lastname) {
                   acc.push(

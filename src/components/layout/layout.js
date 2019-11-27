@@ -15,7 +15,6 @@ class PageLayout extends Component {
   }
 
   render () {
-    console.log('PageLayout', this.props);
     const {
       children,
       isLogin,

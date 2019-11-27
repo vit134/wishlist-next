@@ -12,8 +12,6 @@ export const getPosts = () => dispatch =>
     headers: [],
   }).then(response => dispatch({ type: 'FOO', payload: response.data }));
 
-// http://localhost:3000
-
 export const userLoginInfoRequst = (req) => {
   return axios.get('http://localhost:3000/api/login', {
     headers: {
@@ -52,7 +50,6 @@ export const wishByIdRequest = (id) => {
 };
 
 export const wishByUserIdRequest = (userId) => {
-  console.log(userId);
   return axios.get(`http://localhost:3000/api/wishes/by-user-id/${userId}`, { headers });
 };
 
