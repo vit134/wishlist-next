@@ -15,11 +15,17 @@ export const userLogin = (userFormData) => dispatch => {
   dispatch(userLoginRequest());
 
   return loginRequest(userFormData)
-    .then(data => {
-      dispatch(userLoginSuccess(data));
+    .then(({ data }) => {
+      if (data.success) {
+        dispatch(userLoginSuccess(data));
+      } else {
+        throw data.error;
+      }
       dispatch(closeLoginPopup());
     })
-    .catch(error => dispatch(userLoginFail(error)));
+    .catch(error => {
+      dispatch(userLoginFail({ error }));
+    });
 };
 
 export const userLogout = () => dispatch => {

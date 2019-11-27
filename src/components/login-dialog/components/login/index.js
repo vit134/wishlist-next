@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Button } from 'antd';
 import { Error } from '../error';
-import { handleSetError, hasErrors } from '../../helpers';
+import { getErrors, hasErrors } from '../../helpers';
 import styles from './styles.module.css';
 
 const InputIcon = ({ type }) => (
@@ -9,19 +9,18 @@ const InputIcon = ({ type }) => (
 );
 
 class LoginContent extends Component {
-  state = {
-    isLoading: false,
-    error: null,
-  }
-
   render () {
-    const { form } = this.props;
-    const { isLoading, error } = this.state;
+    const { form, isLoading, error } = this.props;
     const { getFieldDecorator, getFieldsError } = form;
+
+    const {
+      username: userNameErrors,
+      password: passwordErrors,
+    } = getErrors(error, ['username', 'password']);
 
     return (
       <Form onSubmit={this.handleLoginSubmit}>
-        <Form.Item>
+        <Form.Item {...userNameErrors}>
           {getFieldDecorator('username', {
             rules: [{ required: true, message: 'Пожалуйста введите имя пользователя' }],
           })(
@@ -31,7 +30,7 @@ class LoginContent extends Component {
             />
           )}
         </Form.Item>
-        <Form.Item>
+        <Form.Item {...passwordErrors}>
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Пожалуйста введите пароль' }],
           })(
@@ -59,37 +58,25 @@ class LoginContent extends Component {
     e.preventDefault();
     const { form, onSubmit } = this.props;
 
-    this.setState({
-      isLoading: true,
-    }, () => {
-      form.validateFields((err, formData) => {
-        if (!err) {
-          console.log('Received values of login-form: ', formData);
+    form.validateFields((err, formData) => {
+      if (!err) {
+        console.log('Received values of login-form: ', formData);
 
-          onSubmit(formData)
-            .then(({ error, data }) => {
-              if (error) {
-                handleSetError(form, error);
-              }
-
-              this.setState({
-                error,
-                data,
-                isLoading: false,
-              });
-
-              return data;
-            })
-            .catch(error => {
-              this.setState({
-                error,
-                isLoading: false,
-              });
-            });
-        }
-      });
+        onSubmit(formData);
+      }
     });
   }
 };
 
+// export default Form.create({
+//   mapPropsToFields: (props) => {
+//     console.log(props.error && props.error.message);
+//     console.log(props);
+//     return {
+//       username: Form.createFormField({
+//         errors: props.error && [new Error(props.error.message)],
+//       }),
+//     };
+//   },
+// })(LoginContent);
 export default Form.create()(LoginContent);

@@ -6,12 +6,10 @@ import RegContent from './components/registration';
 const { TabPane } = Tabs;
 
 export const LoginDialog = (props) => {
-  const { isOpen, onClose, userLogin } = props;
+  const { isOpen, isLoading, error, onClose, userLogin } = props;
   if (!isOpen) {
     return null;
   }
-
-  console.log('loginDialog', props);
 
   return (
     <Modal
@@ -22,7 +20,10 @@ export const LoginDialog = (props) => {
     >
       <Tabs tabPosition='left'>
         <TabPane tab="Вход" key="1">
-          <LoginContent onSubmit={userLogin} />
+          <LoginContent
+            isLoading={isLoading}
+            error={error}
+            onSubmit={userLogin} />
         </TabPane>
         <TabPane tab="Регистрация" key="2">
           <RegContent onSubmit={() => console.log('write me')} />

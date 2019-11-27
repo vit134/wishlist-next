@@ -36,6 +36,7 @@ module.exports = {
       "imports": "always-multiline",
       "exports": "only-multiline",
       "functions": "never"
-  }]
+    }],
+    "handle-callback-err": [0]
   }
 }

@@ -32,9 +32,8 @@ export const userLoginReducer = (state = initialState, { type, payload }) => {
     case USER_LOGIN_SUCCESS:
       return pipe([
         set(['isLoading'], false),
-        set(['isLogin'], payload.data.success),
-        set(['data'], payload.data.data),
-        set(['error'], payload.data.error)
+        set(['isLogin'], payload.success),
+        set(['data'], payload.data)
       ])(state);
     case USER_LOGIN_FAIL:
       return pipe([

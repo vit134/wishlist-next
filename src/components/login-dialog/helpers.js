@@ -12,4 +12,16 @@ export const handleSetError = (form, error) => {
   });
 };
 
+export const getErrors = (error, fields) => {
+  return fields.reduce((acc, field) => {
+    const needToShowError = error && ERROR_MESSAGES[field];
+    acc[field] = {
+      help: needToShowError && ERROR_MESSAGES[field][error.name],
+      validateStatus: needToShowError && ERROR_MESSAGES[field][error.name] ? 'error' : 'success',
+    };
+
+    return acc;
+  }, {});
+};
+
 export const hasErrors = fieldsError => Object.keys(fieldsError).some(field => fieldsError[field]);

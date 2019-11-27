@@ -1,12 +1,12 @@
 export const ERROR_MESSAGES = {
-  IncorrectUsernameError: {
-    message: 'Не правильное имя пользователя',
-    fieldName: 'username',
+  username: {
+    IncorrectUsernameError: 'Не правильное имя пользователя',
+    UserExistsError: 'Пользователем с таким именем уже зарегестрирован',
   },
-  IncorrectPasswordError: {
-    message: 'Не правильный пароль',
-    fieldName: 'password',
+  password: {
+    IncorrectPasswordError: 'Не правильный пароль',
   },
+  // TODO: удалить после того как забацается регистрация
   UserExistsError: {
     message: 'Пользователем с таким именем уже зарегестрирован',
     fieldName: 'username',

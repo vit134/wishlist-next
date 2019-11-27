@@ -11,7 +11,17 @@ export const selectUserIsLogin = pipe([
   get(['isLogin'])
 ]);
 
+export const selectUserIsLoading = pipe([
+  selectUser,
+  get(['isLoading'])
+]);
+
 export const selectUserData = pipe([
   selectUser,
   get(['data'])
+]);
+
+export const selectUserError = pipe([
+  selectUser,
+  get(['error'])
 ]);
