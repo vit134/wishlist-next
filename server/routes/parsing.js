@@ -27,14 +27,13 @@ router.get('/parsing', (req, res) => {
         'disc-price': '#j-sku-discount-price',
         'total-price': '#j-total-price-value',
         thumbs: ['.img-thumb-item > img@src'],
-        'og:image': 'meta[property="og:image"]@content'
+        'og:image': 'meta[property="og:image"]@content',
       })
       .data(data => {
         data.thumbs = data.thumbs.map(el => el.replace('.jpg_50x50', ''));
         result = data;
       })
       .done(() => {
-        console.log(result);
         res.send(normaliseData(result));
       });
   } else {

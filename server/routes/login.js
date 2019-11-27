@@ -19,7 +19,7 @@ router.post('/', (req, res, next) => {
     }
 
     if (!user) {
-      return res.send({ isLogin: false, error: info });
+      return res.send({ success: false, error: info });
     }
 
     req.logIn(user, function (err) {
@@ -30,12 +30,12 @@ router.post('/', (req, res, next) => {
       const { username } = req.user;
       var update = {
         last_login: Date.now(),
-        online: true
+        online: true,
       };
 
       Account.findOneAndUpdate({ username }, update, { new: true }).exec()
         .then(data => {
-          return res.send({ isLogin: true, data });
+          return res.send({ success: true, data });
         })
         .catch(err => res.status(400).send(err));
     });
@@ -58,6 +58,7 @@ router.post('/', (req, res, next) => {
 
 router.get('/', function (req, res) {
   const { user } = req;
+  console.log(user);
   res.send({ isLogin: Boolean(user), data: user });
 });
 

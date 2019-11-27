@@ -18,9 +18,9 @@ router.get('/all', (req, res) => {
       $group: {
         _id: '$userId',
         count: {
-          $sum: 1
-        }
-      }
+          $sum: 1,
+        },
+      },
     },
   ];
 
@@ -41,7 +41,7 @@ router.get('/all', (req, res) => {
 
           return res.send({
             success: true,
-            data: result.map((el, ind) => ({ ...el._doc, count: sortedData[ind].count }))
+            data: result.map((el, ind) => ({ ...el._doc, count: sortedData[ind].count })),
           });
         });
     })

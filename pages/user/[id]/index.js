@@ -5,8 +5,6 @@ import { getUserName } from '../../../src/utils';
 import { selectUserInfoData } from '../../../domains/user-by-id/selectors';
 import { getWishes, getUserInfo } from '../../../domains/user-by-id/operations';
 
-import { normalizedWishes } from '../../../domains/user-by-id/normlize';
-
 class UserPage extends React.Component {
   static async getInitialProps ({ query, store, asPath }) {
     const { dispatch } = store;
@@ -21,20 +19,17 @@ class UserPage extends React.Component {
     if (userInfo) {
       pageHeader = {
         title: getUserName(userInfo),
-        avatar: userInfo.avatar
+        avatar: userInfo.avatar,
       };
     }
 
     return {
       pageHeader,
-      asPath
+      asPath,
     };
   }
 
   render () {
-    const bla = { wishes: this.props.userPage.wishes.data };
-
-    console.log(normalizedWishes(bla));
     return (
       <UserPageContent />
     );
@@ -45,7 +40,7 @@ const mapStateToProps = state => state;
 
 const mapDispatchToProps = {
   getWishes,
-  getUserInfo
+  getUserInfo,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

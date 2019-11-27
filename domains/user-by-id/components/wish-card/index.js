@@ -11,7 +11,7 @@ export const WishCard = ({
   router,
   id,
   name,
-  image = 'http://res.cloudinary.com/vit134/image/upload/v1574077301/common/no_image.png'
+  image = 'http://res.cloudinary.com/vit134/image/upload/v1574077301/common/no_image.png',
 }) => {
   return (
     <Col span={6}>

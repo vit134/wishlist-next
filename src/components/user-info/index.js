@@ -46,18 +46,24 @@ const AvatarDropdown = ({ currentUser = {}, actions }) => {
   );
 };
 
-export const UserInfo = ({ user = {}, onOpen, onAddWishPopupOpen, onLogout }) => {
-  const { isLogin, data: userInfo } = user;
+export const UserInfo = ({
+  isLogin,
+  userData,
+  openLoginPopup,
+  userLogout,
 
+  // ownProps
+  onAddWishPopupOpen,
+}) => {
   if (!isLogin) {
     return (
-      <Button variant="outline-light" onClick={onOpen}>Войти</Button>
+      <Button variant="outline-light" onClick={openLoginPopup}>Войти</Button>
     );
   }
 
-  const userName = getUserName(userInfo);
+  const name = getUserName(userData);
 
   return (
-    <AvatarDropdown currentUser={{ ...userInfo, name: userName }} actions={{ onAddWishPopupOpen, onLogout }}/>
+    <AvatarDropdown currentUser={{ ...userData, name }} actions={{ onAddWishPopupOpen, onLogout: userLogout }}/>
   );
 };

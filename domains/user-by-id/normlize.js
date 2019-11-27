@@ -2,7 +2,7 @@ import { normalize, schema } from 'normalizr';
 
 // Define a wishes schema
 const wishesSchema = new schema.Entity('wishes', {}, {
-  idAttribute: '_id'
+  idAttribute: '_id',
 });
 const wishesListSchema = { wishes: [wishesSchema] };
 

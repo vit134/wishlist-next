@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Link from 'next/link';
 import { getAllUsers, getAllWishes } from '../src/requests';
 import { CardColumns, Card } from 'react-bootstrap';
@@ -29,7 +30,7 @@ class Home extends React.Component {
           <h3>Users</h3>
           <CardColumns>
             {
-              users.reduce((acc, el) => {
+              users.reduce((acc, el = {}) => {
                 const { _id, username, firstname, lastname, count } = el;
                 if (firstname && lastname) {
                   acc.push(
@@ -93,4 +94,8 @@ class Home extends React.Component {
   }
 };
 
-export default Home;
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

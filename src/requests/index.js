@@ -2,25 +2,23 @@ import axios from 'axios';
 
 const headers = {
   Accept: 'application/json',
-  'Content-Type': 'application/json'
+  'Content-Type': 'application/json',
 };
 
 export const getPosts = () => dispatch =>
   axios({
     method: 'GET',
     url: 'https://jsonplaceholder.typicode.com/posts',
-    headers: []
+    headers: [],
   }).then(response => dispatch({ type: 'FOO', payload: response.data }));
-
-// http://localhost:3000
 
 export const userLoginInfoRequst = (req) => {
   return axios.get('http://localhost:3000/api/login', {
     headers: {
       ...headers,
-      cookie: req.headers.cookie
+      cookie: req.headers.cookie,
     },
-    withCredentials: 'include'
+    withCredentials: 'include',
   });
 };
 
@@ -35,7 +33,7 @@ export const loginRequest = (data) => {
 export const logoutRequest = () => {
   return axios.get('/api/logout', {
     headers,
-    withCredentials: 'include'
+    withCredentials: 'include',
   });
 };
 
@@ -58,7 +56,7 @@ export const wishByUserIdRequest = (userId) => {
 export const addWishRequest = (data) => {
   return axios.post('/api/wishes', data, {
     Accept: 'multipart/form-data',
-    'Content-Type': 'multipart/form-data'
+    'Content-Type': 'multipart/form-data',
   });
 };
 

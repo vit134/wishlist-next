@@ -8,7 +8,7 @@ var cloudinary = require('cloudinary');
 cloudinary.config({
   cloud_name: 'vit134',
   api_key: '281223243188336',
-  api_secret: '29SEnKQ8hizuCkwsed155d8WFsY'
+  api_secret: '29SEnKQ8hizuCkwsed155d8WFsY',
 });
 
 const trim = string => string.replace(/\s+/g, '-');
@@ -33,7 +33,7 @@ const renameFile = function (file, folder = 'item-images') {
       {
         folder,
         public_id: fileName,
-        overwrite: true
+        overwrite: true,
       },
       function (error, data) {
         if (!error) {
@@ -54,7 +54,7 @@ const uploadFile = (file, folder = 'item-images') => {
       {
         folder,
         public_id: name,
-        overwrite: true
+        overwrite: true,
       },
       function (error, data) {
         if (!error) {
@@ -196,7 +196,7 @@ const filterWishesByCategories = (wishes) => {
         name,
         slug,
         parentId,
-        wishes: [wish]
+        wishes: [wish],
       };
     }
 
@@ -210,5 +210,5 @@ module.exports = {
   // sendMail,
   // normaliseAccountUpdateData,
   getCategoriesTree,
-  filterWishesByCategories
+  filterWishesByCategories,
 };

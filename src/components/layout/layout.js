@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Layout, PageHeader } from 'antd';
-import { UserInfo } from '../user-info';
-import { LoginDialog } from '../login-dialog';
+import UserInfo from '../../containers/user-info';
+import LoginDialog from '../../containers/login-dialog';
 import { AddWishDialog } from '../add-wish-dialog';
-import { loginRequest, logoutRequest, registrationRequest, addWishRequest } from '../../requests';
+import { logoutRequest, registrationRequest, addWishRequest } from '../../requests';
 import styles from './styles.module.css';
 
 const { Header, Content, Footer } = Layout;
@@ -11,24 +11,21 @@ const { Header, Content, Footer } = Layout;
 class PageLayout extends Component {
   state = {
     user: this.props.user,
-    isLoginPopupOpen: false,
-    isAddWishPopupOpen: false
+    isAddWishPopupOpen: false,
   }
 
   render () {
-    const { children, pageHeader } = this.props;
-    const { isLoginPopupOpen, isAddWishPopupOpen, user } = this.state;
+    const {
+      children,
+      pageHeader,
+    } = this.props;
+    const { isAddWishPopupOpen } = this.state;
 
     return (
       <Layout>
         <Header className={styles.header}>
           <a href="/" className={styles.logo}>My Wishlist</a>
-          <UserInfo
-            user={user}
-            onOpen={this.handleLoginPopupShow}
-            onAddWishPopupOpen={this.handleAddWishPopupOpen}
-            onLogout={this.handleLogout}
-          />
+          <UserInfo onAddWishPopupOpen={this.handleAddWishPopupOpen} />
         </Header>
         {pageHeader && (
           <PageHeader
@@ -45,12 +42,7 @@ class PageLayout extends Component {
           </div>
         </Content>
         <Footer className={styles.footer}>Ant Design ©2018 Created by Ant UED</Footer>
-        <LoginDialog
-          isOpen={isLoginPopupOpen}
-          onLogin={this.handleLogin}
-          onRegistration={this.handleRegistration}
-          onClose={this.handleLoginPopupClose}
-        />
+        <LoginDialog />
         <AddWishDialog
           isOpen={isAddWishPopupOpen}
           onClose={this.handleAddWishPopupClose}
@@ -60,24 +52,11 @@ class PageLayout extends Component {
     );
   }
 
-  handleLogin = (data) => loginRequest(JSON.stringify(data))
-    .then(({ data }) => {
-      if (!data.error) {
-        this.setUser(data, this.handleLoginPopupClose);
-        return data;
-      }
-
-      return { error: data.error };
-    })
-    .catch(e => {
-      throw new Error(e);
-    });
-
   handleLogout = () => logoutRequest()
     .then(() => {
       this.setUser({
         isLogin: false,
-        data: null
+        data: null,
       });
     })
 
@@ -86,7 +65,7 @@ class PageLayout extends Component {
       if (!data.error) {
         this.setUser({
           isLogin: true,
-          data: data.user
+          data: data.user,
         }, this.handleLoginPopupClose);
         return data;
       }

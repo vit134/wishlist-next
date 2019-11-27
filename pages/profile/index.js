@@ -9,8 +9,6 @@ class ProfilePage extends React.Component {
   static async getInitialProps ({ req, res, ...props }) {
     let data = {};
 
-    // console.log('profile props', props);
-
     if (req.user && req.user._id) {
       try {
         const res = await wishesRequest(req.user._id);
@@ -24,9 +22,10 @@ class ProfilePage extends React.Component {
   }
 
   render () {
-    const { wishes } = this.props;
+    const { wishes, user } = this.props;
     const { data = [] } = wishes;
-    console.log(this.props);
+
+    const { data: userData } = user;
 
     return (
       <Table striped bordered hover>
@@ -50,7 +49,7 @@ class ProfilePage extends React.Component {
                         <Image src={el.image} size={50} crop/>
                       </span>
                     )}
-                    <Link href={`/wish/${el._id}`}>{ el.name }</Link>
+                    <Link href={`/user/${userData.username}/${el._id}`}>{ el.name }</Link>
                   </td>
                   <td>{ el.price }</td>
                   <td>{ el.assigned && el.assigned }</td>

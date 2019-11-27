@@ -8,7 +8,6 @@ router.post('/images', (req, res, next) => {
 
   form.parse(req, (err, fields, files) => {
     if (err) {
-      console.log(err);
       next();
     }
 

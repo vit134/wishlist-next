@@ -18,7 +18,7 @@ router.get('/register', function (req, res) {
 
 router.get('/test', (req, res) => {
   res.send({
-    title: 'test of login'
+    title: 'test of login',
   });
 });
 
@@ -30,7 +30,7 @@ router.post('/register', function (req, res) {
     _id,
     username,
     email,
-    is_activate: isActivate
+    is_activate: isActivate,
   }), password, function (error, account) {
     if (error) {
       return res.status(400).send({ status: 'error', error, account });
@@ -60,7 +60,7 @@ router.post('/login', passport.authenticate('local'), function (req, res) {
   const { username } = req.user;
   var update = {
     last_login: Date.now(),
-    online: true
+    online: true,
   };
 
   Account.findOneAndUpdate({ username }, update, { new: true }).exec()
@@ -73,7 +73,7 @@ router.post('/login', passport.authenticate('local'), function (req, res) {
 router.post('/update', async function (req, res) {
   const { _id } = req.body;
   const body = {
-    ...req.body
+    ...req.body,
   };
 
   if (req.body.image) {
@@ -92,21 +92,20 @@ router.post('/update', async function (req, res) {
 
 router.get('/logout', function (req, res) {
   var query = {
-    username: req.user.username
+    username: req.user.username,
   };
 
   req.logout();
 
   var update = {
     last_login: Date.now(),
-    online: false
+    online: false,
   };
   var options = {
-    new: true
+    new: true,
   };
   Account.findOneAndUpdate(query, update, options, function (err, user) {
     if (err) {
-      console.log(err);
     }
     res.send({ user: req.user });
   });

@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
 
   const request = {
     error: false,
-    userId
+    userId,
   };
 
   if (mongoose.Types.ObjectId.isValid(userId)) {
@@ -62,6 +62,8 @@ router.get('/:id', function (req, res) {
 router.get('/by-user-id/:username', function (req, res) {
   const { username } = req.params;
 
+  console.log(username);
+
   if (mongoose.Types.ObjectId.isValid(username)) {
     Wishes.find({ userId: new ObjectId(username) }).populate('assigned userId').exec()
       .then(data => res.send({ success: true, data }))
@@ -80,7 +82,7 @@ router.get('/by-user-id/:username', function (req, res) {
 router.post('/', async function (req, res) {
   const body = {
     ...req.body,
-    userId: String(req.user._id)
+    userId: String(req.user._id),
   };
 
   let fileUploadResult;

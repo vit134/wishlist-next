@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Row, Col, Card, Form, Input, Select, Button, Icon } from 'antd';
 import classnames from 'classnames/bind';
 import { selectFilters } from '../../selectors';
-import { setFilters, clearFilters } from '../../actions';
+import { clearFilters, applyWishesWithFilters } from '../../actions';
+import debounce from 'lodash/debounce';
 import styles from './styles.module.css';
 
 const cx = classnames.bind(styles);
@@ -46,15 +47,15 @@ const IconSort = ({ sort }) => {
   );
 };
 
-const handleFieldsChange = (props, changedFields, allFields) => {
-  const { setFilters } = props;
+const handleFieldsChange = debounce((props, changedFields, allFields) => {
+  const { applyWishesWithFilters } = props;
   const data = Object.entries(allFields).reduce((acc, [name, { value }]) => {
     acc[name] = value;
     return acc;
   }, {});
 
-  setFilters(data);
-};
+  applyWishesWithFilters(data);
+}, 200);
 
 const FormItem = ({ fieldName, label, flex, children }) => {
   return (
@@ -77,11 +78,11 @@ class Filters extends Component {
     const { getFieldDecorator } = form;
 
     const {
-      search,
+      name,
       categories,
       tags,
       price,
-      date
+      date,
     } = filters;
 
     return (
@@ -95,8 +96,8 @@ class Filters extends Component {
             <div className={styles.col}>
               <Row>
                 <Col>
-                  <FormItem search='search' label="Название">
-                    {getFieldDecorator('search', { initialValue: search })(
+                  <FormItem search='name' label="Название">
+                    {getFieldDecorator('name', { initialValue: name })(
                       <Input placeholder="Какая-то белиберда с aliexpress" />
                     )}
                   </FormItem>
@@ -106,7 +107,7 @@ class Filters extends Component {
                 <div className={cx('col', 'width_50')}>
                   <FormItem search='categories' label="Категория">
                     {getFieldDecorator('categories', { initialValue: categories })(
-                      <Select placeholder='Выберите категорию'>
+                      <Select placeholder='Выберите категорию' allowClear>
                         {
                           categoriesList.map(([value, name]) => (
                             <Option key={value}>{ name }</Option>
@@ -119,7 +120,7 @@ class Filters extends Component {
                 <div className={cx('col', 'width_50')}>
                   <FormItem search='tags' label='Тэги' flex>
                     {getFieldDecorator('tags', { initialValue: tags })(
-                      <Select placeholder='Выберите тэги'>
+                      <Select placeholder='Выберите тэги' allowClear>
                         {
                           tagsList.map(([value, name]) => (
                             <Option key={value}>{ name }</Option>
@@ -164,7 +165,7 @@ class Filters extends Component {
     const { setFieldsValue } = form;
     const newValue = getSortType(filters.price);
     setFieldsValue({
-      price: newValue
+      price: newValue,
     });
   }
 
@@ -174,22 +175,22 @@ class Filters extends Component {
     const newValue = getSortType(filters.date);
 
     setFieldsValue({
-      date: newValue
+      date: newValue,
     });
   }
 };
 
 const mapStateToProps = state => {
   return {
-    filters: selectFilters(state)
+    filters: selectFilters(state),
   };
 };
 
 const mapDispatchToProps = {
-  setFilters,
-  clearFilters
+  applyWishesWithFilters,
+  clearFilters,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form.create({
-  onFieldsChange: handleFieldsChange
+  onFieldsChange: handleFieldsChange,
 })(Filters));
