@@ -2,10 +2,14 @@ import {
   userLoginRequest,
   userLoginSuccess,
   userLoginFail,
+
+  userLogoutRequest,
+  userLogoutSuccess,
+  userLogoutFail,
 } from '../actions/user-login';
 import { closeLoginPopup } from '../actions/login-popup';
 
-import { loginRequest } from '../../../src/requests';
+import { loginRequest, logoutRequest } from '../../../src/requests';
 
 export const userLogin = (userFormData) => dispatch => {
   dispatch(userLoginRequest());
@@ -16,4 +20,17 @@ export const userLogin = (userFormData) => dispatch => {
       dispatch(closeLoginPopup());
     })
     .catch(error => dispatch(userLoginFail(error)));
+};
+
+export const userLogout = () => dispatch => {
+  dispatch(userLogoutRequest());
+
+  return logoutRequest()
+    .then(data => {
+      dispatch(userLogoutSuccess(data));
+      dispatch(closeLoginPopup());
+    })
+    .catch(error => {
+      dispatch(userLogoutFail(error));
+    });
 };

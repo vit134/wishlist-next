@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, PageHeader } from 'antd';
-import { UserInfo } from '../user-info';
+import UserInfo from '../../containers/user-info';
 import LoginDialog from '../../containers/login-dialog';
 import { AddWishDialog } from '../add-wish-dialog';
 import { logoutRequest, registrationRequest, addWishRequest } from '../../requests';
@@ -17,10 +17,7 @@ class PageLayout extends Component {
   render () {
     const {
       children,
-      isLogin,
-      userData,
       pageHeader,
-      openLoginPopup,
     } = this.props;
     const { isAddWishPopupOpen } = this.state;
 
@@ -28,13 +25,7 @@ class PageLayout extends Component {
       <Layout>
         <Header className={styles.header}>
           <a href="/" className={styles.logo}>My Wishlist</a>
-          <UserInfo
-            isLogin={isLogin}
-            userData={userData}
-            onOpen={openLoginPopup}
-            onAddWishPopupOpen={this.handleAddWishPopupOpen}
-            onLogout={this.handleLogout}
-          />
+          <UserInfo onAddWishPopupOpen={this.handleAddWishPopupOpen} />
         </Header>
         {pageHeader && (
           <PageHeader
