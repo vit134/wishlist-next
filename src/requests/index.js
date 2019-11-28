@@ -5,6 +5,8 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
+const HOST_NAME = process.env.APP_URL;
+
 export const getPosts = () => dispatch =>
   axios({
     method: 'GET',
@@ -13,7 +15,7 @@ export const getPosts = () => dispatch =>
   }).then(response => dispatch({ type: 'FOO', payload: response.data }));
 
 export const userLoginInfoRequst = (req) => {
-  return axios.get('http://localhost:3000/api/login', {
+  return axios.get(`${HOST_NAME}/api/login`, {
     headers: {
       ...headers,
       cookie: req.headers.cookie,
@@ -23,10 +25,11 @@ export const userLoginInfoRequst = (req) => {
 };
 
 export const userInfoRequst = username => {
-  return axios.get(`http://localhost:3000/api/user/${username}/info`, { headers });
+  return axios.get(`${HOST_NAME}/api/user/${username}/info`, { headers });
 };
 
 export const loginRequest = (data) => {
+  console.log(process.env.APP_URL);
   return axios.post('/api/login', data, { headers });
 };
 
@@ -42,15 +45,15 @@ export const registrationRequest = (data) => {
 };
 
 export const wishesRequest = (userId) => {
-  return axios.get(`http://localhost:3000/api/wishes?user=${userId}`, { headers });
+  return axios.get(`${HOST_NAME}/api/wishes?user=${userId}`, { headers });
 };
 
 export const wishByIdRequest = (id) => {
-  return axios.get(`http://localhost:3000/api/wishes/${id}`, { headers });
+  return axios.get(`${HOST_NAME}/api/wishes/${id}`, { headers });
 };
 
 export const wishByUserIdRequest = (userId) => {
-  return axios.get(`http://localhost:3000/api/wishes/by-user-id/${userId}`, { headers });
+  return axios.get(`${HOST_NAME}/api/wishes/by-user-id/${userId}`, { headers });
 };
 
 export const addWishRequest = (data) => {
@@ -61,9 +64,9 @@ export const addWishRequest = (data) => {
 };
 
 export const getAllUsers = () => {
-  return axios.get('http://localhost:3000/api/user/all', { headers });
+  return axios.get(`${HOST_NAME}/api/user/all`, { headers });
 };
 
 export const getAllWishes = () => {
-  return axios.get('http://localhost:3000/api/wishes/all', { headers });
+  return axios.get(`${HOST_NAME}/api/wishes/all`, { headers });
 };

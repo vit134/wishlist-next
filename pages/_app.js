@@ -28,7 +28,7 @@ class MyApp extends App {
 
   render () {
     const { Component, pageProps, router, store } = this.props;
-    const { user, pageHeader = false } = pageProps;
+    const { user = {}, pageHeader = false } = pageProps;
 
     const accessDenied = protectedRoutes.includes(router.route) && !user.isLogin;
 
