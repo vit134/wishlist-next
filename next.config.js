@@ -4,7 +4,6 @@ const withLess = require('@zeit/next-less');
 const lessToJS = require('less-vars-to-js');
 const fs = require('fs');
 const path = require('path');
-const chalk = require('chalk');
 require('dotenv').config();
 
 const themeVariables = lessToJS(
@@ -64,10 +63,6 @@ module.exports = withLess({
         })
       );
     }
-
-    console.log(chalk.red('config', process.env.HEROKU_APP_NAME));
-    console.log(chalk.red('server', process.env.APP_URL));
-    console.log(chalk.red('server', process.env.BLA));
 
     return config;
   },
