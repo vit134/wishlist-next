@@ -64,7 +64,8 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "transliteration": "^2.1.7",
-    "webpack-bundle-analyzer": "^3.6.0"
+    "webpack-bundle-analyzer": "^3.6.0",
+    "less-loader": "^5.0.0"
   },
   "husky": {
     "hooks": {
