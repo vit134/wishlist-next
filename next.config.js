@@ -4,7 +4,6 @@ const withLess = require('@zeit/next-less');
 const lessToJS = require('less-vars-to-js');
 const fs = require('fs');
 const path = require('path');
-const webpack = require('webpack');
 require('dotenv').config();
 
 const themeVariables = lessToJS(
@@ -64,13 +63,6 @@ module.exports = withLess({
         })
       );
     }
-
-    const env = Object.keys(process.env).reduce((acc, curr) => {
-      acc[`process.env.${curr}`] = JSON.stringify(process.env[curr]);
-      return acc;
-    }, {});
-
-    config.plugins.push(new webpack.DefinePlugin(env));
 
     return config;
   },
