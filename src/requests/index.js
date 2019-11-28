@@ -5,7 +5,7 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
-const HOST_NAME = process.env.APP_URL;
+const HOST_NAME = process.env.APP_URL || process.env.HEROKU_APP_NAME;
 
 export const getPosts = () => dispatch =>
   axios({
