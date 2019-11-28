@@ -69,7 +69,9 @@ module.exports = withLess({
     console.log(chalk.red('server', process.env.APP_URL));
     console.log(chalk.red('server', process.env.BLA));
 
-    config.env.BLA = 'BLABLA';
+    config.env = {
+      BLA: 'BLABLA',
+    };
 
     return config;
   },
