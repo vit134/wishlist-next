@@ -69,10 +69,11 @@ module.exports = withLess({
     console.log(chalk.red('server', process.env.APP_URL));
     console.log(chalk.red('server', process.env.BLA));
 
-    config.env = {
-      BLA: 'BLABLA',
-    };
-
     return config;
+  },
+  env: {
+    HEROKU_APP_NAME: process.env.HEROKU_APP_NAME,
+    APP_URL: process.env.APP_URL,
+    BLA: process.env.BLA,
   },
 });
