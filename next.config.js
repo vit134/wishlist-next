@@ -4,6 +4,7 @@ const withLess = require('@zeit/next-less');
 const lessToJS = require('less-vars-to-js');
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config();
 
 const themeVariables = lessToJS(
   fs.readFileSync(path.resolve(__dirname, './assets/antd-custom.less'), 'utf8')
@@ -64,5 +65,10 @@ module.exports = withLess({
     }
 
     return config;
+  },
+  env: {
+    HEROKU_APP_NAME: process.env.HEROKU_APP_NAME,
+    APP_URL: process.env.APP_URL,
+    BLA: process.env.BLA,
   },
 });

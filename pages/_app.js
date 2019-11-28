@@ -27,8 +27,10 @@ class MyApp extends App {
   }
 
   render () {
+    console.log(process.env.HEROKU_APP_NAME);
+    console.log(process.env.APP_URL);
     const { Component, pageProps, router, store } = this.props;
-    const { user, pageHeader = false } = pageProps;
+    const { user = {}, pageHeader = false } = pageProps;
 
     const accessDenied = protectedRoutes.includes(router.route) && !user.isLogin;
 
