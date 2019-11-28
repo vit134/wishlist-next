@@ -1,9 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
+import CurrencyFormat from 'react-currency-format';
 import { getAllUsers, getAllWishes } from '../src/requests';
-import { CardColumns, Card } from 'react-bootstrap';
+import { Avatar, Row, Col, Card, Typography } from 'antd';
 import { getUserName } from '../src/utils';
+import { Image } from '../src/components/image';
+import styles from './styles.module.css';
+
+const { Meta } = Card;
+const { Title } = Typography;
 
 class Home extends React.Component {
   static async getInitialProps ({ req }) {
@@ -24,70 +30,67 @@ class Home extends React.Component {
   render () {
     const { users = [], wishes = [] } = this.props.data;
 
+    const filteredUsers = users.filter(user => user.firstname && user.lastname);
+    const filteredWishes = wishes.filter(wish => wish.image);
+
     return (
       <>
-        <section>
-          <h3>Users</h3>
-          <CardColumns>
+        <section className={styles.section}>
+          <Title level={3}>Users</Title>
+          <Row gutter={16}>
             {
-              users.reduce((acc, el = {}) => {
-                const { _id, username, firstname, lastname, count } = el;
-                if (firstname && lastname) {
-                  acc.push(
-                    <Card key={_id}>
-                      <Card.Body>
-                        <Card.Title>{ getUserName(el) }</Card.Title>
-                        <Card.Text as='div'>
-                          <div>Количество желаний - {count}</div>
-                        </Card.Text>
-                      </Card.Body>
-                      <Card.Footer>
-                        <Link href={`/user/${username}`}>
-                          <a href={`/user/${username}`}>
-                          Профиль
-                          </a>
-                        </Link>
-                      </Card.Footer>
-                    </Card>
-                  );
-                }
-
-                return acc;
-              }, [])
-            }
-
-          </CardColumns>
-        </section>
-        <section>
-          <h3>Wishes</h3>
-          <CardColumns>
-            {
-              wishes.reduce((acc, el) => {
-                const { _id, userId, name, image } = el;
-                acc.push(
-                  <Card key={_id}>
-                    {image && <Card.Img src={image}/>}
-                    <Card.Body>
-                      <Card.Title>{ name }</Card.Title>
-                      <Card.Text as='div'>
-                        <div>{ getUserName(userId) }</div>
-                      </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                      <Link href={`/wish/${_id}`}>
-                        <a href={`/wish/${_id}`}>
-                          Подробнее
+              filteredUsers.map(({ _id, username, firstname, lastname, count, avatar }) => (
+                <Col span={8} key={_id} className={styles.col}>
+                  <Card
+                    hoverable
+                    actions={[(
+                      <Link key={'link'} href={`/user/${username}`}>
+                        <a href={`/user/${username}`}>
+                           Профиль
                         </a>
                       </Link>
-                    </Card.Footer>
+                    )]}
+                  >
+                    <Meta
+                      avatar={<Avatar src={avatar} />}
+                      title={getUserName({ firstname, lastname, username })}
+                      description={`Количество желаний - ${count}`}
+                    />
                   </Card>
-                );
+                </Col>
+              ))}
+          </Row>
+        </section>
+        <section className={styles.section}>
+          <Title level={3}>Wishes</Title>
+          <Row gutter={16}>
+            {
+              filteredWishes.map(({ _id, userId, name, image, price }) => (
+                <Col span={8} key={_id} className={styles.col}>
+                  <Card
+                    hoverable
+                    cover={<Image src={image} height={100} crop />}
+                  >
+                    <Meta
+                      avatar={
+                        <Link key={'link'} href={`/user/${userId.username}`}>
+                          <a href={`/user/${userId.username}`}>
+                            <Avatar src={userId.avatar} />
+                          </a>
+                        </Link>
+                      }
+                      title={(
+                        <Link href={`/user/${userId.username}/${_id}`}>
+                          <a href={`/user/${userId.username}/${_id}`}>{name}</a>
+                        </Link>
+                      )}
+                    />
+                    {price && <span><CurrencyFormat value={price} displayType='text' suffix=' руб.'/></span>}
+                  </Card>
+                </Col>
+              ))}
 
-                return acc;
-              }, [])
-            }
-
-          </CardColumns>
+          </Row>
         </section>
       </>
     );

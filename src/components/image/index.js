@@ -1,5 +1,4 @@
 import React from 'react';
-import { Image as BootstrapImage } from 'react-bootstrap';
 import classNames from 'classnames/bind';
 import styles from './styles.less';
 
@@ -24,6 +23,7 @@ export const Image = ({
   const transformParams = [
     width && `w_${width}`,
     `h_${height}`,
+    'd_avatar.png'
   ];
 
   if (crop) {
@@ -37,7 +37,7 @@ export const Image = ({
 
   return (
     <div className={rootClassName}>
-      <BootstrapImage src={imageUrl} alt="kartinka" />
+      <img src={imageUrl} alt="kartinka" />
     </div>
   );
 };
