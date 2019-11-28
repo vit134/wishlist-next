@@ -90,6 +90,10 @@ nextApp.prepare().then(() => {
     return handle(req, res); // for all the react stuff
   });
 
+  console.log(chalk.red('server index.js', process.env.HEROKU_APP_NAME));
+  console.log(chalk.red('server index.js', process.env.APP_URL));
+  console.log(chalk.red('server index.js', process.env.BLA));
+
   app.use(methodOverride());
   app.use(logErrors);
   app.use(clientErrorHandler);
