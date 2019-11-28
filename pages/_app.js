@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import { setUserLogin } from '../domains/root/actions/user-login';
 import PageLayout from '../src/containers/layout';
+import { AccessDenied } from '../src/components/access-denied';
 
 const protectedRoutes = [
   '/profile',
@@ -23,22 +24,21 @@ class MyApp extends App {
       await store.dispatch(setUserLogin({ isLogin: true, data: req.user }));
     }
 
-    return { pageProps };
+    return {
+      pageProps,
+      accessDenied: protectedRoutes.includes(req.url) && !req.user,
+    };
   }
 
   render () {
-    console.log(process.env.HEROKU_APP_NAME);
-    console.log(process.env.APP_URL);
-    const { Component, pageProps, router, store } = this.props;
-    const { user = {}, pageHeader = false } = pageProps;
-
-    const accessDenied = protectedRoutes.includes(router.route) && !user.isLogin;
+    const { Component, pageProps = {}, store, accessDenied } = this.props;
+    const { pageHeader = false } = pageProps;
 
     return (
       <Provider store={store}>
-        <PageLayout user={user} pageHeader={pageHeader}>
+        <PageLayout pageHeader={pageHeader}>
           {accessDenied ? (
-            <div>Доступ запрещен</div>
+            <AccessDenied />
           ) : (
             <Component {...pageProps} />
           )}
