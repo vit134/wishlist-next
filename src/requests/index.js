@@ -29,7 +29,7 @@ export const userInfoRequst = username => {
 };
 
 export const loginRequest = (data) => {
-  console.log(process.env.APP_URL);
+  console.log(process.env);
   return axios.post('/api/login', data, { headers });
 };
 
