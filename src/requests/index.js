@@ -29,7 +29,6 @@ export const userInfoRequst = username => {
 };
 
 export const loginRequest = (data) => {
-  console.log(JSON.stringify(process.env.HEROKU_APP_NAME));
   return axios.post('/api/login', data, { headers });
 };
 
