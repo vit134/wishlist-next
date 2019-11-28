@@ -22,10 +22,11 @@ class ProfilePage extends React.Component {
   }
 
   render () {
-    const { wishes, user } = this.props;
+    console.log(this.props);
+    const { wishes = {}, user = {} } = this.props;
     const { data = [] } = wishes;
 
-    const { data: userData } = user;
+    const { data: userData = {} } = user;
 
     return (
       <Table striped bordered hover>
