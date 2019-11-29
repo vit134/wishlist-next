@@ -26,11 +26,20 @@ class ProfilePage extends React.Component {
   render () {
     const { wishes = {}, user = {} } = this.props;
     const { data = [] } = wishes;
-
+    console.log(this.props);
     const { data: userData = {} } = user;
 
+    const filteredData = data
+      .filter(wish => wish.name)
+      .sort((a, b) => {
+        const aTime = new Date(a.createdDate).getTime();
+        const bTime = new Date(b.createdDate).getTime();
+
+        return aTime - bTime;
+      });
+
     return (
-      <Table dataSource={data}>
+      <Table dataSource={filteredData}>
         <Column
           title="Название"
           dataIndex="name"

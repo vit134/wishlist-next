@@ -1,14 +1,15 @@
 import React from 'react';
 import CurrencyFormat from 'react-currency-format';
-import { Container, Row, Col, Button, Card } from 'react-bootstrap';
-import { useRouter } from 'next/router';
+import { Row, Col, Card, Typography } from 'antd';
+import { Image } from '../../../../src/components/image';
 import { wishByIdRequest } from '../../../../src/requests';
 
-const { Title, Body, Img } = Card;
+const { Title } = Typography;
 
-const SingleWishPage = ({ wish, user }) => {
-  const { data, error } = wish;
-  const router = useRouter();
+const SingleWishPage = (props) => {
+  const { wish = {}, user = {} } = props;
+  const { data } = wish;
+  const error = null;
 
   if (error) {
     return (
@@ -19,45 +20,35 @@ const SingleWishPage = ({ wish, user }) => {
   }
 
   return (
-    <Container fluid>
-      <Row>
-        <Button onClick={() => router.back()}>Назад</Button>
-      </Row>
-      <Row>
-        <Card>
-          <Body>
-            <Container>
-              <Row>
-                <Col xs={6} md={4}>
-                  <Img src={data.image} />
-                </Col>
-                <Col>
-                  <div>
-                    <Title>{ data.name }</Title>
-                  </div>
-                  { data.link && (
-                    <div>
-                      <a href={ data.link }>Ссылка на магазин</a>
-                    </div>
-                  )}
-                  { data.price && (
-                    <div>
-                      Цена -&nbsp;<CurrencyFormat value={data.price} displayType='text' suffix=' руб.'/>
-                    </div>
-                  )}
-                  { user.data && user.data._id === data.userId._id && (
-                    <div>
+    <Row>
+      <Card>
+        <Row>
+          <Col xs={6} md={4}>
+            <Image src={data.image} />
+          </Col>
+          <Col>
+            <div>
+              <Title level={2}>{ data.name }</Title>
+            </div>
+            { data.link && (
+              <div>
+                <a href={ data.link }>Ссылка на магазин</a>
+              </div>
+            )}
+            { data.price && (
+              <div>
+                Цена -&nbsp;<CurrencyFormat value={data.price} displayType='text' suffix=' руб.'/>
+              </div>
+            )}
+            { user.data && user.data._id === data.userId._id && (
+              <div>
                       Бронь - { data.assigned ? data.assigned : 'никто' }
-                    </div>
-                  )}
-                </Col>
-              </Row>
-            </Container>
-          </Body>
-        </Card>
-      </Row>
-    </Container>
-
+              </div>
+            )}
+          </Col>
+        </Row>
+      </Card>
+    </Row>
   );
 };
 

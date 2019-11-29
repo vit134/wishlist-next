@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Layout, PageHeader } from 'antd';
 import UserInfo from '../../containers/user-info';
 import LoginDialog from '../../containers/login-dialog';
-import { AddWishDialog } from '../add-wish-dialog';
+import AddWishDialog from '../add-wish-dialog';
 import { logoutRequest, registrationRequest, addWishRequest } from '../../requests';
 import styles from './styles.module.css';
 
@@ -78,7 +78,11 @@ class PageLayout extends Component {
   handleAddWish = (e) => {
     e.preventDefault();
 
+    console.log(e);
+
     const data = new FormData(e.target);
+
+    console.log('handleAddWish', JSON.stringify(data));
 
     addWishRequest(data)
       .then(this.handleAddWishPopupClose)

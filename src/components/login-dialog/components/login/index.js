@@ -68,15 +68,4 @@ class LoginContent extends Component {
   }
 };
 
-// export default Form.create({
-//   mapPropsToFields: (props) => {
-//     console.log(props.error && props.error.message);
-//     console.log(props);
-//     return {
-//       username: Form.createFormField({
-//         errors: props.error && [new Error(props.error.message)],
-//       }),
-//     };
-//   },
-// })(LoginContent);
 export default Form.create()(LoginContent);
