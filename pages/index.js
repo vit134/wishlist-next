@@ -5,7 +5,7 @@ import CurrencyFormat from 'react-currency-format';
 import { getAllUsers, getAllWishes } from '../src/requests';
 import { Avatar, Row, Col, Card, Typography } from 'antd';
 import { getUserName } from '../src/utils';
-import { Image } from '../src/components/image';
+import { Image } from 'components/image';
 import styles from './styles.module.css';
 
 const { Meta } = Card;

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "containers/*": ["src/containers/*"],
+      "requests/*": ["src/requests/*"],
+      "domains/*": ["domains/*"]
+    }
+  },
+  "exclude": ["node_modules", ".next"]
+}

@@ -1,8 +1,8 @@
 import React from 'react';
 import CurrencyFormat from 'react-currency-format';
 import { Row, Col, Card, Typography } from 'antd';
-import { Image } from '../../../../src/components/image';
-import { wishByIdRequest } from '../../../../src/requests';
+import { Image } from 'components/image';
+import { wishByIdRequest } from 'requests';
 
 const { Title } = Typography;
 

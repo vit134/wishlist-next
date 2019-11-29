@@ -64,6 +64,13 @@ module.exports = withLess({
       );
     }
 
+    /* eslint-disable dot-notation */
+    config.resolve.alias['components'] = path.join(__dirname, 'src/components');
+    config.resolve.alias['containers'] = path.join(__dirname, 'src/containers');
+    config.resolve.alias['requests'] = path.join(__dirname, 'src/requests');
+    config.resolve.alias['domains'] = path.join(__dirname, 'domains');
+    /* eslint-enable dot-notation */
+
     return config;
   },
   env: {
