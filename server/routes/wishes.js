@@ -87,12 +87,8 @@ router.post('/', async function (req, res) {
 
   let fileUploadResult;
 
-  console.log(req.body, req.files);
-
   if (req.files) {
     const { image } = req.files;
-
-    console.log(image);
 
     try {
       fileUploadResult = await uploadFile(image);
@@ -100,8 +96,6 @@ router.post('/', async function (req, res) {
       fileUploadResult = e;
     }
   }
-
-  console.log(fileUploadResult);
 
   if (fileUploadResult && fileUploadResult.success) {
     body.image = fileUploadResult.data.url;
