@@ -3,9 +3,9 @@ import App from 'next/app';
 import { makeStore } from '../redux';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
-import { setUserLogin } from '../domains/root/actions/user-login';
-import PageLayout from '../src/containers/layout';
-import { AccessDenied } from '../src/components/access-denied';
+import { setUserLogin } from 'domains/root/actions/user-login';
+import PageLayout from 'containers/layout';
+import { AccessDenied } from 'components/access-denied';
 
 const protectedRoutes = [
   '/profile',

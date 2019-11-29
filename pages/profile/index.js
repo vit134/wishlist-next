@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { wishesRequest } from '../../src/requests';
 import Link from 'next/link';
 import { Table } from 'antd';
-import { Image } from '../../src/components/image';
+import { Image } from 'components/image';
 
 const { Column } = Table;
 

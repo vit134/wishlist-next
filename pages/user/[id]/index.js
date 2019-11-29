@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import UserPageContent from '../../../domains/user-by-id/components';
+import UserPageContent from 'domains/user-by-id/components';
 import { getUserName } from '../../../src/utils';
-import { selectUserInfoData } from '../../../domains/user-by-id/selectors';
-import { getWishes, getUserInfo } from '../../../domains/user-by-id/operations';
+import { selectUserInfoData } from 'domains/user-by-id/selectors';
+import { getWishes, getUserInfo } from 'domains/user-by-id/operations';
 
 class UserPage extends React.Component {
   static async getInitialProps ({ query, store, asPath }) {
