@@ -1,44 +1,67 @@
 import React from 'react';
-import { Modal, Form, Button } from 'react-bootstrap';
+import { Modal, Form, Icon, Input, Button } from 'antd';
 
 import styles from './styles.less';
 
-export const AddWishDialog = ({ isOpen, onSubmit, onClose }) => {
-  if (!isOpen) {
-    return null;
-  }
+class AddWishDialog extends React.Component {
+  render () {
+    if (!this.props.isOpen) {
+      return null;
+    }
 
-  return (
-    <Modal show onHide={onClose} centered>
-      <Modal.Body>
+    const { form, onSubmit, onClose } = this.props;
+    const { getFieldDecorator } = form;
+
+    return (
+      <Modal
+        bodyStyle={{ paddingRight: '60px' }}
+        visible
+        footer={null}
+        onCancel={onClose}
+      >
         <div className={styles.modal}>
           <Form onSubmit={onSubmit}>
-            <Form.Group controlId="name">
-              <Form.Label>Название</Form.Label>
-              <Form.Control type="text" name="name" placeholder="Название" />
-            </Form.Group>
-
-            <Form.Group controlId="link">
-              <Form.Label>Ссылка</Form.Label>
-              <Form.Control type="text" name="link" placeholder="Ссылка" />
-            </Form.Group>
-
-            <Form.Group controlId="price">
-              <Form.Label>Цена</Form.Label>
-              <Form.Control type="number" name="price" placeholder="Цена" />
-            </Form.Group>
-
-            <Form.Group controlId="image">
-              <Form.Label>Изображение</Form.Label>
-              <Form.Control type="file" name="image" placeholder="Изображение" />
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
+            <Form.Item>
+              {getFieldDecorator('name', {
+                rules: [{ required: true, message: 'Пожалуйста введите название' }],
+              })(
+                <Input
+                  name='name'
+                  prefix={<Icon type="user" />}
+                  placeholder="Название"
+                />
+              )}
+            </Form.Item>
+            <Form.Item>
+              {getFieldDecorator('link')(
+                <Input
+                  name='link'
+                  prefix={<Icon type="user" />}
+                  placeholder="Ссылка"
+                />
+              )}
+            </Form.Item>
+            <Form.Item>
+              {getFieldDecorator('price')(
+                <Input
+                  prefix={<Icon type="user" />}
+                  placeholder="Цена"
+                />
+              )}
+            </Form.Item>
+            <Form.Item>
+              {getFieldDecorator('upload')(
+                <input type="file" name="image" />
+              )}
+            </Form.Item>
+            <Button type="primary" htmlType="submit">
               Создать
             </Button>
           </Form>
         </div>
-      </Modal.Body>
-    </Modal>
-  );
+      </Modal>
+    );
+  }
 };
+
+export default Form.create()(AddWishDialog);

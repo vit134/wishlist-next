@@ -1,6 +1,0 @@
-{
-  "name": "Wishlist-next",
-  "scripts": {
-    "postdeploy": "heroku config:set APP_URL=${HEROKU_APP_NAME}.herokuapp.com --app ${HEROKU_APP_NAME}"
-  }
-}
