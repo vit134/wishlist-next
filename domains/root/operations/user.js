@@ -6,10 +6,18 @@ import {
   userLogoutRequest,
   userLogoutSuccess,
   userLogoutFail,
-} from '../actions/user-login';
+
+  userRegistrationRequest,
+  userRegistrationSuccess,
+  userRegistrationFail,
+} from '../actions/user';
 import { closeLoginPopup } from '../actions/login-popup';
 
-import { loginRequest, logoutRequest } from '../../../src/requests';
+import {
+  loginRequest,
+  logoutRequest,
+  registrationRequest,
+} from '../../../src/requests';
 
 export const userLogin = (userFormData) => dispatch => {
   dispatch(userLoginRequest());
@@ -38,5 +46,22 @@ export const userLogout = () => dispatch => {
     })
     .catch(error => {
       dispatch(userLogoutFail(error));
+    });
+};
+
+export const userRegistration = userFormData => dispatch => {
+  dispatch(userRegistrationRequest());
+  console.log(userFormData);
+  return registrationRequest(userFormData)
+    .then(({ data }) => {
+      if (data.success) {
+        dispatch(userRegistrationSuccess(data));
+      } else {
+        throw data.error;
+      }
+      dispatch(closeLoginPopup());
+    })
+    .catch(error => {
+      dispatch(userRegistrationFail({ error }));
     });
 };

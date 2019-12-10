@@ -9,7 +9,11 @@ import {
   USER_LOGOUT_REQUEST,
   USER_LOGOUT_SUCCESS,
   USER_LOGOUT_FAIL,
-} from '../actions/user-login';
+
+  USER_REGISTRATION_REQUEST,
+  USER_REGISTRATION_SUCCESS,
+  USER_REGISTRATION_FAIL,
+} from '../actions/user';
 
 const initialState = {
   isLoading: false,
@@ -30,6 +34,7 @@ export const userLoginReducer = (state = initialState, { type, payload }) => {
     case USER_LOGIN_REQUEST:
       return set(['isLoading'], true)(state);
     case USER_LOGIN_SUCCESS:
+      console.log(payload);
       return pipe([
         set(['isLoading'], false),
         set(['isLogin'], payload.success),
@@ -44,7 +49,6 @@ export const userLoginReducer = (state = initialState, { type, payload }) => {
     case USER_LOGOUT_REQUEST:
       return set(['isLoading'], true)(state);
     case USER_LOGOUT_SUCCESS:
-      console.log(payload);
       return pipe([
         set(['isLoading'], false),
         set(['isLogin'], !payload.data.success),
@@ -55,6 +59,22 @@ export const userLoginReducer = (state = initialState, { type, payload }) => {
         set(['isLoading'], false),
         set(['error'], payload.error)
       ])(state);
+
+    case USER_REGISTRATION_REQUEST:
+      return set(['isLoading'], true)(state);
+    case USER_REGISTRATION_SUCCESS:
+      console.log(payload);
+      return pipe([
+        set(['isLoading'], false),
+        set(['isLogin'], payload.success),
+        set(['data'], payload.data)
+      ])(state);
+    case USER_REGISTRATION_FAIL:
+      return pipe([
+        set(['isLoading'], false),
+        set(['error'], payload.error)
+      ])(state);
+
     default:
       return state;
   }

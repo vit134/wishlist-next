@@ -14,11 +14,11 @@ router.post('/', function (req, res, next) {
     email,
   }), password, (error, account) => {
     if (error) {
-      return res.send({ status: 'error', error, account });
+      return res.send({ success: false, error, account: 123 });
     }
 
     passport.authenticate('local')(req, res, () => {
-      return res.send({ status: 'success', user: req.user });
+      return res.send({ success: true, data: req.user });
     });
   });
 });

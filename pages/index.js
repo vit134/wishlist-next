@@ -8,9 +8,6 @@ import { getUserName } from '../src/utils';
 import { Image } from 'components/image';
 import styles from './styles.module.css';
 
-const { Meta } = Card;
-const { Title } = Typography;
-
 class Home extends React.Component {
   static async getInitialProps ({ req }) {
     const data = {};
@@ -36,11 +33,11 @@ class Home extends React.Component {
     return (
       <>
         <section className={styles.section}>
-          <Title level={3}>Users</Title>
+          <Typography.Title level={3}>Users</Typography.Title>
           <Row gutter={16}>
             {
               filteredUsers.map(({ _id, username, firstname, lastname, count, avatar }) => (
-                <Col span={8} key={_id} className={styles.col}>
+                <Col span={6} key={_id} className={styles.col}>
                   <Card
                     hoverable
                     actions={[(
@@ -51,7 +48,7 @@ class Home extends React.Component {
                       </Link>
                     )]}
                   >
-                    <Meta
+                    <Card.Meta
                       avatar={<Avatar src={avatar} />}
                       title={getUserName({ firstname, lastname, username })}
                       description={`Количество желаний - ${count}`}
@@ -62,16 +59,16 @@ class Home extends React.Component {
           </Row>
         </section>
         <section className={styles.section}>
-          <Title level={3}>Wishes</Title>
+          <Typography.Title level={3}>Wishes</Typography.Title>
           <Row gutter={16}>
             {
               filteredWishes.map(({ _id, userId, name, image, price }) => (
-                <Col span={8} key={_id} className={styles.col}>
+                <Col span={6} key={_id} className={styles.col}>
                   <Card
                     hoverable
                     cover={<Image src={image} height={100} crop />}
                   >
-                    <Meta
+                    <Card.Meta
                       avatar={
                         <Link key={'link'} href={`/user/${userId.username}`}>
                           <a href={`/user/${userId.username}`}>

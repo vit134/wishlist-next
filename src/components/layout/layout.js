@@ -3,7 +3,7 @@ import { Layout, PageHeader } from 'antd';
 import UserInfo from 'containers/user-info';
 import LoginDialog from 'containers/login-dialog';
 import AddWishDialog from '../add-wish-dialog';
-import { logoutRequest, registrationRequest, addWishRequest } from 'requests';
+import { addWishRequest } from 'requests';
 import styles from './styles.module.css';
 
 const { Header, Content, Footer } = Layout;
@@ -24,8 +24,10 @@ class PageLayout extends Component {
     return (
       <Layout>
         <Header className={styles.header}>
-          <a href="/" className={styles.logo}>My Wishlist</a>
-          <UserInfo onAddWishPopupOpen={this.handleAddWishPopupOpen} />
+          <div className={styles.container}>
+            <a href="/" className={styles.logo}>My Wishlist</a>
+            <UserInfo onAddWishPopupOpen={this.handleAddWishPopupOpen} />
+          </div>
         </Header>
         {pageHeader && (
           <PageHeader
@@ -52,49 +54,18 @@ class PageLayout extends Component {
     );
   }
 
-  handleLogout = () => logoutRequest()
-    .then(() => {
-      this.setUser({
-        isLogin: false,
-        data: null,
-      });
-    })
-
-  handleRegistration = data => registrationRequest(JSON.stringify(data))
-    .then(({ data }) => {
-      if (!data.error) {
-        this.setUser({
-          isLogin: true,
-          data: data.user,
-        }, this.handleLoginPopupClose);
-        return data;
-      }
-      return { error: data.error };
-    })
-    .catch((error) => {
-      throw new Error(error);
-    });
-
   handleAddWish = (e) => {
     e.preventDefault();
 
-    console.log(e);
-
     const data = new FormData(e.target);
-
-    console.log('handleAddWish', JSON.stringify(data));
 
     addWishRequest(data)
       .then(this.handleAddWishPopupClose)
       .catch(err => console.log(err));
   };
 
-  setUser = (data, cb) => this.setState({ user: data }, cb && cb);
-
   handleAddWishPopupOpen = () => this.setState({ isAddWishPopupOpen: true });
   handleAddWishPopupClose = () => this.setState({ isAddWishPopupOpen: false });
-  handleLoginPopupShow = () => this.setState({ isLoginPopupOpen: true });
-  handleLoginPopupClose = () => this.setState({ isLoginPopupOpen: false });
 }
 
 export default PageLayout;

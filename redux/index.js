@@ -2,7 +2,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { wishesReducer, userInfoReducer, filtersReducer, paginationReducer } from 'domains/user-by-id/reducers';
-import { userLoginReducer } from 'domains/root/reducers/user-login';
+import { userLoginReducer } from 'domains/root/reducers/user';
 import { loginPopupReducer } from 'domains/root/reducers/login-popup';
 
 const composeEnhancers = composeWithDevTools({

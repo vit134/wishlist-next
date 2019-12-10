@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Button } from 'antd';
-import { handleSetError, hasErrors } from '../../helpers';
+import { getErrors, hasErrors } from '../../helpers';
 import { Error } from '../error';
 import styles from './styles.module.css';
 
@@ -9,33 +9,34 @@ const InputIcon = ({ type }) => (
 );
 
 class RegContent extends Component {
-  state = {
-    isLoading: false,
-    error: null,
-  }
-
   render () {
-    const { form } = this.props;
-    const { isLoading, error } = this.state;
+    const { form, isLoading, error } = this.props;
     const { getFieldDecorator, getFieldsError } = form;
+
+    const {
+      username: userNameErrors,
+      password: emailErrors,
+    } = getErrors(error, ['username', 'password']);
 
     return (
       <Form onSubmit={this.handleLoginSubmit}>
-        <Form.Item>
+        <Form.Item {...userNameErrors}>
           {getFieldDecorator('username', {
             rules: [{ required: true, message: 'Пожалуйста введите имя пользователя' }],
           })(
             <Input
+              autoComplete="off"
               prefix={<InputIcon type="user" />}
               placeholder="Username"
             />
           )}
         </Form.Item>
-        <Form.Item>
+        <Form.Item {...emailErrors}>
           {getFieldDecorator('email', {
             rules: [{ required: true, message: 'Пожалуйста укажите адрес электронной почты' }],
           })(
             <Input
+              autoComplete="off"
               type='email'
               prefix={<InputIcon type="mail" />}
               placeholder="Email"
@@ -46,9 +47,9 @@ class RegContent extends Component {
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Пожалуйста введите пароль' }],
           })(
-            <Input
+            <Input.Password
               prefix={<InputIcon type="lock" />}
-              type="password"
+              autoComplete="off"
               placeholder="Password"
             />
           )}
@@ -77,26 +78,7 @@ class RegContent extends Component {
         if (!err) {
           console.log('Received values of login-form: ', formData);
 
-          onSubmit(formData)
-            .then(({ error, data }) => {
-              if (error) {
-                handleSetError(form, error);
-              }
-
-              this.setState({
-                error,
-                data,
-                isLoading: false,
-              });
-
-              return data;
-            })
-            .catch(error => {
-              this.setState({
-                error,
-                isLoading: false,
-              });
-            });
+          onSubmit(formData);
         }
       });
     });

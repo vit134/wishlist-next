@@ -8,6 +8,10 @@ export const USER_LOGOUT_REQUEST = 'USER_LOGOUT_REQUEST';
 export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
 export const USER_LOGOUT_FAIL = 'USER_LOGOUT_FAIL';
 
+export const USER_REGISTRATION_REQUEST = 'USER_REGISTRATION_REQUEST';
+export const USER_REGISTRATION_SUCCESS = 'USER_REGISTRATION_SUCCESS';
+export const USER_REGISTRATION_FAIL = 'USER_REGISTRATION_FAIL';
+
 export const setUserLogin = ({ isLogin, data }) => ({
   type: SET_USER_LOGIN,
   payload: { isLogin, data },
@@ -38,5 +42,19 @@ export const userLogoutSuccess = (data) => ({
 
 export const userLogoutFail = (error) => ({
   type: USER_LOGOUT_FAIL,
+  payload: error,
+});
+
+export const userRegistrationRequest = () => ({
+  type: USER_REGISTRATION_REQUEST,
+});
+
+export const userRegistrationSuccess = data => ({
+  type: USER_REGISTRATION_SUCCESS,
+  payload: data,
+});
+
+export const userRegistrationFail = error => ({
+  type: USER_REGISTRATION_FAIL,
   payload: error,
 });
