@@ -37,7 +37,7 @@ module.exports = withLess({
       });
     }
 
-    defaultLoaders.css = cssLoaderConfig(config, {
+    defaultLoaders.cssModules = cssLoaderConfig(config, {
       extensions: ['css'],
       cssModules: true,
       cssLoaderOptions: {
@@ -50,6 +50,18 @@ module.exports = withLess({
     config.module.rules.push({
       test: /\.css$/,
       include: /\.module\.css$/,
+      use: defaultLoaders.cssModules,
+    });
+
+    defaultLoaders.css = cssLoaderConfig(config, {
+      extensions: ['css'],
+      dev,
+      isServer,
+    });
+
+    config.module.rules.push({
+      test: /\.css$/,
+      exclude: /\.module\.css$/,
       use: defaultLoaders.css,
     });
 

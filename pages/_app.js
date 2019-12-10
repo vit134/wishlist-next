@@ -6,6 +6,7 @@ import withRedux from 'next-redux-wrapper';
 import { setUserLogin } from 'domains/root/actions/user';
 import PageLayout from 'containers/layout';
 import { AccessDenied } from 'components/access-denied';
+import './global.css';
 
 const protectedRoutes = [
   '/profile',
