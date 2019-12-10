@@ -34,9 +34,8 @@ class LoginContent extends Component {
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Пожалуйста введите пароль' }],
           })(
-            <Input
+            <Input.Password
               prefix={<InputIcon type="lock" />}
-              type="password"
               placeholder="Password"
             />
           )}

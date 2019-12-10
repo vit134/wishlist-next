@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { userLogout } from 'domains/root/operations/user-login';
+import { userLogout } from 'domains/root/operations/user';
 import { openLoginPopup } from 'domains/root/actions/login-popup';
 import { selectUserIsLogin, selectUserData } from 'domains/root/selectors/user-login';
 import { UserInfo } from 'components/user-info';

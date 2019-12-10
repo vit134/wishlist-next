@@ -3,7 +3,7 @@ import App from 'next/app';
 import { makeStore } from '../redux';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
-import { setUserLogin } from 'domains/root/actions/user-login';
+import { setUserLogin } from 'domains/root/actions/user';
 import PageLayout from 'containers/layout';
 import { AccessDenied } from 'components/access-denied';
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { userLogin } from 'domains/root/operations/user-login';
+import { userLogin, userRegistration } from 'domains/root/operations/user';
 import { closeLoginPopup } from 'domains/root/actions/login-popup';
 import { selectIsLoginPopupOpen } from 'domains/root/selectors/login-popup';
 import { selectUserError, selectUserIsLoading } from 'domains/root/selectors/user-login';
@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   userLogin,
+  userRegistration,
   onClose: closeLoginPopup,
 };
 
