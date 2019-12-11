@@ -26,7 +26,6 @@ class ProfilePage extends React.Component {
   render () {
     const { wishes = {}, user = {} } = this.props;
     const { data = [] } = wishes;
-    console.log(this.props);
     const { data: userData = {} } = user;
 
     const filteredData = data

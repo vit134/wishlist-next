@@ -1,0 +1,36 @@
+.image-block {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.image-preload {
+  border-bottom: 1px solid #d9d9d9;
+  flex-grow: 1;
+  padding: 8px 0;
+  margin-right: 10px;
+  line-height: 14px;
+  color: #c5c0be;
+}
+
+.has-file {
+  color: #222;
+}
+
+.image-button {
+  display: inline-block;
+  padding: 8px 7px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  line-height: 14px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.image-button:hover {
+  border-color: #40a9ff;
+}
+
+.image-button:active {
+  box-shadow: 1px 1px 6px #d9d9d9;
+}

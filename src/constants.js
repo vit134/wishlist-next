@@ -6,9 +6,4 @@ export const ERROR_MESSAGES = {
   password: {
     IncorrectPasswordError: 'Не правильный пароль',
   },
-  // TODO: удалить после того как забацается регистрация
-  UserExistsError: {
-    message: 'Пользователем с таким именем уже зарегестрирован',
-    fieldName: 'username',
-  },
 };

@@ -78,8 +78,11 @@ router.get('/by-user-id/:username', function (req, res) {
   }
 });
 
-// TODO: исправить, кейс когда подается без изображения
 router.post('/', async function (req, res) {
+  if (!req.user) {
+    return res.send({ success: false, error: 'Сессия устраела, авторизуйтесь и попробуйте снова' });
+  }
+
   const body = {
     ...req.body,
     userId: String(req.user._id),
@@ -105,7 +108,13 @@ router.post('/', async function (req, res) {
   newWish.populate('userId');
 
   newWish.save()
-    .then(data => res.send({ success: true, data }))
+    .then(data => res.send({
+      success: true,
+      data: {
+        ...JSON.parse(JSON.stringify(data)),
+        userName: req.user.username,
+      },
+    }))
     .catch(err => res.send({ success: false, error: err }));
 });
 

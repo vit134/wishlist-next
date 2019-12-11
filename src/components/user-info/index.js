@@ -51,9 +51,7 @@ export const UserInfo = ({
   userData,
   openLoginPopup,
   userLogout,
-
-  // ownProps
-  onAddWishPopupOpen,
+  openAddWishPopup,
 }) => {
   if (!isLogin) {
     return (
@@ -64,6 +62,6 @@ export const UserInfo = ({
   const name = getUserName(userData);
 
   return (
-    <AvatarDropdown currentUser={{ ...userData, name }} actions={{ onAddWishPopupOpen, onLogout: userLogout }}/>
+    <AvatarDropdown currentUser={{ ...userData, name }} actions={{ onAddWishPopupOpen: openAddWishPopup, onLogout: userLogout }}/>
   );
 };
