@@ -58,7 +58,7 @@ class AddWishDialog extends React.Component {
             <Form.Item label='Ссылка'>
               {getFieldDecorator('link', {
                 rules: [{
-                  pattern: new RegExp(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/),
+                  pattern: new RegExp(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/), // eslint-disable-line
                   message: 'Неправильный формат ссылки',
                 }],
               })(
