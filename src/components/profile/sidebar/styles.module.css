@@ -1,0 +1,42 @@
+.avatar {
+  display: flex;
+  justify-content: center;
+}
+
+.username {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.userinfo-row + .userinfo-row {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.userinfo-icon {
+  margin-right: 10px;
+}
+
+.holidays {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  margin: 5px 5px 5px 0;
+}
+
+.tag:last-child {
+  margin-right: 0;
+}
+
+.social {
+  margin-top: -12px;
+}

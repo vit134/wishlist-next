@@ -1,19 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { wishesRequest } from '../../src/requests';
-import Link from 'next/link';
-import { Table } from 'antd';
-import { Image } from 'components/image';
-
-const { Column } = Table;
+import { SideBar } from 'components/profile/sidebar';
+import { Content } from 'components/profile/content';
+import styles from './styles.module.css';
 
 class ProfilePage extends React.Component {
-  static async getInitialProps ({ req, res, ...props }) {
+  static defaultProps = {
+    wishes: {},
+  }
+
+  static async getInitialProps ({ req }) {
+    const { user } = req;
     let data = {};
 
-    if (req.user && req.user._id) {
+    if (user && user._id) {
       try {
-        const res = await wishesRequest(req.user._id);
+        const res = await wishesRequest(user._id);
         data = res.data;
       } catch (e) {
         data.err = e;
@@ -24,40 +27,18 @@ class ProfilePage extends React.Component {
   }
 
   render () {
-    const { wishes = {}, user = {} } = this.props;
-    const { data = [] } = wishes;
-    const { data: userData = {} } = user;
-
-    const filteredData = data
-      .filter(wish => wish.name)
-      .sort((a, b) => {
-        const aTime = new Date(a.createdDate).getTime();
-        const bTime = new Date(b.createdDate).getTime();
-
-        return aTime - bTime;
-      });
+    const { wishes } = this.props;
+    const { data } = wishes;
 
     return (
-      <Table dataSource={filteredData}>
-        <Column
-          title="Название"
-          dataIndex="name"
-          key="name"
-          render={(text, el) => {
-            return (
-              <>
-                {el.image && (
-                  <span style={{ display: 'inline-block', maxWidth: '40px', marginRight: '10px' }}>
-                    <Image src={el.image} size={50} crop/>
-                  </span>
-                )}
-                <Link href={`/user/${userData.username}/${el._id}`}>{ el.name }</Link>
-              </>
-            );
-          }}
-        />
-        <Column title="Цена" dataIndex="price" key="price" />
-      </Table>
+      <div className={styles.root}>
+        <div className={styles.sidebar}>
+          <SideBar />
+        </div>
+        <div className={styles.content}>
+          <Content wishes={data} />
+        </div>
+      </div>
     );
   }
 };
