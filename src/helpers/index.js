@@ -38,6 +38,24 @@ export const sorting = {
 
     return data => data.sort((a, b) => b.price - a.price);
   },
+  price_from: value => data => {
+    if (!value) {
+      return data;
+    }
+    return data.filter(el => {
+      return el.price >= Number(value);
+    });
+  },
+  price_to: value => data => {
+    if (!value) {
+      return data;
+    }
+
+    return data.filter(el => el.price <= Number(value));
+  },
+  with_image: () => data => data.filter(el => el.image),
+  with_link: () => data => data.filter(el => el.link),
   pageSize: count => slice(0, count),
   currentPage: (num, pageSize) => slice((num - 1) * pageSize, ((num - 1) * pageSize) + pageSize),
+  default: () => data => data,
 };

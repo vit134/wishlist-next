@@ -1,5 +1,5 @@
 import { entries, pipe, values } from 'lodash/fp';
-import { selectWishesEntities, selectPagination } from '../selectors';
+import { selectWishesEntities } from '../selectors';
 import { sorting } from '../../../src/helpers';
 export const GET_WISHES_BY_USER_REQUEST = 'GET_WISHES_BY_USER_REQUEST';
 export const GET_WISHES_BY_USER_SUCCESS = 'GET_WISHES_BY_USER_SUCCESS';
@@ -26,10 +26,7 @@ export const successWishesFetching = data => (dispatch, getState) => {
     payload: { data },
   });
 
-  const state = getState();
-  const pagination = selectPagination(state);
-
-  dispatch(applyWishesWithPagination(pagination));
+  dispatch(setWishes(data));
 };
 
 export const failWishesFetching = error => ({
@@ -37,32 +34,20 @@ export const failWishesFetching = error => ({
   payload: { error },
 });
 
-export const applyWishesWithPagination = pagination => (dispatch, getState) => {
-  const all = values(selectWishesEntities(getState()));
-  const withPagination = pipe([
-    sorting.currentPage(pagination.currentPage, pagination.pageSize),
-  ])(all);
-
-  dispatch(setWishes(withPagination));
-};
-
 export const applyWishesWithFilters = filters => (dispatch, getState) => {
   const state = getState();
   const data = values(selectWishesEntities(state));
   const filtersArray = entries(filters);
 
+  dispatch(setFilters(filters));
+
   const filt = filtersArray.map(([name, value]) => {
-    return sorting[name](value);
+    return sorting[name] ? sorting[name](value) : sorting.default();
   });
 
   const withFilters = pipe(filt)(data);
 
   dispatch(setWishes(withFilters));
-  const { pageSize } = selectPagination(state);
-
-  dispatch(setPagination({
-    currentPage: withFilters.length > pageSize,
-  }));
 };
 
 export const setWishes = data => ({
@@ -81,7 +66,7 @@ export const setPagination = pagination => ({
 });
 
 export const clearFilters = () => ({
-  type: SET_FILTERS,
+  type: CLEAR_FILTERS,
 });
 
 export const userInfoFetching = () => ({

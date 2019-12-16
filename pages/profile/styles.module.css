@@ -5,6 +5,12 @@
 
 .sidebar {
   width: 280px;
+  flex: none;
+}
+
+.sidebar-inner {
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 .content {

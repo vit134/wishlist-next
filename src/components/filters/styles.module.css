@@ -1,6 +1,6 @@
 .row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -8,23 +8,12 @@
   flex-grow: 1;
 }
 
-.col.sort {
-  flex: none;
-}
-
-.col.sort .form-item {
-  margin-right: 0;
+.col + .col {
+  margin-left: 16px;
 }
 
 .col.width_50 {
   width: 50%;
-}
-
-.title {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 30px;
-  margin-bottom: 10px;
 }
 
 .root .form-item-row {
@@ -35,7 +24,7 @@
 .form-item {
   display: flex;
   align-items: center;
-  margin-right: 16px;
+  /* margin-right: 16px; */
   margin-bottom: 10px;
   font-variant: tabular-nums;
   margin-bottom: 15px;
@@ -47,7 +36,7 @@
 
 .label {
   flex-shrink: 0;
-  min-width: 90px;
+  /* min-width: 90px; */
   padding-right: 5px;
 }
 

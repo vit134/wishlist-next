@@ -92,8 +92,6 @@ export const filtersInitialState = {
   name: '',
   categories: undefined,
   tags: undefined,
-  date: 'asc',
-  price: 'desc',
 };
 
 export const filtersReducer = (state = filtersInitialState, { type, payload }) => {

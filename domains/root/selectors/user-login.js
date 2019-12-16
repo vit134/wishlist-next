@@ -1,9 +1,9 @@
-import { pipe, get } from 'lodash/fp';
+import { pipe, get, getOr } from 'lodash/fp';
 import { selectRoot } from './root';
 
 export const selectUser = pipe([
   selectRoot,
-  get('user')
+  getOr({}, 'user')
 ]);
 
 export const selectUserIsLogin = pipe([

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames/bind';
 import { Layout, Row, Empty } from 'antd';
 import WishCard from '../components/wish-card';
-import Filters from '../components/filters';
+import Filters from '../../../src/components/filters';
 import { Pagination } from '../components/pagination';
 import { selectFilters, selectWishesCount, selectWishesData, selectPagination } from '../selectors';
 import styles from './styles.module.css';

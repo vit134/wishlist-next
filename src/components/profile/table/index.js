@@ -1,5 +1,12 @@
 import React from 'react';
-import { Table, Tag, Button } from 'antd';
+import { map } from 'lodash/fp';
+import { format, compareAsc } from 'date-fns';
+import { Table, Tag, Button, Collapse, Icon } from 'antd';
+import { connect } from 'react-redux';
+import Filters from 'components/filters';
+import { selectWishesData } from 'domains/user-by-id/selectors';
+import { selectSelectedWishes, selectSelectedWishesCount } from 'domains/profile/selectors';
+import { selectWish, selectAllWish } from 'domains/profile/actions';
 import styles from './styles.module.css';
 
 const renderTagsColumn = tags => (
@@ -14,6 +21,10 @@ const renderTagsColumn = tags => (
 
 const renderNameColumn = (name, record) => (
   <a href={`/user/${record.userId.username}/${record._id}`}>{name}</a>
+);
+
+const renderDateColumn = (name, record) => (
+  format(new Date(record.createdDate), 'dd MMM yy')
 );
 
 const renderFooter = (pageData, selectedWishesCount) => {
@@ -37,25 +48,86 @@ const renderFooter = (pageData, selectedWishesCount) => {
   return <div className={styles.footer}>{content}</div>;
 };
 
-export const WishesTable = ({ data, rowSelection, selectedWishesCount }) => (
-  <Table
-    size='middle'
-    dataSource={data}
-    rowSelection={rowSelection}
-    footer={pageData => renderFooter(pageData, selectedWishesCount)}
-  >
-    <Table.Column title="Название" dataIndex="name" key="name" render={renderNameColumn} />
-    <Table.Column title="Цена" dataIndex="price" key="price" />
-    <Table.Column
-      title="Тэги"
-      dataIndex="tags"
-      key="tags"
-      render={renderTagsColumn}
-    />
-  </Table>
+const FiltersHeader = (
+  <span className={styles['filters-title']}>
+    Фильтры
+  </span>
 );
 
-WishesTable.defaultProps = {
-  data: [],
-  rowSelection: {},
+const customPanelStyle = {
+  border: 0,
+  overflow: 'hidden',
+  margin: '0 -16px',
 };
+
+export class WishesTable extends React.Component {
+  render () {
+    const { wishes, selectedWishesIds, selectedWishesCount } = this.props;
+    const rowSelection = {
+      selectedWishesIds,
+      onChange: this.onSelectChange,
+    };
+
+    return (
+      <>
+        <div className={styles.filters}>
+          <Collapse
+            bordered={false}
+            expandIcon={({ isActive }) => <Icon type="filter" style={{ fontSize: 14 }} rotate={isActive ? 90 : 0} />}
+          >
+            <Collapse.Panel key={1} header={FiltersHeader} style={customPanelStyle}>
+              <Filters />
+            </Collapse.Panel>
+          </Collapse>
+        </div>
+        <Table
+          size='middle'
+          dataSource={wishes}
+          rowSelection={rowSelection}
+          rowKey="_id"
+          footer={pageData => renderFooter(pageData, selectedWishesCount)}
+        >
+          <Table.Column title="Название" dataIndex="name" key="name" render={renderNameColumn} />
+          <Table.Column
+            title="Тэги"
+            dataIndex="tags"
+            key="tags"
+            render={renderTagsColumn}
+          />
+          <Table.Column
+            title="Цена"
+            dataIndex="price"
+            key="price"
+            sorter={(a, b) => a.price - b.price}
+          />
+          <Table.Column
+            title="Дата"
+            dataIndex="createdDate"
+            key="createdDate"
+            sorter={(a, b) => compareAsc(new Date(a.createdDate), new Date(b.createdDate))}
+            render={renderDateColumn}
+          />
+        </Table>
+      </>
+    );
+  }
+
+  onSelectChange = (selectedRowKeys, selectedRows) => {
+    const { onSelectWish } = this.props;
+
+    onSelectWish(map('_id', selectedRows));
+  };
+};
+
+const mapStateToProps = state => ({
+  wishes: selectWishesData(state),
+  selectedWishesIds: selectSelectedWishes(state),
+  selectedWishesCount: selectSelectedWishesCount(state),
+});
+
+const mapDispatchToProps = {
+  onSelectWish: selectWish,
+  onSelectAllWish: selectAllWish,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WishesTable);

@@ -7,3 +7,14 @@
 .button + .button {
   margin-left: 10px;
 }
+
+.filters-title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.filters-title:hover {
+  color: #1890ff;
+}

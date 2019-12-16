@@ -28,7 +28,9 @@ class ProfilePage extends React.Component {
     return (
       <div className={styles.root}>
         <div className={styles.sidebar}>
-          <SideBar />
+          <div className={styles['sidebar-inner']}>
+            <SideBar />
+          </div>
         </div>
         <div className={styles.content}>
           <Content />

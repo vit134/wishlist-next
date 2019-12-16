@@ -41,28 +41,3 @@ export const selectFilters = pipe([
   selectUserPageData,
   get(['filters'])
 ]);
-
-// export const selectWishesWithPagination = createSelector(
-//   pipe([
-//     selectWishesEntities,
-//     values,
-//   ]),
-//   selectPagination,
-//   (wishes, { currentPage, pageSize }) => pipe([
-//     sorting.currentPage(currentPage, pageSize),
-//     sorting.pageSize(pageSize)
-//   ])(wishes)
-// );
-
-// export const selectFiltersString = createSelector(
-//   pipe([
-//     selectFilters,
-//     filters => reduce(filters, (result, value, key) => {
-//       if (value) {
-//         result.push(`${key}=${value}`);
-//       }
-//       return result;
-//     }, []),
-//   ]),
-//   filters => join(';', filters)
-// );
