@@ -34,7 +34,6 @@ export const userLoginReducer = (state = initialState, { type, payload }) => {
     case USER_LOGIN_REQUEST:
       return set(['isLoading'], true)(state);
     case USER_LOGIN_SUCCESS:
-      console.log(payload);
       return pipe([
         set(['isLoading'], false),
         set(['isLogin'], payload.success),
@@ -63,7 +62,6 @@ export const userLoginReducer = (state = initialState, { type, payload }) => {
     case USER_REGISTRATION_REQUEST:
       return set(['isLoading'], true)(state);
     case USER_REGISTRATION_SUCCESS:
-      console.log(payload);
       return pipe([
         set(['isLoading'], false),
         set(['isLogin'], payload.success),

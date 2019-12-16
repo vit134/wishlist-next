@@ -14,10 +14,8 @@ var Account = new Schema({
   phone: Number,
   avatar: String,
   date_of_birth: Number,
-  online: { type: Boolean, default: false },
   last_login: Date,
   was_register: { type: Date, default: Date.now },
-  wishes: [{ type: Schema.Types.ObjectId, ref: 'Wishes' }],
   is_activate: { type: Boolean, default: false },
 });
 

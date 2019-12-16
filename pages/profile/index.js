@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { wishesRequest } from '../../src/requests';
-import { SideBar } from 'components/profile/sidebar';
-import { Content } from 'components/profile/content';
+import SideBar from 'components/profile/sidebar';
+import Content from 'components/profile/content';
+import { getWishes } from 'domains/user-by-id/operations';
 import styles from './styles.module.css';
 
 class ProfilePage extends React.Component {
@@ -10,37 +9,33 @@ class ProfilePage extends React.Component {
     wishes: {},
   }
 
-  static async getInitialProps ({ req }) {
+  static async getInitialProps ({ req, store }) {
     const { user } = req;
-    let data = {};
+    const { dispatch } = store;
 
     if (user && user._id) {
       try {
-        const res = await wishesRequest(user._id);
-        data = res.data;
+        await dispatch(getWishes(user._id));
       } catch (e) {
-        data.err = e;
+        console.log(e);
       }
     }
 
-    return { wishes: data };
+    return {};
   }
 
   render () {
-    const { wishes } = this.props;
-    const { data } = wishes;
-
     return (
       <div className={styles.root}>
         <div className={styles.sidebar}>
           <SideBar />
         </div>
         <div className={styles.content}>
-          <Content wishes={data} />
+          <Content />
         </div>
       </div>
     );
   }
 };
 
-export default connect(state => state)(ProfilePage);
+export default ProfilePage;

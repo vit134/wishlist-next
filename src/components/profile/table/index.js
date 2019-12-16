@@ -1,11 +1,6 @@
 import React from 'react';
-import { Table, Tag } from 'antd';
-
-const rowSelection = {
-  onChange: (selectedRowKeys, selectedRows) => {
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-  },
-};
+import { Table, Tag, Button } from 'antd';
+import styles from './styles.module.css';
 
 const renderTagsColumn = tags => (
   <span>
@@ -21,16 +16,33 @@ const renderNameColumn = (name, record) => (
   <a href={`/user/${record.userId.username}/${record._id}`}>{name}</a>
 );
 
-const renderFooter = (pageData) => {
-  return <div>Footer here</div>;
+const renderFooter = (pageData, selectedWishesCount) => {
+  if (selectedWishesCount === 0) {
+    return null;
+  }
+
+  let content = (
+    <Button type='danger'>Удалить</Button>
+  );
+
+  if (selectedWishesCount === 1) {
+    content = (
+      <>
+        <Button size='small' type='primary' className={styles.button}>Изменить</Button>
+        <Button size='small' type='danger' className={styles.button}>Удалить</Button>
+      </>
+    );
+  }
+
+  return <div className={styles.footer}>{content}</div>;
 };
 
-export const WishesTable = ({ data }) => (
+export const WishesTable = ({ data, rowSelection, selectedWishesCount }) => (
   <Table
     size='middle'
     dataSource={data}
     rowSelection={rowSelection}
-    footer={renderFooter}
+    footer={pageData => renderFooter(pageData, selectedWishesCount)}
   >
     <Table.Column title="Название" dataIndex="name" key="name" render={renderNameColumn} />
     <Table.Column title="Цена" dataIndex="price" key="price" />
@@ -45,4 +57,5 @@ export const WishesTable = ({ data }) => (
 
 WishesTable.defaultProps = {
   data: [],
+  rowSelection: {},
 };
