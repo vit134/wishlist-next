@@ -6,7 +6,7 @@ import {
   addWishFetching,
   addWishSuccess,
   addWishFail,
-} from '../actions/wish';
+} from '../actions/wishes';
 
 import { addWishRequest } from '../../../src/requests';
 

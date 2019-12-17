@@ -2,7 +2,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import {
-  wishesReducer,
+  wishesReducer as wishesOperationsReducer,
   userInfoReducer,
   filtersReducer,
   paginationReducer,
@@ -11,7 +11,7 @@ import { userLoginReducer } from 'domains/root/reducers/user';
 import { loginPopupReducer } from 'domains/root/reducers/login-popup';
 import { addWishPopupReducer } from 'domains/root/reducers/add-wish-popup';
 import { selectedWishesReducer } from 'domains/profile/reducers';
-import { wishReducer } from 'domains/root/reducers/wish';
+import { wishesReducer } from 'domains/root/reducers/wishes';
 
 const composeEnhancers = composeWithDevTools({
   name: 'Wishlist',
@@ -21,7 +21,7 @@ const root = combineReducers({
   user: userLoginReducer,
   loginPopup: loginPopupReducer,
   addWishPopup: addWishPopupReducer,
-  wish: wishReducer,
+  wish: wishesOperationsReducer,
 });
 
 const userPage = combineReducers({

@@ -3,7 +3,7 @@ import {
   ADD_WISH_FETCHING,
   ADD_WISH_SUCCESS,
   ADD_WISH_FAIL,
-} from '../actions/wish';
+} from '../actions/wishes';
 
 const initialState = {
   isLoading: false,
@@ -11,7 +11,7 @@ const initialState = {
   error: null,
 };
 
-export const wishReducer = (state = initialState, { type, payload }) => {
+export const wishesReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ADD_WISH_FETCHING:
       return set(['isLoading'], true)(state);
