@@ -22,6 +22,11 @@ export const selectWishesData = pipe([
   getOr([], ['wishes', 'data'])
 ]);
 
+export const selectTotalWishesCount = pipe([
+  selectWishesData,
+  size
+]);
+
 export const selectPagination = pipe([
   selectUserPageData,
   get(['pagination'])

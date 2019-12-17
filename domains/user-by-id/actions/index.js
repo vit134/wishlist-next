@@ -1,9 +1,9 @@
 import { entries, pipe, values } from 'lodash/fp';
 import { selectWishesEntities } from '../selectors';
 import { sorting } from '../../../src/helpers';
-export const GET_WISHES_BY_USER_REQUEST = 'GET_WISHES_BY_USER_REQUEST';
-export const GET_WISHES_BY_USER_SUCCESS = 'GET_WISHES_BY_USER_SUCCESS';
-export const GET_WISHES_BY_USER_FAIL = 'GET_WISHES_BY_USER_FAIL';
+export const GET_WISHES_REQUEST = 'GET_WISHES_REQUEST';
+export const GET_WISHES_SUCCESS = 'GET_WISHES_SUCCESS';
+export const GET_WISHES_FAIL = 'GET_WISHES_FAIL';
 export const SET_FILTERED_WISHES = 'SET_FILTERED_WISHES';
 
 export const SET_FILTERS = 'SET_FILTERS';
@@ -17,12 +17,12 @@ export const GET_USER_INFO_FAIL = 'GET_USER_INFO_FAIL';
 export const SET_USER_INFO = 'SET_USER_INFO';
 
 export const wishesFetching = () => ({
-  type: GET_WISHES_BY_USER_REQUEST,
+  type: GET_WISHES_REQUEST,
 });
 
 export const successWishesFetching = data => (dispatch, getState) => {
   dispatch({
-    type: GET_WISHES_BY_USER_SUCCESS,
+    type: GET_WISHES_SUCCESS,
     payload: { data },
   });
 
@@ -30,7 +30,7 @@ export const successWishesFetching = data => (dispatch, getState) => {
 };
 
 export const failWishesFetching = error => ({
-  type: GET_WISHES_BY_USER_FAIL,
+  type: GET_WISHES_FAIL,
   payload: { error },
 });
 

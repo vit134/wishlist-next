@@ -1,9 +1,9 @@
 import { normalizedWishes } from '../normlize';
 
 import {
-  GET_WISHES_BY_USER_REQUEST,
-  GET_WISHES_BY_USER_SUCCESS,
-  GET_WISHES_BY_USER_FAIL,
+  GET_WISHES_REQUEST,
+  GET_WISHES_SUCCESS,
+  GET_WISHES_FAIL,
 
   SET_FILTERED_WISHES,
 
@@ -29,19 +29,19 @@ const getWishesEntities = wishes => normalizedWishes({ wishes });
 
 export const wishesReducer = (state = wishesInitialState, { type, payload }) => {
   switch (type) {
-    case GET_WISHES_BY_USER_REQUEST:
+    case GET_WISHES_REQUEST:
       return {
         ...state,
         isLoading: true,
       };
-    case GET_WISHES_BY_USER_SUCCESS:
+    case GET_WISHES_SUCCESS:
       return {
         ...state,
         isLoading: false,
         entities: getWishesEntities(payload.data).entities.wishes,
         result: getWishesEntities(payload.data).result.wishes,
       };
-    case GET_WISHES_BY_USER_FAIL:
+    case GET_WISHES_FAIL:
       return {
         ...state,
         isLoading: false,

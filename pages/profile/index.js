@@ -1,7 +1,7 @@
 import React from 'react';
 import SideBar from 'components/profile/sidebar';
 import Content from 'components/profile/content';
-import { getWishes } from 'domains/user-by-id/operations';
+import { getWishes } from 'domains/profile/operations/wishes';
 import styles from './styles.module.css';
 
 class ProfilePage extends React.Component {

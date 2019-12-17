@@ -21,7 +21,7 @@ const root = combineReducers({
   user: userLoginReducer,
   loginPopup: loginPopupReducer,
   addWishPopup: addWishPopupReducer,
-  wish: wishesOperationsReducer,
+  wishes: wishesOperationsReducer,
 });
 
 const userPage = combineReducers({

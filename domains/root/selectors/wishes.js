@@ -1,9 +1,14 @@
-import { pipe, get } from 'lodash/fp';
+import { pipe, get, getOr } from 'lodash/fp';
 import { selectRoot } from './root';
 
 export const selectWish = pipe([
   selectRoot,
-  get('wish')
+  get('wishes')
+]);
+
+export const selectWishesEntities = pipe([
+  selectRoot,
+  getOr({}, ['wishes', 'entities'])
 ]);
 
 export const selectIsAddWishLoading = pipe([

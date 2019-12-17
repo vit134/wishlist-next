@@ -1,5 +1,7 @@
 import {
   includes,
+  pipe,
+  entries,
   filter,
   sortBy,
   slice,
@@ -58,4 +60,20 @@ export const sorting = {
   pageSize: count => slice(0, count),
   currentPage: (num, pageSize) => slice((num - 1) * pageSize, ((num - 1) * pageSize) + pageSize),
   default: () => data => data,
+};
+
+/**
+ * Возвращает массив функций для фильтации вишек
+ * @param {Object} filters Объект с фильтрами, из формы. Ключ - имя поля, значение - значение поля
+ * @returns Function
+ */
+export const getFiltersFuctions = filters => {
+  const filtersArray = entries(filters);
+
+  // TODO: порефакторить этот кусок, заменить map на reduce, кидать ворнинг если нет функции для фильтрации
+  const filt = filtersArray.map(([name, value]) => {
+    return sorting[name] ? sorting[name](value) : sorting.default();
+  });
+
+  return pipe(filt);
 };

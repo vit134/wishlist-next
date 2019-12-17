@@ -7,6 +7,7 @@ import Filters from 'components/filters';
 import { selectWishesData } from 'domains/user-by-id/selectors';
 import { selectSelectedWishes, selectSelectedWishesCount } from 'domains/profile/selectors';
 import { selectWish, selectAllWish } from 'domains/profile/actions';
+import { deleteWishes } from 'domains/profile/operations/wishes';
 import styles from './styles.module.css';
 
 const renderTagsColumn = tags => (
@@ -27,20 +28,20 @@ const renderDateColumn = (name, record) => (
   format(new Date(record.createdDate), 'dd MMM yy')
 );
 
-const renderFooter = (pageData, selectedWishesCount) => {
+const renderFooter = (pageData, selectedWishesCount, onDelete) => {
   if (selectedWishesCount === 0) {
     return null;
   }
 
   let content = (
-    <Button type='danger'>Удалить</Button>
+    <Button size='small' type='danger' onClick={onDelete}>Удалить</Button>
   );
 
   if (selectedWishesCount === 1) {
     content = (
       <>
-        <Button size='small' type='primary' className={styles.button}>Изменить</Button>
-        <Button size='small' type='danger' className={styles.button}>Удалить</Button>
+        <Button size='small' type='primary' className={styles.button} disabled>Изменить</Button>
+        <Button onClick={onDelete} size='small' type='danger' className={styles.button}>Удалить</Button>
       </>
     );
   }
@@ -85,7 +86,7 @@ export class WishesTable extends React.Component {
           dataSource={wishes}
           rowSelection={rowSelection}
           rowKey="_id"
-          footer={pageData => renderFooter(pageData, selectedWishesCount)}
+          footer={pageData => renderFooter(pageData, selectedWishesCount, this.handleDeleteWishes)}
         >
           <Table.Column title="Название" dataIndex="name" key="name" render={renderNameColumn} />
           <Table.Column
@@ -98,12 +99,18 @@ export class WishesTable extends React.Component {
             title="Цена"
             dataIndex="price"
             key="price"
-            sorter={(a, b) => a.price - b.price}
+            defaultSortOrder='descend'
+            sorter={(a, b) => {
+              const aPrice = a.price ? a.price : 0;
+              const bPrice = b.price ? b.price : 0;
+              return aPrice - bPrice;
+            }}
           />
           <Table.Column
             title="Дата"
             dataIndex="createdDate"
             key="createdDate"
+            defaultSortOrder='descend'
             sorter={(a, b) => compareAsc(new Date(a.createdDate), new Date(b.createdDate))}
             render={renderDateColumn}
           />
@@ -117,6 +124,12 @@ export class WishesTable extends React.Component {
 
     onSelectWish(map('_id', selectedRows));
   };
+
+  handleDeleteWishes = () => {
+    const { selectedWishesIds, onDeleteWishes } = this.props;
+    console.log('table', selectedWishesIds);
+    onDeleteWishes(selectedWishesIds);
+  }
 };
 
 const mapStateToProps = state => ({
@@ -128,6 +141,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   onSelectWish: selectWish,
   onSelectAllWish: selectAllWish,
+  onDeleteWishes: deleteWishes,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(WishesTable);

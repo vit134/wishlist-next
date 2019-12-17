@@ -2,8 +2,8 @@ import {
   wishesFetching,
   successWishesFetching,
   failWishesFetching,
-
-  setFilters,
+} from 'domains/root/actions/wishes';
+import {
   clearFilters,
 
   setPagination,
@@ -28,17 +28,6 @@ export const getUserInfo = (userId) => dispatch => {
   return userInfoRequst(userId)
     .then(result => dispatch(successUserInfoFetching(result.data.data)))
     .catch(error => dispatch(failUserInfoFetching(error)));
-};
-
-export const setFilteredWishesData = filters => (dispatch, getState) => {
-  dispatch(setFilters(filters));
-
-  // const state = getState();
-
-  // const filteredData = selectWishesWithFilters(state);
-  // const filterIsInitial = isFilterInitial(filters);
-
-  // dispatch(setWishes(filterIsInitial ? null : filteredData));
 };
 
 export const setPaginationWishesData = pagination => (dispatch, getState) => {

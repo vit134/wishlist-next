@@ -170,15 +170,14 @@ router.post('/', async function (req, res) {
 //   res.send(result);
 // });
 
-// router.delete('/wishes', function (req, res, next) {
-//   Wishes.deleteMany({ _id: { $in: req.body } }, function (err, resp) {
-//     if (err) {
-//       console.log(err);
-//       next();
-//     }
-
-//     res.send(req.body);
-//   });
-// });
+router.delete('/', function (req, res, next) {
+  console.log('req', req);
+  Wishes.deleteMany({ _id: { $in: req.body } }, function (err) {
+    if (err) {
+      return res.send({ success: false, error: err });
+    }
+    return res.send({ success: true, data: req.body });
+  });
+});
 
 module.exports = router;
