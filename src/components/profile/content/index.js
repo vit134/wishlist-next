@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Tabs } from 'antd';
+import { Card, Tabs, Button } from 'antd';
 import {
   selectSelectedWishes,
   selectSelectedWishesCount,
@@ -9,19 +9,21 @@ import {
 } from 'domains/profile/selectors';
 import { selectWish, selectAllWish } from 'domains/profile/actions';
 import WishesTable from '../table';
+import { ProfileSettings } from '../settings';
+
+const newWishButton = <Button size='default' type='primary'>Добавить</Button>;
 
 export class Content extends Component {
   render () {
     const { wishesCount } = this.props;
-    console.log(this.props);
     return (
       <Card>
-        <Tabs defaultActiveKey="1">
+        <Tabs defaultActiveKey="2" tabBarExtraContent={newWishButton}>
           <Tabs.TabPane tab={`Мои желания (${wishesCount})`} key="1">
             <WishesTable />
           </Tabs.TabPane>
           <Tabs.TabPane tab="Настройки профиля" key="2">
-            Content of Tab Pane 2
+            <ProfileSettings />
           </Tabs.TabPane>
         </Tabs>,
       </Card>

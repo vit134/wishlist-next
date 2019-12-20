@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Form, Icon, Input, Button } from 'antd';
+import { Modal, Form, Icon, Input, Button, InputNumber } from 'antd';
 import classNames from 'classnames/bind';
 import styles from './styles.module.css';
 
@@ -71,10 +71,11 @@ class AddWishDialog extends React.Component {
             </Form.Item>
             <Form.Item label='Цена'>
               {getFieldDecorator('price')(
-                <Input
-                  type='number'
+                <InputNumber
+                  formatter={value => value.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$& ')}
                   prefix={<IconFont type="icon-price"/>}
                   placeholder="Цена"
+                  style={{ width: '100%' }}
                 />
               )}
             </Form.Item>

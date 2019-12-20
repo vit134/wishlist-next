@@ -86,6 +86,9 @@ export class WishesTable extends React.Component {
           dataSource={wishes}
           rowSelection={rowSelection}
           rowKey="_id"
+          pagination={{
+            pageSizeOptions: ['10, 20, 30, 100'],
+          }}
           footer={pageData => renderFooter(pageData, selectedWishesCount, this.handleDeleteWishes)}
         >
           <Table.Column title="Название" dataIndex="name" key="name" render={renderNameColumn} />
@@ -111,7 +114,9 @@ export class WishesTable extends React.Component {
             dataIndex="createdDate"
             key="createdDate"
             defaultSortOrder='descend'
-            sorter={(a, b) => compareAsc(new Date(a.createdDate), new Date(b.createdDate))}
+            sorter={(a, b) => {
+              return compareAsc(new Date(a.createdDate), new Date(b.createdDate));
+            }}
             render={renderDateColumn}
           />
         </Table>
@@ -127,7 +132,6 @@ export class WishesTable extends React.Component {
 
   handleDeleteWishes = () => {
     const { selectedWishesIds, onDeleteWishes } = this.props;
-    console.log('table', selectedWishesIds);
     onDeleteWishes(selectedWishesIds);
   }
 };

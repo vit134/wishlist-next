@@ -1,5 +1,6 @@
 const cssLoaderConfig = require('@zeit/next-css/css-loader-config');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const withLess = require('@zeit/next-less');
 const lessToJS = require('less-vars-to-js');
 const fs = require('fs');
@@ -75,6 +76,12 @@ module.exports = withLess({
         })
       );
     }
+
+    config.plugins.push(
+      new MomentLocalesPlugin({
+        localesToKeep: ['ru'],
+      })
+    );
 
     /* eslint-disable dot-notation */
     config.resolve.alias['components'] = path.join(__dirname, 'src/components');

@@ -28,6 +28,7 @@ module.exports = {
   ],
   rules: {
     "react/prop-types": [0],
+    "react/display-name": [0],
     "semi": ["error", "always", { "omitLastInOneLineBlock": true}],
     "no-case-declarations)": [0],
     "comma-dangle": ["error", {
