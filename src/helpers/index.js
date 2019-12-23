@@ -84,6 +84,10 @@ export const getFormattedPhone = phone => {
 };
 
 export const getNumbersPhone = phone => {
+  if (typeof phone === 'number') {
+    return phone;
+  }
+
   return phone
     .replace(new RegExp(/(\+7)/, 'g'), '')
     .replace(new RegExp(/\D/, 'g'), '');

@@ -104,6 +104,7 @@ class ProfilePanelForm extends React.Component {
       if (!err) {
         const data = form.getFieldsValue();
         data.phone = getNumbersPhone(data.phone);
+        data.holidays = data.holidays || [];
         userUpdate(data);
       }
     });
