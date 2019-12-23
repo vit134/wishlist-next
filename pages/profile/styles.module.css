@@ -1,6 +1,6 @@
 .root {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .sidebar {
@@ -11,6 +11,7 @@
 .sidebar-inner {
   position: -webkit-sticky;
   position: sticky;
+  top: 24px
 }
 
 .content {
