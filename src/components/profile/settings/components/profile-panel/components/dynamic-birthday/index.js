@@ -12,7 +12,7 @@ class DynamicFieldSet extends Component {
     const keys = form.getFieldValue('keys');
 
     form.setFieldsValue({
-      keys: keys.filter(key => key !== k),
+      keys: keys.filter((key, ind) => ind !== k),
     });
   };
 
@@ -42,8 +42,6 @@ class DynamicFieldSet extends Component {
       >
         {getFieldDecorator(`holidays[${ind}]`, {
           initialValue: { name: el.name, date: el.date },
-          validateTrigger: ['onChange', 'onBlur'],
-          rules: [{ validator: this.validateHolidays }],
         })(<BitrthdayField />)}
         {keys.length > 0 ? (
           <Icon

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Tabs, Button } from 'antd';
+import { Card, Tabs, Button, Badge } from 'antd';
 import {
   selectSelectedWishes,
   selectSelectedWishesCount,
@@ -16,10 +16,17 @@ const newWishButton = <Button size='default' type='primary'>Добавить</Bu
 export class Content extends Component {
   render () {
     const { wishesCount } = this.props;
+
+    const WishesTab = (
+      <Badge count={wishesCount}>
+        <span style={{ paddingRight: '10px' }}>Мои желания</span>
+      </Badge>
+    );
+
     return (
       <Card>
         <Tabs defaultActiveKey="2" tabBarExtraContent={newWishButton}>
-          <Tabs.TabPane tab={`Мои желания (${wishesCount})`} key="1">
+          <Tabs.TabPane tab={WishesTab} key="1">
             <WishesTable />
           </Tabs.TabPane>
           <Tabs.TabPane tab="Настройки профиля" key="2">

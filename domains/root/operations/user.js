@@ -10,14 +10,25 @@ import {
   userRegistrationRequest,
   userRegistrationSuccess,
   userRegistrationFail,
+
+  userUpdateFetching,
+  userUpdateSuccess,
+  userUpdateFail,
 } from '../actions/user';
 import { closeLoginPopup } from '../actions/login-popup';
+import { notification } from 'antd';
 
 import {
   loginRequest,
   logoutRequest,
   registrationRequest,
+  userUpdateRequest,
 } from '../../../src/requests';
+
+notification.config({
+  placement: 'bottomRight',
+  duration: 5,
+});
 
 export const userLogin = (userFormData) => dispatch => {
   dispatch(userLoginRequest());
@@ -51,7 +62,6 @@ export const userLogout = () => dispatch => {
 
 export const userRegistration = userFormData => dispatch => {
   dispatch(userRegistrationRequest());
-  console.log(userFormData);
   return registrationRequest(userFormData)
     .then(({ data }) => {
       if (data.success) {
@@ -63,5 +73,28 @@ export const userRegistration = userFormData => dispatch => {
     })
     .catch(error => {
       dispatch(userRegistrationFail({ error }));
+    });
+};
+
+export const userUpdate = data => dispatch => {
+  dispatch(userUpdateFetching());
+
+  return userUpdateRequest(data)
+    .then(({ data }) => {
+      if (data.success) {
+        dispatch(userUpdateSuccess(data));
+        notification.success({
+          message: 'Данные профиля успешно обновлены',
+        });
+      } else {
+        throw data.error;
+      }
+    })
+    .catch(error => {
+      dispatch(userUpdateFail(error));
+      notification.error({
+        message: 'Произошла непредвиденная ошибка',
+        description: error,
+      });
     });
 };

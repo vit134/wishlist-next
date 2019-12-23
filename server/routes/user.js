@@ -48,4 +48,21 @@ router.get('/all', (req, res) => {
     .catch(error => res.send({ success: false, error }));
 });
 
+router.put('/update', (req, res) => {
+  const { body, user } = req;
+
+  if (!user) {
+    res.send({ success: false, error: 'no user' });
+  }
+
+  const { _id } = user;
+
+  Account.findOneAndUpdate({ _id }, body, { new: true }).exec()
+    .then(data => {
+      console.log(data);
+      res.send({ success: true, data });
+    })
+    .catch(error => res.send({ status: false, error }));
+});
+
 module.exports = router;

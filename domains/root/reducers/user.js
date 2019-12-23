@@ -13,6 +13,10 @@ import {
   USER_REGISTRATION_REQUEST,
   USER_REGISTRATION_SUCCESS,
   USER_REGISTRATION_FAIL,
+
+  USER_UPDATE_REQUEST,
+  USER_UPDATE_SUCCESS,
+  USER_UPDATE_FAIL,
 } from '../actions/user';
 
 const initialState = {
@@ -68,6 +72,20 @@ export const userLoginReducer = (state = initialState, { type, payload }) => {
         set(['data'], payload.data)
       ])(state);
     case USER_REGISTRATION_FAIL:
+      return pipe([
+        set(['isLoading'], false),
+        set(['error'], payload.error)
+      ])(state);
+
+    case USER_UPDATE_REQUEST:
+      return set(['isLoading'], true)(state);
+    case USER_UPDATE_SUCCESS:
+      return pipe([
+        set(['isLoading'], false),
+        set(['isLogin'], payload.success),
+        set(['data'], payload.data)
+      ])(state);
+    case USER_UPDATE_FAIL:
       return pipe([
         set(['isLoading'], false),
         set(['error'], payload.error)

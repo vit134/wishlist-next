@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { format } from 'date-fns';
-import { Card, Avatar, Typography, Icon, Divider, Tag } from 'antd';
+import moment from 'moment';
+import { Card, Avatar, Typography, Icon, Divider, Tag, Tooltip } from 'antd';
 import { selectUserData } from 'domains/root/selectors/user-login';
 import styles from './styles.module.css';
 
 export const SideBar = ({ user }) => {
-  const { avatar, date_of_birth, email, firstname, lastname, phone, username } = user; // eslint-disable-line camelcase
+  const { avatar, date_of_birth, email, firstname, lastname, phone, username, holidays } = user; // eslint-disable-line camelcase
   const fullName = firstname && lastname ? `${firstname} ${lastname}` : username;
-  const dateOfBirth = format(date_of_birth, 'dd MMMM yyyy г.');
+  const dateOfBirth = moment(date_of_birth).format('DD MMM YYYY г.');
 
   return (
     <Card>
@@ -34,9 +34,13 @@ export const SideBar = ({ user }) => {
       </div>
       <Divider dashed />
       <div className={styles.holidays}>
-        <Tag color="magenta" className={styles.tag}>День рождения</Tag>
-        <Tag color="red" className={styles.tag} >День программиста</Tag>
-        <Tag color="volcano" className={styles.tag} >Именины</Tag>
+        {
+          holidays.map(({ name, date }) => (
+            <Tooltip key={name} title={moment(date).format('DD MMM YYYY')}>
+              <Tag color="magenta" className={styles.tag}>{name}</Tag>
+            </Tooltip>
+          ))
+        }
       </div>
     </Card>
   );

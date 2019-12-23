@@ -39,6 +39,10 @@ export const logoutRequest = () => {
   });
 };
 
+export const userUpdateRequest = data => (
+  axios.put('/api/user/update', data, { headers })
+);
+
 export const registrationRequest = (data) => {
   return axios.post('/api/registration', data, { headers });
 };

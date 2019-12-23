@@ -12,6 +12,10 @@ export const USER_REGISTRATION_REQUEST = 'USER_REGISTRATION_REQUEST';
 export const USER_REGISTRATION_SUCCESS = 'USER_REGISTRATION_SUCCESS';
 export const USER_REGISTRATION_FAIL = 'USER_REGISTRATION_FAIL';
 
+export const USER_UPDATE_REQUEST = 'USER_UPDATE_REQUEST';
+export const USER_UPDATE_SUCCESS = 'USER_UPDATE_SUCCESS';
+export const USER_UPDATE_FAIL = 'USER_UPDATE_FAIL';
+
 export const setUserLogin = ({ isLogin, data }) => ({
   type: SET_USER_LOGIN,
   payload: { isLogin, data },
@@ -56,5 +60,19 @@ export const userRegistrationSuccess = data => ({
 
 export const userRegistrationFail = error => ({
   type: USER_REGISTRATION_FAIL,
+  payload: error,
+});
+
+export const userUpdateFetching = () => ({
+  type: USER_UPDATE_REQUEST,
+});
+
+export const userUpdateSuccess = data => ({
+  type: USER_UPDATE_SUCCESS,
+  payload: data,
+});
+
+export const userUpdateFail = error => ({
+  type: USER_UPDATE_FAIL,
   payload: error,
 });

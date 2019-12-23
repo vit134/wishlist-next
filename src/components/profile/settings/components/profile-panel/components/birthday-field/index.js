@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input, DatePicker } from 'antd';
+import moment from 'moment';
 import styles from './styles.module.css';
 
 export class BitrthdayField extends React.Component {
@@ -17,7 +18,7 @@ export class BitrthdayField extends React.Component {
         <DatePicker
           onChange={this.handleDateChange}
           format='DD MMM YYYY'
-          defaultValue={value.date}
+          defaultValue={moment(value.date)}
           className={styles['birthday-date-field']}
         />
       </div>

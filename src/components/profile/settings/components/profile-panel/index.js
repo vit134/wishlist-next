@@ -1,10 +1,11 @@
 import React, { createRef } from 'react';
 import { connect } from 'react-redux';
-import { Form, Input, DatePicker, Button, Divider } from 'antd';
-import MaskInput from 'mask-input';
+import { Form, Input, DatePicker, Button, Divider, Radio } from 'antd';
 import moment from 'moment';
+import { userUpdate } from 'domains/root/operations/user';
 import { selectUserData } from 'domains/root/selectors/user-login';
 import DynamicFieldSet from './components/dynamic-birthday';
+import { PhoneInput } from './components/phone-input';
 import styles from './styles.module.css';
 
 moment.locale('ru');
@@ -20,25 +21,13 @@ const formItemLayout = {
   },
 };
 
-const handleChangeFormFields = (props, changedFields, allFields) => {
-  console.log(allFields);
-};
+// const handleChangeFormFields = (props, changedFields, allFields) => {
+//   console.log(allFields);
+// };
 
-const phoneRegExp = new RegExp(/^((8|\+7)[[ ])([(]\d{3}[)][ ])(\d{3}[-])(\d{2})([-]\d{2})/g);
-
-const birthdays = [];
+// const phoneRegExp = new RegExp(/^((8|\+7)[[ ])([(]\d{3}[)][ ])(\d{3}[-])(\d{2})([-]\d{2})/g);
 
 class ProfilePanelForm extends React.Component {
-  componentDidMount () {
-    // eslint-disable-next-line no-unused-vars
-    const maskedInput = new MaskInput(this.inputNumber.current.input, {
-      mask: '+7 (000) 000-00-00',
-      alwaysShowMask: false,
-      maskChar: '_',
-      onChange: this.handleChangePhoneInput,
-    });
-  }
-
   render () {
     const { form, user } = this.props;
     const { getFieldDecorator } = form;
@@ -67,6 +56,16 @@ class ProfilePanelForm extends React.Component {
               initialValue: user.date_of_birth && moment(user.date_of_birth),
             })(<DatePicker format='DD MMM YYYY' style={{ width: '100%' }}/>)}
           </Form.Item>
+          <Form.Item label='Пол'>
+            {getFieldDecorator('gender', {
+              initialValue: user.gender,
+            })(
+              <Radio.Group>
+                <Radio.Button value="m">Мужской</Radio.Button>
+                <Radio.Button value="w">Женский</Radio.Button>
+              </Radio.Group>
+            )}
+          </Form.Item>
           <Form.Item label="E-mail">
             {getFieldDecorator('email', {
               initialValue: user.email,
@@ -81,18 +80,12 @@ class ProfilePanelForm extends React.Component {
           <Form.Item label="Телефон">
             {getFieldDecorator('phone', {
               initialValue: user.phone,
-              rules: [
-                {
-                  pattern: phoneRegExp, // eslint-disable-line
-                  message: 'Неправильный формат номера телефона',
-                }
-              ],
             })(
-              <Input ref={this.inputNumber} name='phone' onChange={this.handleChangePhoneInput}/>
+              <PhoneInput mask="+7 (999) 999-99-99" allowClear />
             )}
           </Form.Item>
           <Divider>Праздники</Divider>
-          <DynamicFieldSet form={form} initial={birthdays} />
+          <DynamicFieldSet form={form} initial={user.holidays} />
           <Divider />
           <div className={styles['form-footer']}>
             <Button htmlType='submit'>Сохранить</Button>
@@ -116,12 +109,12 @@ class ProfilePanelForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
-    const { form } = this.props;
+    const { form, userUpdate } = this.props;
 
     form.validateFields((err, formData) => {
       if (!err) {
-        console.log(form.getFieldsValue());
+        const data = form.getFieldsValue();
+        userUpdate(data);
       }
     });
   }
@@ -129,14 +122,16 @@ class ProfilePanelForm extends React.Component {
 
 const ProfilePanel = Form.create({
   name: 'profile-settings',
-  onFieldsChange: handleChangeFormFields,
+  // onFieldsChange: handleChangeFormFields,
 })(ProfilePanelForm);
 
 const mapStateToProps = state => ({
   user: selectUserData(state),
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  userUpdate: userUpdate,
+};
 
 export default connect(
   mapStateToProps,
