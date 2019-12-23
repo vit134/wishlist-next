@@ -6,16 +6,15 @@ import {
   selectSelectedWishesCount,
   selectWishesData,
   selectTotalWishesCount,
+  selectActiveTab,
 } from 'domains/profile/selectors';
-import { selectWish, selectAllWish } from 'domains/profile/actions';
+import { selectWish, selectAllWish, changeActiveTab } from 'domains/profile/actions';
 import WishesTable from '../table';
 import { ProfileSettings } from '../settings';
 
-const newWishButton = <Button size='small' type='primary'>Добавить</Button>;
-
 export class Content extends Component {
   render () {
-    const { wishesCount } = this.props;
+    const { wishesCount, activeTab, onChangeActiveTab } = this.props;
 
     const WishesTab = (
       <Badge count={wishesCount}>
@@ -23,9 +22,16 @@ export class Content extends Component {
       </Badge>
     );
 
+    const newWishButton = activeTab === '1' && <Button size='small' type='primary'>Добавить</Button>;
+
     return (
       <Card>
-        <Tabs defaultActiveKey="2" tabBarExtraContent={newWishButton}>
+        <Tabs
+          defaultActiveKey="1"
+          activeKey={String(activeTab)}
+          onChange={onChangeActiveTab}
+          tabBarExtraContent={newWishButton}
+        >
           <Tabs.TabPane tab={WishesTab} key="1">
             <WishesTable />
           </Tabs.TabPane>
@@ -43,11 +49,13 @@ const mapStateToProps = state => ({
   wishesCount: selectTotalWishesCount(state),
   selectedWishesIds: selectSelectedWishes(state),
   selectedWishesCount: selectSelectedWishesCount(state),
+  activeTab: selectActiveTab(state),
 });
 
 const mapDispatchToProps = {
   onSelectWish: selectWish,
   onSelectAllWish: selectAllWish,
+  onChangeActiveTab: changeActiveTab,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

@@ -26,3 +26,8 @@ export const selectTotalWishesCount = pipe([
   selectWishesData,
   size
 ]);
+
+export const selectActiveTab = pipe([
+  selectProfilePageData,
+  getOr(1, 'activeTab'),
+]);

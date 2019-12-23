@@ -10,7 +10,7 @@ import {
 import { userLoginReducer } from 'domains/root/reducers/user';
 import { loginPopupReducer } from 'domains/root/reducers/login-popup';
 import { addWishPopupReducer } from 'domains/root/reducers/add-wish-popup';
-import { selectedWishesReducer } from 'domains/profile/reducers';
+import { selectedWishesReducer, activeTabReducer } from 'domains/profile/reducers';
 import { wishesReducer } from 'domains/root/reducers/wishes';
 
 const composeEnhancers = composeWithDevTools({
@@ -34,6 +34,7 @@ const userPage = combineReducers({
 const profilePage = combineReducers({
   wishes: wishesReducer,
   selectedWishesIds: selectedWishesReducer,
+  activeTab: activeTabReducer,
 });
 
 const rootReducer = combineReducers({

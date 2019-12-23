@@ -17,7 +17,10 @@ const Account = new Schema({
   country: String,
   city: String,
   phone: Number,
-  gender: String,
+  gender: {
+    type: String,
+    default: 'n',
+  },
   avatar: String,
   date_of_birth: Date,
   holidays: {

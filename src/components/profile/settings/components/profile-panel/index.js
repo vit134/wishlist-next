@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Form, Input, DatePicker, Button, Divider, Radio } from 'antd';
 import moment from 'moment';
 import { userUpdate } from 'domains/root/operations/user';
+import { openLoginPopup } from 'domains/root/actions/login-popup';
 import { selectUserData } from 'domains/root/selectors/user-login';
 import DynamicFieldSet from './components/dynamic-birthday';
 import { PhoneInput } from './components/phone-input';
@@ -64,6 +65,7 @@ class ProfilePanelForm extends React.Component {
               <Radio.Group>
                 <Radio.Button value="m">Мужской</Radio.Button>
                 <Radio.Button value="w">Женский</Radio.Button>
+                <Radio.Button value="n">Не важно</Radio.Button>
               </Radio.Group>
             )}
           </Form.Item>
@@ -122,11 +124,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   userUpdate: userUpdate,
+  openLoginPopup: openLoginPopup,
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProfilePanel);
-
-// ((\+7)|7)
