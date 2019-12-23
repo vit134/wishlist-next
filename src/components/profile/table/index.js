@@ -1,7 +1,7 @@
 import React from 'react';
 import { map } from 'lodash/fp';
 import { format, compareAsc } from 'date-fns';
-import { Table, Tag, Button, Collapse, Icon } from 'antd';
+import { Table, Tag, Button, Collapse, Icon, Popconfirm } from 'antd';
 import { connect } from 'react-redux';
 import Filters from 'components/filters';
 import { selectWishesData } from 'domains/user-by-id/selectors';
@@ -24,6 +24,17 @@ const renderNameColumn = (name, record) => (
   <a href={`/user/${record.userId.username}/${record._id}`}>{name}</a>
 );
 
+const RemoveButton = ({ onDelete }) => (
+  <Popconfirm
+    title="Вы уверены что ходите удалить?"
+    onConfirm={onDelete}
+    okText="Да"
+    cancelText="Нет"
+  >
+    <Button size='small' type='danger' className={styles.button}>Удалить</Button>
+  </Popconfirm>
+);
+
 const renderDateColumn = (name, record) => (
   format(new Date(record.createdDate), 'dd MMM yy')
 );
@@ -34,14 +45,14 @@ const renderFooter = (pageData, selectedWishesCount, onDelete) => {
   }
 
   let content = (
-    <Button size='small' type='danger' onClick={onDelete}>Удалить</Button>
+    <RemoveButton onDelete={onDelete}/>
   );
 
   if (selectedWishesCount === 1) {
     content = (
       <>
         <Button size='small' type='primary' className={styles.button} disabled>Изменить</Button>
-        <Button onClick={onDelete} size='small' type='danger' className={styles.button}>Удалить</Button>
+        <RemoveButton onDelete={onDelete}/>
       </>
     );
   }
