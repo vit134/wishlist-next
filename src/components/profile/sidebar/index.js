@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import { Card, Avatar, Typography, Icon, Divider, Tag, Tooltip } from 'antd';
 import { selectUserData } from 'domains/root/selectors/user-login';
+import { getFormattedPhone } from 'helpers';
 import styles from './styles.module.css';
 
 export const SideBar = ({ user }) => {
   const { avatar, date_of_birth, email, firstname, lastname, phone, username, holidays } = user; // eslint-disable-line camelcase
   const fullName = firstname && lastname ? `${firstname} ${lastname}` : username;
   const dateOfBirth = moment(date_of_birth).format('DD MMM YYYY г.');
+  const formattedPhone = getFormattedPhone(phone);
 
   return (
     <Card>
@@ -25,7 +27,7 @@ export const SideBar = ({ user }) => {
         </span>
         <span className={styles['userinfo-row']}>
           <Icon type="phone" className={styles['userinfo-icon']} />
-          <Typography.Text>{phone}</Typography.Text>
+          <Typography.Text>{formattedPhone}</Typography.Text>
         </span>
         <span className={styles['userinfo-row']}>
           <Icon type="mail" className={styles['userinfo-icon']} />

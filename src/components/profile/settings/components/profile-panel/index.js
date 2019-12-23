@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Input, DatePicker, Button, Divider, Radio } from 'antd';
 import moment from 'moment';
@@ -6,6 +6,7 @@ import { userUpdate } from 'domains/root/operations/user';
 import { selectUserData } from 'domains/root/selectors/user-login';
 import DynamicFieldSet from './components/dynamic-birthday';
 import { PhoneInput } from './components/phone-input';
+import { getNumbersPhone } from 'helpers';
 import styles from './styles.module.css';
 
 moment.locale('ru');
@@ -95,18 +96,6 @@ class ProfilePanelForm extends React.Component {
     );
   }
 
-  inputNumber = createRef();
-
-  handleChangePhoneInput = ({ target }) => {
-    const { form } = this.props;
-    const { setFieldsValue } = form;
-    const { value } = target;
-
-    setFieldsValue({
-      phone: value,
-    });
-  }
-
   handleSubmit = e => {
     e.preventDefault();
     const { form, userUpdate } = this.props;
@@ -114,6 +103,7 @@ class ProfilePanelForm extends React.Component {
     form.validateFields((err, formData) => {
       if (!err) {
         const data = form.getFieldsValue();
+        data.phone = getNumbersPhone(data.phone);
         userUpdate(data);
       }
     });
@@ -137,3 +127,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProfilePanel);
+
+// ((\+7)|7)

@@ -77,3 +77,14 @@ export const getFiltersFuctions = filters => {
 
   return pipe(filt);
 };
+
+export const getFormattedPhone = phone => {
+  const phoneRe = new RegExp(/(\d{3})+(\d{3})+(\d{2})+(\d{2})/, 'g');
+  return String(phone).replace(phoneRe, '+7 ($1) $2-$3-$4');
+};
+
+export const getNumbersPhone = phone => {
+  return phone
+    .replace(new RegExp(/(\+7)/, 'g'), '')
+    .replace(new RegExp(/\D/, 'g'), '');
+};

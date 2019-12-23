@@ -11,7 +11,7 @@ import { selectWish, selectAllWish } from 'domains/profile/actions';
 import WishesTable from '../table';
 import { ProfileSettings } from '../settings';
 
-const newWishButton = <Button size='default' type='primary'>Добавить</Button>;
+const newWishButton = <Button size='small' type='primary'>Добавить</Button>;
 
 export class Content extends Component {
   render () {

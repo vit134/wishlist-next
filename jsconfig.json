@@ -6,7 +6,8 @@
       "components/*": ["src/components/*"],
       "containers/*": ["src/containers/*"],
       "requests/*": ["src/requests/*"],
-      "domains/*": ["domains/*"]
+      "domains/*": ["domains/*"],
+      "helpers/*": ["src/helpers/*"]
     }
   },
   "exclude": ["node_modules", ".next"]
