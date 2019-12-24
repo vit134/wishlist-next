@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { connect } from 'react-redux';
 import { Form, Input, DatePicker, Button, Divider, Radio } from 'antd';
 import moment from 'moment';
@@ -7,6 +7,7 @@ import { openLoginPopup } from 'domains/root/actions/login-popup';
 import { selectUserData } from 'domains/root/selectors/user-login';
 import DynamicFieldSet from './components/dynamic-birthday';
 import { PhoneInput } from './components/phone-input';
+// import ResidenseField from './components/residense-field';
 import { getNumbersPhone } from 'helpers';
 import styles from './styles.module.css';
 
@@ -87,6 +88,13 @@ class ProfilePanelForm extends React.Component {
               <PhoneInput mask="+7 (999) 999-99-99" allowClear />
             )}
           </Form.Item>
+          {/* <Form.Item label='Страна'>
+            {getFieldDecorator('residense', {
+              initialValue: { country: null, city: null },
+            })(
+              <ResidenseField />
+            )}
+          </Form.Item> */}
           <Divider>Праздники</Divider>
           <DynamicFieldSet form={form} initial={user.holidays} />
           <Divider />
@@ -127,7 +135,11 @@ const mapDispatchToProps = {
   openLoginPopup: openLoginPopup,
 };
 
-export default connect(
+const Connected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProfilePanel);
+
+export default forwardRef((props, ref) => (
+  <Connected {...props} ref={ref} />
+));

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getResidenseUrl } from './helpers';
 
 const headers = {
   Accept: 'application/json',
@@ -76,4 +77,15 @@ export const getAllUsers = () => {
 
 export const getAllWishes = () => {
   return axios.get(`${HOST_NAME}/api/wishes/all`, { headers });
+};
+
+export const getCountriesRequest = (name) => {
+  const url = getResidenseUrl({ method: 'countries', filter: { name } });
+  return axios.get(url);
+};
+
+export const getCitiesRequest = ({ name, countryIso, ...props }) => {
+  console.log(props);
+  const url = getResidenseUrl({ method: 'cities', filter: { name, countryIso }, ...props });
+  return axios.get(url);
 };

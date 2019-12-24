@@ -31,3 +31,23 @@ export const selectActiveTab = pipe([
   selectProfilePageData,
   getOr(1, 'activeTab'),
 ]);
+
+export const selectResidense = pipe([
+  selectProfilePageData,
+  get('residense'),
+]);
+
+export const selectResidenseCountries = pipe([
+  selectResidense,
+  getOr({}, 'countries'),
+]);
+
+export const selectResidenseCities = pipe([
+  selectResidense,
+  getOr({}, 'cities'),
+]);
+
+export const selectSelectedCountryIso = pipe([
+  selectResidenseCountries,
+  get('selectedIso')
+]);
