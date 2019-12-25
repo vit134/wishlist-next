@@ -6,3 +6,16 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.image-button {
+  display: inline-block;
+  line-height: 14px;
+  margin-left: 5px;
+  cursor: pointer;
+  color: #1890ff;
+  transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.image-button:hover {
+  color: #40a9ff;
+}

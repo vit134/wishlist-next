@@ -23,7 +23,6 @@ export class Content extends Component {
     );
 
     const newWishButton = activeTab === '1' && <Button size='small' type='primary'>Добавить</Button>;
-    console.log(activeTab);
 
     return (
       <Card>

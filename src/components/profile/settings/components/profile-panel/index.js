@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { connect } from 'react-redux';
-import { Form, Input, DatePicker, Button, Divider, Radio } from 'antd';
+import { Form, Input, DatePicker, Button, Divider, Radio, Avatar, Icon } from 'antd';
 import moment from 'moment';
 import { userUpdate } from 'domains/root/operations/user';
 import { openLoginPopup } from 'domains/root/actions/login-popup';
@@ -31,8 +31,13 @@ const formItemLayout = {
 // const phoneRegExp = new RegExp(/^((8|\+7)[[ ])([(]\d{3}[)][ ])(\d{3}[-])(\d{2})([-]\d{2})/g);
 
 class ProfilePanelForm extends React.Component {
+  state = {
+    fileName: this.props.user.avatar,
+  }
+
   render () {
     const { form, user } = this.props;
+    const { fileName } = this.state;
     const { getFieldDecorator } = form;
 
     return (
@@ -53,6 +58,19 @@ class ProfilePanelForm extends React.Component {
             {getFieldDecorator('lastname', {
               initialValue: user.lastname,
             })(<Input allowClear />)}
+          </Form.Item>
+          <Form.Item label="Аватар">
+            <div className={styles['image-block']}>
+              {
+                fileName && <Avatar src={fileName} />
+              }
+              <label htmlFor="upload" className={styles['image-button']}>
+                {
+                  fileName ? 'Изменить' : 'Добавить'
+                }
+              </label>
+            </div>
+            <input type="file" id='upload' name="image" accept="image/*" onChange={this.handleChangeFile}/>
           </Form.Item>
           <Form.Item label="День рождения">
             {getFieldDecorator('date_of_birth', {
@@ -99,23 +117,46 @@ class ProfilePanelForm extends React.Component {
           <DynamicFieldSet form={form} initial={user.holidays} />
           <Divider />
           <div className={styles['form-footer']}>
-            <Button htmlType='submit'>Сохранить</Button>
+            <Button htmlType='submit'><Icon type="save" />Сохранить</Button>
           </div>
         </Form>
       </div>
     );
   }
 
+  handleChangeFile = ({ target }) => {
+    const file = target.files[0];
+
+    var reader = new FileReader();
+
+    reader.onloadend = () => {
+      this.setState({ fileName: reader.result });
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+
+    // this.setState({ fileName });
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     const { form, userUpdate } = this.props;
 
-    form.validateFields((err, formData) => {
+    form.validateFields((err, dataFromForm) => {
       if (!err) {
-        const data = form.getFieldsValue();
-        data.phone = getNumbersPhone(data.phone);
-        data.holidays = data.holidays || [];
-        userUpdate(data);
+        // const data = form.getFieldsValue();
+        // data.phone = getNumbersPhone(data.phone);
+        // data.holidays = data.holidays || [];
+
+        const formData = new FormData(e.target);
+        formData.set('phone', getNumbersPhone(dataFromForm.phone));
+
+        const holidays = JSON.stringify(dataFromForm.holidays || []);
+        formData.set('holidays', holidays);
+
+        userUpdate(formData);
       }
     });
   }

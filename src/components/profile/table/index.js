@@ -55,7 +55,7 @@ const renderNameColumn = (name, record, onShowImageModal) => {
 
 const RemoveButton = ({ onDelete }) => (
   <Popconfirm
-    title="Вы уверены что ходите удалить?"
+    title="Вы уверены что хотите удалить?"
     onConfirm={onDelete}
     okText="Да"
     cancelText="Нет"

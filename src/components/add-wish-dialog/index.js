@@ -92,7 +92,7 @@ class AddWishDialog extends React.Component {
                 <label htmlFor="upload" className={styles['image-button']}>Выбрать</label>
               </div>
               {getFieldDecorator('upload')(
-                <input type="file" name="image" accept="image/*" />
+                <input type="file" name="image" accept="image/*" onChange={this.handleChangeFile} />
               )}
             </Form.Item>
             <Button type="primary" htmlType="submit" loading={isLoading}>

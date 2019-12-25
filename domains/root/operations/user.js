@@ -94,7 +94,8 @@ export const userUpdate = data => dispatch => {
       dispatch(userUpdateFail(error));
       notification.error({
         message: 'Произошла непредвиденная ошибка',
-        description: error,
       });
+
+      console.error(error);
     });
 };

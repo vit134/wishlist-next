@@ -15,7 +15,7 @@ export const SideBar = ({ user }) => {
   return (
     <Card>
       <div className={styles.avatar}>
-        <Avatar size={120} src={avatar} icon="user" />
+        <Avatar size={180} src={avatar} icon="user" shape="square" />
       </div>
       <div className={styles.username}>
         <Typography.Title level={4}>{fullName}</Typography.Title>
