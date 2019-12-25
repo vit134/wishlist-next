@@ -32,10 +32,18 @@ export const selectTotalWishesCount = pipe([
   size
 ]);
 
-export const selectActiveTab = pipe([
+export const selectActiveTab = (state, ownProps) => pipe([
   selectProfilePageData,
-  getOr(1, 'activeTab'),
-]);
+  pageData => {
+    const routerActiveTab = getOr(null, ['router', 'query', 'activeTab'])(ownProps);
+
+    if (routerActiveTab) {
+      return routerActiveTab;
+    }
+
+    return getOr(1, 'activeTab')(pageData);
+  }
+])(state);
 
 export const selectResidense = pipe([
   selectProfilePageData,

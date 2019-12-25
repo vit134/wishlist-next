@@ -1,4 +1,5 @@
 import { set, pipe } from 'lodash/fp';
+import Router from 'next/router';
 
 import {
   SELECT_WISH,
@@ -34,6 +35,8 @@ const activeTabinitialState = '1';
 export const activeTabReducer = (state = activeTabinitialState, { type, payload }) => {
   switch (type) {
     case CHANGE_ACTIVE_TAB:
+      const href = `${Router.route}?activeTab=${payload.id}`;
+      Router.push(href, href, { shallow: true });
       return payload.id;
     default:
       return state;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 import { Card, Tabs, Button, Badge } from 'antd';
 import {
   selectSelectedWishes,
@@ -44,12 +45,12 @@ export class Content extends Component {
   }
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
   wishes: selectWishesData(state),
   wishesCount: selectTotalWishesCount(state),
   selectedWishesIds: selectSelectedWishes(state),
   selectedWishesCount: selectSelectedWishesCount(state),
-  activeTab: selectActiveTab(state),
+  activeTab: selectActiveTab(state, ownProps),
 });
 
 const mapDispatchToProps = {
@@ -58,4 +59,9 @@ const mapDispatchToProps = {
   onChangeActiveTab: changeActiveTab,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Content);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Content)
+);
