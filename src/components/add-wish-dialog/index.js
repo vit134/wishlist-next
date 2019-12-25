@@ -72,6 +72,7 @@ class AddWishDialog extends React.Component {
             <Form.Item label='Цена'>
               {getFieldDecorator('price')(
                 <InputNumber
+                  name='price'
                   formatter={value => value.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$& ')}
                   prefix={<IconFont type="icon-price"/>}
                   placeholder="Цена"
@@ -91,7 +92,7 @@ class AddWishDialog extends React.Component {
                 <label htmlFor="upload" className={styles['image-button']}>Выбрать</label>
               </div>
               {getFieldDecorator('upload')(
-                <input type="file" name="image" accept="image/*" onChange={this.handleChangeFile} />
+                <input type="file" name="image" accept="image/*" />
               )}
             </Form.Item>
             <Button type="primary" htmlType="submit" loading={isLoading}>
@@ -120,14 +121,21 @@ class AddWishDialog extends React.Component {
 
     form.validateFields((err, formData) => {
       if (!err) {
-        onSubmit(formData);
+        console.log(formData);
+        const { price } = formData;
+
+        const data = new FormData(e.target);
+        if (price) {
+          data.set('price', price);
+        }
+        onSubmit(data);
       }
     });
   }
 
-  handleChangeFile = e => {
-    const fileName = e.target.files.length > 0
-      ? e.target.files[0].name
+  handleChangeFile = ({ target }) => {
+    const fileName = target.files.length > 0
+      ? target.files[0].name
       : null;
 
     this.setState({ fileName });

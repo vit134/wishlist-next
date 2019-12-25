@@ -1,12 +1,12 @@
 import React from 'react';
 import { map } from 'lodash/fp';
-import { format, compareAsc } from 'date-fns';
-import { Table, Tag, Button, Collapse, Icon, Popconfirm } from 'antd';
+import moment from 'moment';
+import { Table, Tag, Button, Collapse, Icon, Popconfirm, Avatar, Tooltip, Modal } from 'antd';
 import { connect } from 'react-redux';
 import Filters from 'components/filters';
 import { selectWishesData } from 'domains/user-by-id/selectors';
-import { selectSelectedWishes, selectSelectedWishesCount } from 'domains/profile/selectors';
-import { selectWish, selectAllWish } from 'domains/profile/actions';
+import { selectSelectedWishes, selectSelectedWishesCount, selectImageModal } from 'domains/profile/selectors';
+import { selectWish, selectAllWish, showImageModal, hideImageModal } from 'domains/profile/actions';
 import { deleteWishes } from 'domains/profile/operations/wishes';
 import styles from './styles.module.css';
 
@@ -20,9 +20,38 @@ const renderTagsColumn = tags => (
   </span>
 );
 
-const renderNameColumn = (name, record) => (
-  <a href={`/user/${record.userId.username}/${record._id}`}>{name}</a>
-);
+const renderNameColumn = (name, record, onShowImageModal) => {
+  const content = (
+    <>
+      {record.image && (
+        <Avatar
+          shape="square"
+          size={44}
+          src={record.image}
+          className={styles.image}
+          onClick={() => onShowImageModal(record.image)}
+        />
+      )}
+      <a href={`/user/${record.userId.username}/${record._id}`}>{name}</a>
+    </>
+  );
+
+  if (record.link) {
+    const tooltipTitle = (
+      <a href={record.link} target='_blank' rel='noopener noreferrer' className={styles['tooltip-link']}>ссылка на товар</a>
+    );
+
+    return (
+      <Tooltip title={tooltipTitle} placement="right"><span>{content}</span></Tooltip>
+    );
+  }
+
+  return (
+    <div className={styles.name}>
+      {content}
+    </div>
+  );
+};
 
 const RemoveButton = ({ onDelete }) => (
   <Popconfirm
@@ -35,9 +64,17 @@ const RemoveButton = ({ onDelete }) => (
   </Popconfirm>
 );
 
-const renderDateColumn = (name, record) => (
-  format(new Date(record.createdDate), 'dd MMM yy')
-);
+const renderDateColumn = (name, { createdDate }) => {
+  const date = moment(createdDate);
+  const currentMonth = moment().get('month');
+  const month = date.get('month');
+
+  if (currentMonth === month) {
+    return date.format('DD MMM YYYY HH:mm');
+  }
+
+  return date.format('DD MMM YYYY');
+};
 
 const renderFooter = (pageData, selectedWishesCount, onDelete) => {
   if (selectedWishesCount === 0) {
@@ -74,7 +111,8 @@ const customPanelStyle = {
 
 export class WishesTable extends React.Component {
   render () {
-    const { wishes, selectedWishesIds, selectedWishesCount } = this.props;
+    const { wishes, selectedWishesIds, selectedWishesCount, imageModal, onShowImageModal, onHideImageModal } = this.props;
+    const { isOpen, imageUrl } = imageModal;
     const rowSelection = {
       selectedWishesIds,
       onChange: this.onSelectChange,
@@ -95,6 +133,7 @@ export class WishesTable extends React.Component {
         <Table
           size='middle'
           dataSource={wishes}
+          hove
           rowSelection={rowSelection}
           rowKey="_id"
           pagination={{
@@ -102,7 +141,12 @@ export class WishesTable extends React.Component {
           }}
           footer={pageData => renderFooter(pageData, selectedWishesCount, this.handleDeleteWishes)}
         >
-          <Table.Column title="Название" dataIndex="name" key="name" render={renderNameColumn} />
+          <Table.Column
+            title="Название"
+            dataIndex="name"
+            key="name"
+            render={(name, record) => renderNameColumn(name, record, onShowImageModal)}
+          />
           <Table.Column
             title="Тэги"
             dataIndex="tags"
@@ -110,27 +154,41 @@ export class WishesTable extends React.Component {
             render={renderTagsColumn}
           />
           <Table.Column
-            title="Цена"
+            title="Цена (₽)"
             dataIndex="price"
             key="price"
-            defaultSortOrder='descend'
+            width={100}
             sorter={(a, b) => {
               const aPrice = a.price ? a.price : 0;
               const bPrice = b.price ? b.price : 0;
               return aPrice - bPrice;
+            }}
+            render={(price) => {
+              return price && String(price).replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$& ');
             }}
           />
           <Table.Column
             title="Дата"
             dataIndex="createdDate"
             key="createdDate"
+            width={160}
             defaultSortOrder='descend'
             sorter={(a, b) => {
-              return compareAsc(new Date(a.createdDate), new Date(b.createdDate));
+              const aDate = moment(a.createdDate);
+              const bDate = moment(b.createdDate);
+              return aDate.diff(bDate);
             }}
             render={renderDateColumn}
           />
         </Table>
+        <Modal
+          footer={null}
+          onCancel={onHideImageModal}
+          visible={isOpen}
+          bodyStyle={{ padding: '40px' }}
+        >
+          <img src={imageUrl} className={styles['modal-image']} />
+        </Modal>
       </>
     );
   }
@@ -149,6 +207,7 @@ export class WishesTable extends React.Component {
 
 const mapStateToProps = state => ({
   wishes: selectWishesData(state),
+  imageModal: selectImageModal(state),
   selectedWishesIds: selectSelectedWishes(state),
   selectedWishesCount: selectSelectedWishesCount(state),
 });
@@ -157,6 +216,8 @@ const mapDispatchToProps = {
   onSelectWish: selectWish,
   onSelectAllWish: selectAllWish,
   onDeleteWishes: deleteWishes,
+  onShowImageModal: showImageModal,
+  onHideImageModal: hideImageModal,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(WishesTable);

@@ -52,7 +52,7 @@ export const addWish = userFormData => dispatch => {
       dispatch(addWishFail(error));
       notification.error({
         message: 'Что то пошло не так',
-        description: error,
       });
+      console.warn(error);
     });
 };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Checkbox, Card, Form, Input, Select, Button } from 'antd';
+import { Checkbox, Card, Form, Input, Select } from 'antd';
 import classnames from 'classnames/bind';
 import { clearFilters, applyWishesWithFilters } from '../../../domains/user-by-id/actions';
 import debounce from 'lodash/debounce';
@@ -50,7 +50,7 @@ const FormItem = ({ fieldName, label, flex, children }) => {
 
 class Filters extends Component {
   render () {
-    const { form, clearFilters } = this.props;
+    const { form } = this.props;
     const { getFieldDecorator } = form;
 
     return (
@@ -120,9 +120,9 @@ class Filters extends Component {
                 <Checkbox>Ссылка на товар</Checkbox>
               )}
             </div>
-            <div className={styles['clear-button']}>
+            {/* <div className={styles['clear-button']}>
               <Button onClick={clearFilters} type="dashed" size='small' disabled>Очистить</Button>
-            </div>
+            </div> */}
           </div>
         </Form>
       </Card>

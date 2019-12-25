@@ -14,6 +14,9 @@ export const GET_CITIES_FAIL = 'GET_CITIES_FAIL';
 export const CLEAR_COUNTRIES_DATA = 'CLEAR_COUNTRIES_DATA';
 export const SET_SELECTED_COUNTRY_ISO = 'SET_SELECTED_COUNTRY_ISO';
 
+export const SHOW_IMAGE_MODAL = 'SHOW_IMAGE_MODAL';
+export const HIDE_IMAGE_MODAL = 'HIDE_IMAGE_MODAL';
+
 export const selectWish = ids => ({
   type: SELECT_WISH,
   payload: { ids },
@@ -64,4 +67,13 @@ export const getCitiesSuccess = data => ({
 export const getCitiesFail = error => ({
   type: GET_CITIES_FAIL,
   payload: { error },
+});
+
+export const showImageModal = imageUrl => ({
+  type: SHOW_IMAGE_MODAL,
+  payload: { imageUrl },
+});
+
+export const hideImageModal = () => ({
+  type: HIDE_IMAGE_MODAL,
 });

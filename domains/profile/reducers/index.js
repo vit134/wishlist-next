@@ -13,6 +13,9 @@ import {
   GET_CITIES_FETCHING,
   GET_CITIES_SUCCESS,
   GET_CITIES_FAIL,
+
+  SHOW_IMAGE_MODAL,
+  HIDE_IMAGE_MODAL,
 } from '../actions';
 
 const initialState = [];
@@ -26,7 +29,7 @@ export const selectedWishesReducer = (state = initialState, { type, payload }) =
   }
 };
 
-const activeTabinitialState = 2;
+const activeTabinitialState = '1';
 
 export const activeTabReducer = (state = activeTabinitialState, { type, payload }) => {
   switch (type) {
@@ -88,6 +91,28 @@ export const residenceReducer = (state = residenceInitialState, { type, payload 
       ])(state);
     case SET_SELECTED_COUNTRY_ISO:
       return set(['countries', 'selectedIso'], payload.iso)(state);
+    default:
+      return state;
+  }
+};
+
+const imageModalinitialState = {
+  isOpen: false,
+  imageUrl: null,
+};
+
+export const imageModalReducer = (state = imageModalinitialState, { type, payload }) => {
+  switch (type) {
+    case SHOW_IMAGE_MODAL:
+      return pipe([
+        set(['isOpen'], true),
+        set(['imageUrl'], payload.imageUrl),
+      ])(state);
+    case HIDE_IMAGE_MODAL:
+      return pipe([
+        set(['isOpen'], false),
+        set(['imageUrl'], null),
+      ])(state);
     default:
       return state;
   }

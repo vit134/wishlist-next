@@ -22,8 +22,13 @@ export const selectWishesData = pipe([
   getOr([], ['wishes', 'data'])
 ]);
 
+export const selectWishesResult = pipe([
+  selectProfilePageData,
+  getOr([], ['wishes', 'result'])
+]);
+
 export const selectTotalWishesCount = pipe([
-  selectWishesData,
+  selectWishesResult,
   size
 ]);
 
@@ -50,4 +55,9 @@ export const selectResidenseCities = pipe([
 export const selectSelectedCountryIso = pipe([
   selectResidenseCountries,
   get('selectedIso')
+]);
+
+export const selectImageModal = pipe([
+  selectProfilePageData,
+  get('imageModal'),
 ]);

@@ -31,7 +31,6 @@
     "cloudinary": "^1.16.0",
     "cookie-parser": "^1.4.4",
     "datauri": "^2.0.0",
-    "date-fns": "^2.8.1",
     "dotenv": "^8.2.0",
     "eslint-plugin-jest": "^23.0.4",
     "express": "^4.17.1",

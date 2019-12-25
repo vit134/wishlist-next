@@ -22,4 +22,7 @@ const mapDispatchToProps = {
   onClose: closeAddWishPopup,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddWishDialog);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddWishDialog);
