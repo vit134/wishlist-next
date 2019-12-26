@@ -3,8 +3,7 @@ import { Form, Icon, Button } from 'antd';
 import { BitrthdayField } from '../birthday-field';
 import styles from './styles.module.css';
 import './styles.css';
-
-let id = 0;
+import moment from 'moment';
 
 class DynamicFieldSet extends Component {
   remove = k => {
@@ -12,14 +11,19 @@ class DynamicFieldSet extends Component {
     const keys = form.getFieldValue('keys');
 
     form.setFieldsValue({
-      keys: keys.filter((key, ind) => ind !== k),
+      keys: keys.filter((key, ind) => {
+        console.log(key);
+        return ind !== k;
+      }),
+      // keys: keys.splice(k, 1),
     });
   };
 
   add = () => {
     const { form } = this.props;
     const keys = form.getFieldValue('keys');
-    const nextKeys = keys.concat(id++);
+
+    const nextKeys = keys.concat({ name: '', date: moment().utc().format('YYYY-MM-DDTHH:mm:ss.000\\Z') });
     form.setFieldsValue({
       keys: nextKeys,
     });
@@ -29,7 +33,7 @@ class DynamicFieldSet extends Component {
     const { form, initial } = this.props;
     const { getFieldDecorator, getFieldValue } = form;
 
-    getFieldDecorator('keys', { initialValue: initial });
+    getFieldDecorator('keys', { initialValue: getFieldValue('keys') || initial });
 
     const keys = getFieldValue('keys');
     const formItems = keys.map((el, ind) => {

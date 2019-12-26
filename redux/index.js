@@ -10,7 +10,13 @@ import {
 import { userLoginReducer } from 'domains/root/reducers/user';
 import { loginPopupReducer } from 'domains/root/reducers/login-popup';
 import { addWishPopupReducer } from 'domains/root/reducers/add-wish-popup';
-import { selectedWishesReducer, activeTabReducer, residenceReducer, imageModalReducer } from 'domains/profile/reducers';
+import {
+  selectedWishesReducer,
+  activeTabReducer,
+  residenceReducer,
+  imageModalReducer,
+  formFieldsReducer,
+} from 'domains/profile/reducers';
 import { wishesReducer } from 'domains/root/reducers/wishes';
 
 const composeEnhancers = composeWithDevTools({
@@ -37,6 +43,7 @@ const profilePage = combineReducers({
   activeTab: activeTabReducer,
   residense: residenceReducer,
   imageModal: imageModalReducer,
+  formFields: formFieldsReducer,
 });
 
 const rootReducer = combineReducers({

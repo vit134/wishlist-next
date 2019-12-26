@@ -16,7 +16,7 @@ import {
   userUpdateFail,
 } from '../actions/user';
 import { closeLoginPopup } from '../actions/login-popup';
-import { notification } from 'antd';
+import { notification, message } from 'antd';
 
 import {
   loginRequest,
@@ -26,8 +26,8 @@ import {
 } from '../../../src/requests';
 
 notification.config({
-  placement: 'bottomRight',
-  duration: 5,
+  placement: 'bottomLeft',
+  duration: 3,
 });
 
 export const userLogin = (userFormData) => dispatch => {
@@ -83,18 +83,14 @@ export const userUpdate = data => dispatch => {
     .then(({ data }) => {
       if (data.success) {
         dispatch(userUpdateSuccess(data));
-        notification.success({
-          message: 'Данные профиля успешно обновлены',
-        });
+        message.success('Данные профиля успешно обновлены', 5);
       } else {
         throw data.error;
       }
     })
     .catch(error => {
       dispatch(userUpdateFail(error));
-      notification.error({
-        message: 'Произошла непредвиденная ошибка',
-      });
+      message('Произошла непредвиденная ошибка', 3);
 
       console.error(error);
     });

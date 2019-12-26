@@ -17,6 +17,9 @@ import {
 
   SHOW_IMAGE_MODAL,
   HIDE_IMAGE_MODAL,
+
+  CHANGE_FORM_FIELDS,
+  CLEAR_FORM_FIELDS,
 } from '../actions';
 
 const initialState = [];
@@ -116,6 +119,21 @@ export const imageModalReducer = (state = imageModalinitialState, { type, payloa
         set(['isOpen'], false),
         set(['imageUrl'], null),
       ])(state);
+    default:
+      return state;
+  }
+};
+
+const formFiledsInitialState = {
+  changedFields: {},
+};
+
+export const formFieldsReducer = (state = formFiledsInitialState, { type, payload }) => {
+  switch (type) {
+    case CHANGE_FORM_FIELDS:
+      return set(['changedFields'], payload)(state);
+    case CLEAR_FORM_FIELDS:
+      return set(['changedFields'], {})(state);
     default:
       return state;
   }

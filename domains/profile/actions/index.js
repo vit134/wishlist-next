@@ -17,6 +17,9 @@ export const SET_SELECTED_COUNTRY_ISO = 'SET_SELECTED_COUNTRY_ISO';
 export const SHOW_IMAGE_MODAL = 'SHOW_IMAGE_MODAL';
 export const HIDE_IMAGE_MODAL = 'HIDE_IMAGE_MODAL';
 
+export const CHANGE_FORM_FIELDS = 'CHANGE_FORM_FIELDS';
+export const CLEAR_FORM_FIELDS = 'CLEAR_FORM_FIELDS';
+
 export const selectWish = ids => ({
   type: SELECT_WISH,
   payload: { ids },
@@ -76,4 +79,13 @@ export const showImageModal = imageUrl => ({
 
 export const hideImageModal = () => ({
   type: HIDE_IMAGE_MODAL,
+});
+
+export const setChangedFormFileds = formFields => ({
+  type: CHANGE_FORM_FIELDS,
+  payload: formFields,
+});
+
+export const clearChangedFormFileds = () => ({
+  type: CLEAR_FORM_FIELDS,
 });

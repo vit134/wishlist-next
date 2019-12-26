@@ -18,7 +18,7 @@ export const selectUserIsLoading = pipe([
 
 export const selectUserData = pipe([
   selectUser,
-  get(['data'])
+  getOr({}, ['data'])
 ]);
 
 export const selectUserError = pipe([
