@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
 import { Card, Icon, Col } from 'antd';
-import { Image } from '../../../../src/components/image';
+import { Image } from 'components/image';
 import styles from './styles.module.css';
 
 const { Meta } = Card;
