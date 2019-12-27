@@ -12,7 +12,7 @@ import {
   successUserInfoFetching,
   failUserInfoFetching,
 } from '../actions';
-import { wishByUserIdRequest, userInfoRequst } from '../../../src/requests';
+import { wishByUserIdRequest, userInfoRequst } from 'requests';
 
 export const getWishes = (userId) => dispatch => {
   dispatch(wishesFetching());

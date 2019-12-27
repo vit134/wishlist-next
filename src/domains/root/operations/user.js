@@ -23,7 +23,7 @@ import {
   logoutRequest,
   registrationRequest,
   userUpdateRequest,
-} from '../../../src/requests';
+} from 'requests';
 
 notification.config({
   placement: 'bottomLeft',

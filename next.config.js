@@ -87,7 +87,7 @@ module.exports = withLess({
     config.resolve.alias['components'] = path.join(__dirname, 'src/components');
     config.resolve.alias['containers'] = path.join(__dirname, 'src/containers');
     config.resolve.alias['requests'] = path.join(__dirname, 'src/requests');
-    config.resolve.alias['domains'] = path.join(__dirname, 'domains');
+    config.resolve.alias['domains'] = path.join(__dirname, 'src/domains');
     config.resolve.alias['helpers'] = path.join(__dirname, 'src/helpers');
     /* eslint-enable dot-notation */
 

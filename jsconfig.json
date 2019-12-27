@@ -6,7 +6,7 @@
       "components/*": ["src/components/*"],
       "containers/*": ["src/containers/*"],
       "requests/*": ["src/requests/*"],
-      "domains/*": ["domains/*"],
+      "domains/*": ["src/domains/*"],
       "helpers/*": ["src/helpers/*"]
     }
   },

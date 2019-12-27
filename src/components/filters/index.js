@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Checkbox, Card, Form, Input, Select } from 'antd';
 import classnames from 'classnames/bind';
-import { clearFilters, applyWishesWithFilters } from '../../../domains/user-by-id/actions';
+import { clearFilters, applyWishesWithFilters } from 'domains/user-by-id/actions';
 import debounce from 'lodash/debounce';
 import styles from './styles.module.css';
 

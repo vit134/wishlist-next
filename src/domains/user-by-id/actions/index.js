@@ -1,6 +1,6 @@
 import { entries, pipe, values } from 'lodash/fp';
-import { selectWishesEntities } from '../selectors';
-import { sorting } from '../../../src/helpers';
+import { selectWishesEntities } from 'domains/user-by-id/selectors';
+import { sorting } from 'helpers';
 export const GET_WISHES_REQUEST = 'GET_WISHES_REQUEST';
 export const GET_WISHES_SUCCESS = 'GET_WISHES_SUCCESS';
 export const GET_WISHES_FAIL = 'GET_WISHES_FAIL';

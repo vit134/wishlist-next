@@ -7,10 +7,10 @@ import {
   deleteWishFail,
   setWishes,
 } from 'domains/root/actions/wishes';
-import { selectWish } from 'domains/profile/actions/';
+import { selectWish } from 'domains/profile/actions';
 import { notification } from 'antd';
 
-import { wishByUserIdRequest, deleteWishesRequest } from '../../../src/requests';
+import { wishByUserIdRequest, deleteWishesRequest } from 'requests';
 
 notification.config({
   placement: 'bottomRight',

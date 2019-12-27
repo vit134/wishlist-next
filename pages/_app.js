@@ -1,6 +1,6 @@
 import React from 'react';
 import App from 'next/app';
-import { makeStore } from '../redux';
+import { makeStore } from '../src/redux';
 import { Provider } from 'react-redux';
 import { withRouter } from 'next/router';
 import withRedux from 'next-redux-wrapper';
