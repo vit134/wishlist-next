@@ -1,8 +1,13 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var passportLocalMongoose = require('passport-local-mongoose');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const passportLocalMongoose = require('passport-local-mongoose');
 
-var Account = new Schema({
+const HolidaysSchema = new Schema({
+  name: String,
+  date: Date,
+});
+
+const Account = new Schema({
   _id: Schema.Types.ObjectId,
   username: String,
   password: String,
@@ -12,12 +17,21 @@ var Account = new Schema({
   country: String,
   city: String,
   phone: Number,
+  gender: {
+    type: String,
+    default: 'n',
+  },
   avatar: String,
-  date_of_birth: Number,
-  online: { type: Boolean, default: false },
-  last_login: Date,
+  date_of_birth: {
+    type: Date,
+    null: true,
+    default: null,
+  },
+  holidays: {
+    type: [HolidaysSchema],
+    default: [],
+  },
   was_register: { type: Date, default: Date.now },
-  wishes: [{ type: Schema.Types.ObjectId, ref: 'Wishes' }],
   is_activate: { type: Boolean, default: false },
 });
 

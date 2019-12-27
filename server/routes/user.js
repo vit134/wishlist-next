@@ -1,7 +1,8 @@
 const express = require('express');
 const Account = require('../models/account');
 const Wishes = require('../models/wishes');
-var router = express.Router();
+const { uploadFile } = require('../utils');
+const router = express.Router();
 
 router.get('/:username/info', (req, res) => {
   const { username } = req.params;
@@ -46,6 +47,45 @@ router.get('/all', (req, res) => {
         });
     })
     .catch(error => res.send({ success: false, error }));
+});
+
+router.put('/update', async (req, res) => {
+  const { body, user } = req;
+  const { _id } = user;
+
+  if (!user) {
+    res.send({ success: false, error: 'no user' });
+  }
+
+  if (body.date_of_birth === 'null') {
+    body.date_of_birth = null;
+  }
+
+  if (body.holidays) {
+    body.holidays = JSON.parse(body.holidays);
+  }
+
+  let fileUploadResult;
+
+  if (req.files) {
+    const { image } = req.files;
+
+    try {
+      fileUploadResult = await uploadFile(image);
+    } catch (e) {
+      fileUploadResult = e;
+    }
+  }
+
+  if (fileUploadResult && fileUploadResult.success) {
+    body.avatar = fileUploadResult.data.url;
+  }
+
+  Account.findOneAndUpdate({ _id }, body, { new: true }).exec()
+    .then(data => {
+      res.send({ success: true, data });
+    })
+    .catch(error => res.send({ status: false, error }));
 });
 
 module.exports = router;

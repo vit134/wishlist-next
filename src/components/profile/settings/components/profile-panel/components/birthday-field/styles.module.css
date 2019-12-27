@@ -1,0 +1,14 @@
+.bitrthday-fields {
+  display: flex;
+  align-items: center;
+}
+
+.birthday-name-field {
+  width: 250px;
+  flex: none;
+  margin-right: 12px;
+}
+
+.birthday-date-field {
+  width: 100%;
+}

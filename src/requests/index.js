@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getResidenseUrl } from './helpers';
 
 const headers = {
   Accept: 'application/json',
@@ -39,6 +40,10 @@ export const logoutRequest = () => {
   });
 };
 
+export const userUpdateRequest = data => (
+  axios.put('/api/user/update', data, { headers })
+);
+
 export const registrationRequest = (data) => {
   return axios.post('/api/registration', data, { headers });
 };
@@ -62,10 +67,25 @@ export const addWishRequest = (data) => {
   });
 };
 
+export const deleteWishesRequest = ids => {
+  return axios.delete(`${HOST_NAME}/api/wishes/`, { data: ids }, { headers });
+};
+
 export const getAllUsers = () => {
   return axios.get(`${HOST_NAME}/api/user/all`, { headers });
 };
 
 export const getAllWishes = () => {
   return axios.get(`${HOST_NAME}/api/wishes/all`, { headers });
+};
+
+export const getCountriesRequest = (name) => {
+  const url = getResidenseUrl({ method: 'countries', filter: { name } });
+  return axios.get(url);
+};
+
+export const getCitiesRequest = ({ name, countryIso, ...props }) => {
+  console.log(props);
+  const url = getResidenseUrl({ method: 'cities', filter: { name, countryIso }, ...props });
+  return axios.get(url);
 };

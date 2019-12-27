@@ -59,7 +59,7 @@ class LoginContent extends Component {
 
     form.validateFields((err, formData) => {
       if (!err) {
-        console.log('Received values of login-form: ', formData);
+        // console.log('Received values of login-form: ', formData);
 
         onSubmit(formData);
       }

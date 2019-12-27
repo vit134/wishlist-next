@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Form, Icon, Input, Button } from 'antd';
+import { Modal, Form, Icon, Input, Button, InputNumber } from 'antd';
 import classNames from 'classnames/bind';
 import styles from './styles.module.css';
 
@@ -33,6 +33,8 @@ class AddWishDialog extends React.Component {
     const { form, isLoading } = this.props;
     const { getFieldDecorator } = form;
     const { fileName } = this.state;
+
+    console.log(isLoading);
 
     return (
       <Modal
@@ -71,10 +73,12 @@ class AddWishDialog extends React.Component {
             </Form.Item>
             <Form.Item label='Цена'>
               {getFieldDecorator('price')(
-                <Input
-                  type='number'
+                <InputNumber
+                  name='price'
+                  formatter={value => value.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$& ')}
                   prefix={<IconFont type="icon-price"/>}
                   placeholder="Цена"
+                  style={{ width: '100%' }}
                 />
               )}
             </Form.Item>
@@ -93,7 +97,7 @@ class AddWishDialog extends React.Component {
                 <input type="file" name="image" accept="image/*" onChange={this.handleChangeFile} />
               )}
             </Form.Item>
-            <Button type="primary" htmlType="submit" loading={isLoading}>
+            <Button type="primary" htmlType="submit" loading={isLoading} disabled={isLoading}>
               Создать
             </Button>
           </Form>
@@ -119,14 +123,21 @@ class AddWishDialog extends React.Component {
 
     form.validateFields((err, formData) => {
       if (!err) {
-        onSubmit(formData);
+        console.log(formData);
+        const { price } = formData;
+
+        const data = new FormData(e.target);
+        if (price) {
+          data.set('price', price);
+        }
+        onSubmit(data);
       }
     });
   }
 
-  handleChangeFile = e => {
-    const fileName = e.target.files.length > 0
-      ? e.target.files[0].name
+  handleChangeFile = ({ target }) => {
+    const fileName = target.files.length > 0
+      ? target.files[0].name
       : null;
 
     this.setState({ fileName });

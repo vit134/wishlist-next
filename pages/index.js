@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
 import CurrencyFormat from 'react-currency-format';
-import { getAllUsers, getAllWishes } from '../src/requests';
+import { getAllUsers, getAllWishes } from 'requests';
 import { Avatar, Row, Col, Card, Typography } from 'antd';
 import { getUserName } from '../src/utils';
 import { Image } from 'components/image';

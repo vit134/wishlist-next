@@ -1,7 +1,8 @@
 import React from 'react';
 import App from 'next/app';
-import { makeStore } from '../redux';
+import { makeStore } from '../src/redux';
 import { Provider } from 'react-redux';
+import { withRouter } from 'next/router';
 import withRedux from 'next-redux-wrapper';
 import { setUserLogin } from 'domains/root/actions/user';
 import PageLayout from 'containers/layout';
@@ -15,7 +16,7 @@ const protectedRoutes = [
 
 class MyApp extends App {
   static async getInitialProps (props) {
-    const { Component, ctx } = props;
+    const { Component, ctx, router } = props;
     const { req, store } = ctx;
     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 
@@ -27,7 +28,7 @@ class MyApp extends App {
 
     return {
       pageProps,
-      accessDenied: protectedRoutes.includes(req.url) && !req.user,
+      accessDenied: protectedRoutes.includes(router.pathname) && !req.user,
     };
   }
 
@@ -49,7 +50,7 @@ class MyApp extends App {
   }
 }
 
-export default withRedux(makeStore, {
+export default withRouter(withRedux(makeStore, {
   storeKey: 'Wishlist',
   debug: false,
-})(MyApp);
+})(MyApp));

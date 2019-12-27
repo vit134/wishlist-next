@@ -1,10 +1,11 @@
-var express = require('express');
-var Wishes = require('../models/wishes');
-var Account = require('../models/account');
-var router = express.Router();
-var mongoose = require('mongoose');
+const express = require('express');
+const Wishes = require('../models/wishes');
+const Account = require('../models/account');
+const router = express.Router();
+const mongoose = require('mongoose');
 const { uploadFile } = require('../utils');
-var ObjectId = mongoose.Types.ObjectId;
+// const { profanity } = require('../requests');
+const ObjectId = mongoose.Types.ObjectId;
 
 router.get('/', function (req, res) {
   const userId = String(req.query.user);
@@ -62,8 +63,6 @@ router.get('/:id', function (req, res) {
 router.get('/by-user-id/:username', function (req, res) {
   const { username } = req.params;
 
-  console.log(username);
-
   if (mongoose.Types.ObjectId.isValid(username)) {
     Wishes.find({ userId: new ObjectId(username) }).populate('assigned userId').exec()
       .then(data => res.send({ success: true, data }))
@@ -82,6 +81,25 @@ router.post('/', async function (req, res) {
   if (!req.user) {
     return res.send({ success: false, error: 'Сессия устраела, авторизуйтесь и попробуйте снова' });
   }
+
+  // TODO: найти более бесплатный сервис
+  // const nameValidation = {
+  //   success: true,
+  // };
+
+  // try {
+  //   const { data } = await profanity(req.body.name);
+  //   if (data.result.level > 0) {
+  //     nameValidation.success = false;
+  //     nameValidation.data = data;
+  //   }
+  // } catch (e) {
+  //   console.log(e);
+  // }
+
+  // if (!nameValidation.success) {
+  //   return res.send({ success: false, error: 'Грубые слова в названии вишки, ай ай ай' });
+  // }
 
   const body = {
     ...req.body,
@@ -151,15 +169,14 @@ router.post('/', async function (req, res) {
 //   res.send(result);
 // });
 
-// router.delete('/wishes', function (req, res, next) {
-//   Wishes.deleteMany({ _id: { $in: req.body } }, function (err, resp) {
-//     if (err) {
-//       console.log(err);
-//       next();
-//     }
-
-//     res.send(req.body);
-//   });
-// });
+router.delete('/', function (req, res, next) {
+  console.log('req', req);
+  Wishes.deleteMany({ _id: { $in: req.body } }, function (err) {
+    if (err) {
+      return res.send({ success: false, error: err });
+    }
+    return res.send({ success: true, data: req.body });
+  });
+});
 
 module.exports = router;

@@ -1,0 +1,61 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.col {
+  flex-grow: 1;
+}
+
+.col + .col {
+  margin-left: 16px;
+}
+
+.col.width_50 {
+  width: 50%;
+}
+
+.root .form-item-row {
+  display: flex;
+  align-items: center;
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-variant: tabular-nums;
+  margin-bottom: 15px;
+}
+
+.form-item.flex .label {
+  min-width: auto;
+}
+
+.label {
+  flex-shrink: 0;
+  min-width: 85px;
+  padding-right: 5px;
+}
+
+.label.no-width {
+  min-width: auto;
+}
+
+.label label {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.85);
+  margin-bottom: 0;
+}
+
+.label label:after {
+  content: ':';
+  position: relative;
+  top: -0.5px;
+  margin: 0 8px 0 2px;
+}
+
+.control {
+  flex-grow: 1;
+}
