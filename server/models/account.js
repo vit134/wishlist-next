@@ -22,7 +22,11 @@ const Account = new Schema({
     default: 'n',
   },
   avatar: String,
-  date_of_birth: Date,
+  date_of_birth: {
+    type: Date,
+    null: true,
+    default: null,
+  },
   holidays: {
     type: [HolidaysSchema],
     default: [],

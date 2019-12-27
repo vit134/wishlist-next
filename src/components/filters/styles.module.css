@@ -24,7 +24,6 @@
 .form-item {
   display: flex;
   align-items: center;
-  /* margin-right: 16px; */
   margin-bottom: 10px;
   font-variant: tabular-nums;
   margin-bottom: 15px;
@@ -36,8 +35,12 @@
 
 .label {
   flex-shrink: 0;
-  /* min-width: 90px; */
+  min-width: 85px;
   padding-right: 5px;
+}
+
+.label.no-width {
+  min-width: auto;
 }
 
 .label label {

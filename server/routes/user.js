@@ -57,6 +57,10 @@ router.put('/update', async (req, res) => {
     res.send({ success: false, error: 'no user' });
   }
 
+  if (body.date_of_birth === 'null') {
+    body.date_of_birth = null;
+  }
+
   if (body.holidays) {
     body.holidays = JSON.parse(body.holidays);
   }

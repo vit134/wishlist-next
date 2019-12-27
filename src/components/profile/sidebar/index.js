@@ -9,8 +9,8 @@ import styles from './styles.module.css';
 export const SideBar = ({ user }) => {
   const { avatar, date_of_birth, email, firstname, lastname, phone, username, holidays } = user; // eslint-disable-line camelcase
   const fullName = firstname && lastname ? `${firstname} ${lastname}` : username;
-  const dateOfBirth = moment(date_of_birth).format('DD MMM YYYY г.');
-  const formattedPhone = getFormattedPhone(phone);
+  const dateOfBirth = date_of_birth && moment(date_of_birth).format('DD MMM YYYY г.'); // eslint-disable-line camelcase
+  const formattedPhone = phone && getFormattedPhone(phone);
 
   return (
     <Card>
@@ -21,18 +21,24 @@ export const SideBar = ({ user }) => {
         <Typography.Title level={4}>{fullName}</Typography.Title>
       </div>
       <div className={styles.userinfo}>
-        <span className={styles['userinfo-row']}>
-          <Icon type="calendar" className={styles['userinfo-icon']} />
-          <Typography.Text>{dateOfBirth}</Typography.Text>
-        </span>
-        <span className={styles['userinfo-row']}>
-          <Icon type="phone" className={styles['userinfo-icon']} />
-          <Typography.Text>{formattedPhone}</Typography.Text>
-        </span>
-        <span className={styles['userinfo-row']}>
-          <Icon type="mail" className={styles['userinfo-icon']} />
-          <Typography.Text>{email}</Typography.Text>
-        </span>
+        {dateOfBirth && (
+          <span className={styles['userinfo-row']}>
+            <Icon type="calendar" className={styles['userinfo-icon']} />
+            <Typography.Text>{dateOfBirth}</Typography.Text>
+          </span>
+        )}
+        {formattedPhone && (
+          <span className={styles['userinfo-row']}>
+            <Icon type="phone" className={styles['userinfo-icon']} />
+            <Typography.Text>{formattedPhone}</Typography.Text>
+          </span>
+        )}
+        {email && (
+          <span className={styles['userinfo-row']}>
+            <Icon type="mail" className={styles['userinfo-icon']} />
+            <Typography.Text>{email}</Typography.Text>
+          </span>
+        )}
       </div>
       <Divider dashed />
       <div className={styles.holidays}>

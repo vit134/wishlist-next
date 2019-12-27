@@ -13,27 +13,25 @@ import { selectWish, selectAllWish, changeActiveTab } from 'domains/profile/acti
 import WishesTable from '../table';
 import { ProfileSettings } from '../settings';
 
+const WishesTab = React.memo(({ count }) => (
+  <Badge count={count}>
+    <span style={{ paddingRight: '10px' }}>Мои желания</span>
+  </Badge>
+));
+
 export class Content extends Component {
   render () {
     const { wishesCount, activeTab, onChangeActiveTab } = this.props;
-
-    const WishesTab = (
-      <Badge count={wishesCount}>
-        <span style={{ paddingRight: '10px' }}>Мои желания</span>
-      </Badge>
-    );
-
     const newWishButton = activeTab === '1' && <Button size='small' type='primary'>Добавить</Button>;
 
     return (
       <Card>
         <Tabs
-          defaultActiveKey="1"
           activeKey={String(activeTab)}
           onChange={onChangeActiveTab}
           tabBarExtraContent={newWishButton}
         >
-          <Tabs.TabPane tab={WishesTab} key="1">
+          <Tabs.TabPane tab={<WishesTab count={wishesCount} />} key="1">
             <WishesTable />
           </Tabs.TabPane>
           <Tabs.TabPane tab="Настройки профиля" key="2">

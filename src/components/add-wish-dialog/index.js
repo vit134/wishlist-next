@@ -34,6 +34,8 @@ class AddWishDialog extends React.Component {
     const { getFieldDecorator } = form;
     const { fileName } = this.state;
 
+    console.log(isLoading);
+
     return (
       <Modal
         bodyStyle={{ paddingRight: '60px' }}

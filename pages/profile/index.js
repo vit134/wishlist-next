@@ -17,7 +17,7 @@ class ProfilePage extends React.Component {
       try {
         await dispatch(getWishes(user._id));
       } catch (e) {
-        console.log(e);
+        console.log('ProfilePage getWishes dispatch error', e);
       }
     }
 

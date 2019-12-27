@@ -33,11 +33,11 @@ const handleFieldsChange = debounce((props, changedFields, allFields) => {
   applyWishesWithFilters(filters);
 }, 200);
 
-const FormItem = ({ fieldName, label, flex, children }) => {
+const FormItem = ({ fieldName, label, flex, labelShrink, children }) => {
   return (
     <div className={cx('form-item', { flex })}>
       {label && (
-        <div className={styles.label}>
+        <div className={cx(styles.label, { 'no-width': labelShrink })}>
           <label htmlFor={fieldName}>{ label }</label>
         </div>
       )}
@@ -67,14 +67,14 @@ class Filters extends Component {
             <div className={cx('col', 'width_50')}>
               <div className={styles.row}>
                 <div className={cx('col', 'width_50')}>
-                  <FormItem label="Цена">
+                  <FormItem label="Цена" labelShrink>
                     {getFieldDecorator('price_from')(
                       <Input placeholder="1000" />
                     )}
                   </FormItem>
                 </div>
                 <div className={cx('col', 'width_50')}>
-                  <FormItem label="до">
+                  <FormItem label="до" labelShrink>
                     {getFieldDecorator('price_to')(
                       <Input placeholder="1000" />
                     )}

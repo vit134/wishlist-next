@@ -2,7 +2,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import {
-  wishesReducer as wishesOperationsReducer,
   userInfoReducer,
   filtersReducer,
   paginationReducer,
@@ -27,7 +26,7 @@ const root = combineReducers({
   user: userLoginReducer,
   loginPopup: loginPopupReducer,
   addWishPopup: addWishPopupReducer,
-  wishes: wishesOperationsReducer,
+  wishes: wishesReducer,
 });
 
 const userPage = combineReducers({

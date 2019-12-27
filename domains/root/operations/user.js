@@ -90,7 +90,8 @@ export const userUpdate = data => dispatch => {
     })
     .catch(error => {
       dispatch(userUpdateFail(error));
-      message('Произошла непредвиденная ошибка', 3);
+
+      message.error('Произошла непредвиденная ошибка', 3);
 
       console.error(error);
     });

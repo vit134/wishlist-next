@@ -22,7 +22,7 @@ const AvatarDropdown = ({ currentUser = {}, actions }) => {
         </a>
       </Menu.Item>
       <Menu.Item key="settings" className={styles['menu-item']}>
-        <a href="/profile/settings">
+        <a href="/profile?activeTab=2">
           <Icon type="setting" />
           <span className={styles['menu-item-name']}>Настройки</span>
         </a>

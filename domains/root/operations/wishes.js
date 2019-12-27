@@ -1,23 +1,23 @@
 import React from 'react';
 import { values, compose } from 'lodash/fp';
-import { getFiltersFuctions } from '../../../src/helpers';
+import { getFiltersFuctions } from 'helpers';
 import { notification } from 'antd';
 
-import { closeAddWishPopup } from '../actions/add-wish-popup';
-import { selectWishesEntities } from '../selectors/wishes';
+import { closeAddWishPopup } from 'domains/root/actions/add-wish-popup';
+import { selectWishesEntities } from 'domains/root/selectors/wishes';
 import {
   addWishFetching,
   addWishSuccess,
   addWishFail,
 
   setWishes,
-} from '../actions/wishes';
+} from 'domains/root/actions/wishes';
 
-import { addWishRequest } from '../../../src/requests';
+import { addWishRequest } from 'requests';
 
 notification.config({
-  placement: 'bottomRight',
-  duration: 5,
+  placement: 'bottomLeft',
+  duration: 3,
 });
 
 export const applyWishesWithFilters = filters => (dispatch, getState) => {

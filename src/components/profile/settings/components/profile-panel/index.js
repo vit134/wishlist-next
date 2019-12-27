@@ -158,9 +158,9 @@ class ProfilePanelForm extends React.Component {
         const formData = new FormData(e.target);
         const { phone, holidays, date_of_birth } = dataFromForm; // eslint-disable-line camelcase
 
-        formData.set('phone', getNumbersPhone(phone));
+        formData.set('phone', phone ? getNumbersPhone(phone) : null);
         formData.set('holidays', JSON.stringify(holidays || []));
-        formData.set('date_of_birth', moment(date_of_birth));
+        formData.set('date_of_birth', date_of_birth ? moment(date_of_birth) : null); // eslint-disable-line camelcase
 
         userUpdate(formData);
       }
