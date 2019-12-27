@@ -4,7 +4,7 @@ const Account = require('../models/account');
 const router = express.Router();
 const mongoose = require('mongoose');
 const { uploadFile } = require('../utils');
-const { profanity } = require('../requests');
+// const { profanity } = require('../requests');
 const ObjectId = mongoose.Types.ObjectId;
 
 router.get('/', function (req, res) {
@@ -63,8 +63,6 @@ router.get('/:id', function (req, res) {
 router.get('/by-user-id/:username', function (req, res) {
   const { username } = req.params;
 
-  console.log(username);
-
   if (mongoose.Types.ObjectId.isValid(username)) {
     Wishes.find({ userId: new ObjectId(username) }).populate('assigned userId').exec()
       .then(data => res.send({ success: true, data }))
@@ -84,23 +82,24 @@ router.post('/', async function (req, res) {
     return res.send({ success: false, error: 'Сессия устраела, авторизуйтесь и попробуйте снова' });
   }
 
-  const nameValidation = {
-    success: true,
-  };
+  // TODO: найти более бесплатный сервис
+  // const nameValidation = {
+  //   success: true,
+  // };
 
-  try {
-    const { data } = await profanity(req.body.name);
-    if (data.result.level > 0) {
-      nameValidation.success = false;
-      nameValidation.data = data;
-    }
-  } catch (e) {
-    console.log(e);
-  }
+  // try {
+  //   const { data } = await profanity(req.body.name);
+  //   if (data.result.level > 0) {
+  //     nameValidation.success = false;
+  //     nameValidation.data = data;
+  //   }
+  // } catch (e) {
+  //   console.log(e);
+  // }
 
-  if (!nameValidation.success) {
-    return res.send({ success: false, error: 'Грубые слова в названии вишки, ай ай ай' });
-  }
+  // if (!nameValidation.success) {
+  //   return res.send({ success: false, error: 'Грубые слова в названии вишки, ай ай ай' });
+  // }
 
   const body = {
     ...req.body,
@@ -108,8 +107,6 @@ router.post('/', async function (req, res) {
   };
 
   let fileUploadResult;
-
-  console.log('req.files', req.files);
 
   if (req.files) {
     const { image } = req.files;
@@ -120,8 +117,6 @@ router.post('/', async function (req, res) {
       fileUploadResult = e;
     }
   }
-
-  console.log('fileUploadResult', fileUploadResult);
 
   if (fileUploadResult && fileUploadResult.success) {
     body.image = fileUploadResult.data.url;

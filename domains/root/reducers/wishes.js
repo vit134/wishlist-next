@@ -57,6 +57,8 @@ export const wishesReducer = (state = initialState, { type, payload }) => {
       return pipe([
         set(['isLoading'], false),
         set(['status'], true),
+        set(['entities'], getWishesEntities([...state.data, payload.data]).entities.wishes),
+        set(['result'], getWishesEntities([...state.data, payload.data]).result.wishes),
       ])(state);
     case ADD_WISH_FAIL:
       return pipe([

@@ -9,6 +9,7 @@ import {
   selectTotalWishesCount,
   selectActiveTab,
 } from 'domains/profile/selectors';
+import { openAddWishPopup } from 'domains/root/actions/add-wish-popup';
 import { selectWish, selectAllWish, changeActiveTab } from 'domains/profile/actions';
 import WishesTable from '../table';
 import { ProfileSettings } from '../settings';
@@ -19,10 +20,20 @@ const WishesTab = React.memo(({ count }) => (
   </Badge>
 ));
 
+const AddWishButton = ({ onClick }) => (
+  <Button
+    onClick={onClick}
+    size='small'
+    type='primary'
+  >
+      Добавить
+  </Button>
+);
+
 export class Content extends Component {
   render () {
-    const { wishesCount, activeTab, onChangeActiveTab } = this.props;
-    const newWishButton = activeTab === '1' && <Button size='small' type='primary'>Добавить</Button>;
+    const { wishesCount, activeTab, onChangeActiveTab, onOpenAddWishPopup } = this.props;
+    const newWishButton = activeTab === '1' && <AddWishButton onClick={onOpenAddWishPopup} />;
 
     return (
       <Card>
@@ -55,6 +66,7 @@ const mapDispatchToProps = {
   onSelectWish: selectWish,
   onSelectAllWish: selectAllWish,
   onChangeActiveTab: changeActiveTab,
+  onOpenAddWishPopup: openAddWishPopup,
 };
 
 export default withRouter(

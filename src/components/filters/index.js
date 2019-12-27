@@ -50,6 +50,7 @@ const FormItem = ({ fieldName, label, flex, labelShrink, children }) => {
 
 class Filters extends Component {
   render () {
+    console.log(this.props);
     const { form } = this.props;
     const { getFieldDecorator } = form;
 

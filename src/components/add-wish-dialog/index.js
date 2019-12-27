@@ -97,7 +97,7 @@ class AddWishDialog extends React.Component {
                 <input type="file" name="image" accept="image/*" onChange={this.handleChangeFile} />
               )}
             </Form.Item>
-            <Button type="primary" htmlType="submit" loading={isLoading}>
+            <Button type="primary" htmlType="submit" loading={isLoading} disabled={isLoading}>
               Создать
             </Button>
           </Form>

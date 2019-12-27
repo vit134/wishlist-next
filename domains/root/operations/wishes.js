@@ -24,21 +24,22 @@ export const applyWishesWithFilters = filters => (dispatch, getState) => {
   const state = getState();
   const data = values(selectWishesEntities(state));
   const filtering = getFiltersFuctions(filters);
-
-  // const withFilters = filtering(data);
-
-  // dispatch(setWishes(withFilters));
   compose([dispatch, setWishes, filtering])(data);
 };
 
-export const addWish = userFormData => dispatch => {
+export const addWish = userFormData => (dispatch, getState) => {
   dispatch(addWishFetching());
 
   return addWishRequest(userFormData)
     .then(({ data }) => {
       if (data.success) {
-        dispatch(addWishSuccess(data));
         const { userName, _id } = data.data;
+        const state = getState();
+        const wishes = values(selectWishesEntities(state));
+
+        dispatch(addWishSuccess(data));
+        compose([dispatch, setWishes])([...wishes, data.data]);
+
         notification.success({
           message: 'Вишка успешно добавлена',
           description: <>Вы можете перейти на страницу вишки по <a href={`/user/${userName}/${_id}`}>ссылке</a></>,

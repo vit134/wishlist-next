@@ -32,7 +32,7 @@ const renderNameColumn = (name, record, onShowImageModal) => {
           onClick={() => onShowImageModal(record.image)}
         />
       )}
-      <a href={`/user/${record.userId.username}/${record._id}`}>{name}</a>
+      <a href={`/user/${record.userName || record.userId.username}/${record._id}`}>{name}</a>
     </>
   );
 
